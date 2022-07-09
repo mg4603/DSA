@@ -75,4 +75,4 @@
     - Travelling salesman problem
     - SAT problem
 
-- **Day 101 - ∞:**You are now better than most of the CS undergrads. Keep revising the above topics and start competitive programming! Good luck!
+- **Day 101 - ∞:** You are now better than most of the CS undergrads. Keep revising the above topics and start competitive programming! Good luck!
