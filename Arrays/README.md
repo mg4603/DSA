@@ -25,3 +25,21 @@
 
 - worst case complexity in case of high collisions : O(N) where N is the number of keys
 - In case of minium collisions the complexity is O(1) => good implementation
+
+### Vectors
+- Array-like data structure that offers dynamic resizing. 
+- Re-sizes itself as needed while still providing O(1) access.
+- When the array is full, it increases by a factor of K, i.e., when the array of size N is full it's size becomes K * N
+- Each resizing takes O(N) time, where N is the number of elements when the array re-sizes
+    - Resizing however is rare enough that amortized insertion time is still O(1)
+- For GCC, K = 2
+- Why is amortized insertion time O(1):
+    - Working backward for a size of N and K = 2:
+        - final capacity increase : n/2 elements to copy
+        - previous capacity increase: n/4 elements to copy  
+        - previous capacity increase: n/8 elements to copy
+        - ...
+        - second capacity increase: 2 elements to copy
+        - first capacity increase: 1 element to copy
+    - Therefore total number of operations to insert N elements is roughly N+N/2+N/4+N/8+....+2+1
+    - which is approximately equal 2N => therefore work to insert 1 element is approximately 2 => O(1)
