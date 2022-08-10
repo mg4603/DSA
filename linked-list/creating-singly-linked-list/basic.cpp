@@ -8,6 +8,7 @@ class Node{
     public: 
     Node(int d);
     void appendToTail(int d);
+    void display();
 };
 
 Node::Node(int d){
@@ -23,8 +24,17 @@ void Node::appendToTail(int d){
     }
     n->next = newNode;
 }
-
+void Node::display(){
+    Node *n = this;
+    while(n != NULL){
+        cout<<n->data<<endl;
+        n = n->next;
+    }
+}
 int main(){
-
+    Node *head = new Node(5);
+    head->appendToTail(6);
+    head->appendToTail(7);
+    head->display();
     return 0;
 }
