@@ -1,3 +1,7 @@
+to do:
+- hashtable 
+- rotate_matrix inplace
+
 
 # Arrays
 
