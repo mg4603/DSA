@@ -22,6 +22,7 @@ LinkedList::LinkedList(){}
 void LinkedList::appendToTail(int data){
     if(this->head == nullptr){
         this->head = new Node(data);
+        return;
     }
     Node *n = this->head;
     Node *newNode = new Node(data);
