@@ -16,6 +16,7 @@ class LinkedList{
         void appendToTail(int data);
         void display();
         Node* getHead();
+        int getLength();
 };
 
 LinkedList::LinkedList(){}
@@ -42,4 +43,14 @@ void LinkedList::display(){
 
 Node* LinkedList::getHead(){
     return this->head;
+}
+
+int LinkedList::getLength(){
+    int length(0);
+    Node* n = this->head;
+     while(n != nullptr){
+        length++;
+        n = n->next;
+     }
+     return length;
 }
