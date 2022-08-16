@@ -15,6 +15,7 @@ class LinkedList{
         LinkedList();
         void appendToTail(int data);
         void display();
+        Node* getHead();
 };
 
 LinkedList::LinkedList(){}
@@ -37,4 +38,8 @@ void LinkedList::display(){
         std::cout<<n->data<<std::endl;
         n = n->next;
     }
+}
+
+Node* LinkedList::getHead(){
+    return this->head;
 }
