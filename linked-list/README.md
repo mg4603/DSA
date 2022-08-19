@@ -1,3 +1,7 @@
+To Do:
+    palindrome(recursive)
+    intersection
+    loop-detection
 # Linked List
 - A sequence of nodes
 - singly linked list - each node points to the next
