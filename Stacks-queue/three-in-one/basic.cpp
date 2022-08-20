@@ -57,7 +57,10 @@ Q FixedMultiSizedStack<T,Q>::peek(int stackNum){
 
 template<typename T, typename Q>
 T FixedMultiSizedStack<T,Q>::indexOfTop(int stackNum){
-    return sizes[stackNum];
+    T offset = stackNum * stackCapacity;
+    T size = sizes[stackNum];
+
+    return size + offset - 1;
 }
 template<typename T, typename Q>
 bool FixedMultiSizedStack<T,Q>::isEmpty(int stackNum){
