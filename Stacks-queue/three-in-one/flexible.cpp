@@ -30,7 +30,7 @@ class MultiStack{
         }
 
         T lastElementIndex(){
-            return adjustIndex(start + size -1);
+            return adjustIndex(start + size - 1);
         }
 
         bool isFull(){
@@ -55,6 +55,14 @@ class MultiStack{
             if(allStacksAreFull()){
                 throw "All Stacks Are Full";
             }
+
+            StackInfo stack = info[stackNum];
+            if(stack.isFull()){
+                expand(stackNum);
+            }
+
+            stack.size++;
+            values[stack.lastElementIndex()] = value;
             
         }
 
