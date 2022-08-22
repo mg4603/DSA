@@ -111,7 +111,13 @@ class MultiStack{
             stack.capacity--;
         }
 
-        
+        T numberOfElements(){
+            T size(0);
+            for(StackInfo stack: info){
+                size += stack.size;
+            }
+            return size;
+        }
 
 
 };
