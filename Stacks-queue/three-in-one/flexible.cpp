@@ -119,6 +119,9 @@ class MultiStack{
             return size;
         }
 
+        bool allStacksAreFull(){
+            return values.size() == numberOfElements();
+        }
 
 };
 
