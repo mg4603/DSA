@@ -65,7 +65,16 @@ class MultiStack{
             values[stack.lastElementIndex()] = value;
             
         }
-
+        Q pop(T stackNum){
+            StackInfo stack = info[stackNum];
+            if(stack.isEmpty()){
+                throw "Stack is empty: "+static_cast<string>(stackNum);
+            }
+            T value = values[stack.lastElementIndex()];
+            values[stack.lastElementIndex()] = 0;
+            stack.size--;
+            return value;
+        }
 };
 
 int main(){
