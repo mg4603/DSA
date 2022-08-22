@@ -4,7 +4,8 @@ using namespace std;
 
 template<typename T, typename Q>
 class MultiStack{
-    vector<T> values;
+    vector<Q> values;
+
     // Class to hold metadata about each stack 
     class StackInfo{
         public: 
@@ -41,6 +42,22 @@ class MultiStack{
         }
 
     };
+    vector<StackInfo> info;
+    
+    public:
+        MultiStack(T numberOfStacks, T defaultSize){
+            for(T i(0); i < numberOfStacks; i++){
+                info.push_back(new StackInfo(i*defaultSize, defaultSize));
+            }
+            values = vector<Q>(numberOfStacks*defaultSize, 0);
+        }
+        void push(T stackNum, Q value){
+            if(allStacksAreFull()){
+                throw "All Stacks Are Full";
+            }
+            
+        }
+
 };
 
 int main(){
