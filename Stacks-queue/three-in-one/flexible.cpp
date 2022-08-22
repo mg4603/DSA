@@ -123,6 +123,12 @@ class MultiStack{
             return values.size() == numberOfElements();
         }
 
+        T adjustIndex(T index){
+            T max = values.size();
+            return ((index % max)+max)%max;
+        }
+
+        
 };
 
 int main(){
