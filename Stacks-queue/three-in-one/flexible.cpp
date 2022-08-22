@@ -84,7 +84,30 @@ class MultiStack{
             return values[stack.lastElementIndex()];
         }
 
+        // shift over the elements of the stack and shrink it's size by one
+        // if there is no space, then shift the next stack too
+        void shift(T stackNum){
+            StackInfo stack = info[stackNum];
+            
+            if(stack.size >= stack.capacity){
+                T nextStack = (stackNum + 1) % info.size();
+                shift(nextStack);
+                stack.capacity++;
+            }
+
+            T index(stack.lastCapacityIndex());
+            while(stack.isWithinStackCapacity(index)){
+                values[index] = values[previousIndex(index)];
+                index = previousIndex(index);
+            }
+
+            values[stack.start] = 0;
+            stack.start = nextIndex(stack.start);
+            stack.capacity--;
+        }
         
+
+
 };
 
 int main(){
