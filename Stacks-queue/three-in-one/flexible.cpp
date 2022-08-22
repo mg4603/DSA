@@ -75,6 +75,16 @@ class MultiStack{
             stack.size--;
             return value;
         }
+        
+        Q peek(T stackNum){
+            StackInfo stack = info[stackNum];
+            if(stack.isEmpty()){
+                throw "Stack is empty"+static_cast<string>(stackNum);
+            }
+            return values[stack.lastElementIndex()];
+        }
+
+        
 };
 
 int main(){
