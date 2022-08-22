@@ -128,7 +128,9 @@ class MultiStack{
             return ((index % max)+max)%max;
         }
 
-        
+        T nextIndex(T index){
+            return adjustIndex(index+1);
+        }
 };
 
 int main(){
