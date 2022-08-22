@@ -44,6 +44,11 @@ class MultiStack{
     };
     vector<StackInfo> info;
     
+    void expand(T stackNum){
+        shift((stackNum+1)%info.size());
+        info[stackNum].capacity++;
+    }
+
     public:
         MultiStack(T numberOfStacks, T defaultSize){
             for(T i(0); i < numberOfStacks; i++){
@@ -105,6 +110,7 @@ class MultiStack{
             stack.start = nextIndex(stack.start);
             stack.capacity--;
         }
+
         
 
 
