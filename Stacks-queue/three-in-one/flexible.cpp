@@ -45,6 +45,39 @@ class StackInfo{
 
 
 
+        T getStart(){
+            return start;
+        }
+
+        T getCapacity(){
+            return capacity;
+        }
+
+        T getSize(){
+            return size;
+        }
+
+        void incrementSize(){
+            this->size++;
+        }
+
+        void incrementCapacity(){
+            this->capacity++;
+        }
+
+        void incrementStart(){
+            this->start++;
+        }
+
+        void decrementSize(){
+            this->size--;
+        }
+        void decrementCapacity(){
+            this->capacity--;
+        }
+        void decrementStart(){
+            this->start--;
+        }
 };
 
 
