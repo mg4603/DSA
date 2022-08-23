@@ -92,24 +92,24 @@ class MultiStack{
     
 
     T nextIndex(T index){
-        return this->adjustIndex(index+1);
+        return adjustIndex(values, index + 1);
     }
     
     T previousIndex(T index){
-        return this->adjustIndex(index-1);
+        return adjustIndex(values, index - 1);
     }
    
     vector<StackInfo> info;
     
     void expand(T stackNum){
-        shift((stackNum+1)%info.size());
+        shift((stackNum + 1) % info.size());
         info[stackNum].incrementCapacity();
     }
 
     public:
         MultiStack(T numberOfStacks, T defaultSize){
             for(T i(0); i < numberOfStacks; i++){
-                StackInfo *stackInfo = new StackInfo(i*defaultSize, defaultSize);
+                StackInfo<T, Q> *stackInfo = new StackInfo<T, Q>(i*defaultSize, defaultSize);
                 info.push_back(stackInfo);
             }
             values = vector<Q>(numberOfStacks*defaultSize, 0);
@@ -119,38 +119,38 @@ class MultiStack{
                 throw "All Stacks Are Full";
             }
 
-            StackInfo *stack = info[stackNum];
+            StackInfo<T, Q> *stack = info[stackNum];
             if(stack->isFull()){
                 expand(stackNum);
             }
 
             stack->incrementSize();
-            values[stack->lastElementIndex()] = value;
+            values[stack->lastIndex(values, stack->getStart(), stack->getSize())] = value;
             
         }
         Q pop(T stackNum){
-            StackInfo *stack = info[stackNum];
+            StackInfo<T, Q> *stack = info[stackNum];
             if(stack->isEmpty()){
                 throw "Stack is empty: "+to_string(stackNum);
             }
             T value = values[stack->lastElementIndex()];
-            values[stack->lastElementIndex()] = 0;
+            values[stack->lastIndex(values, stack->getStart(), stack->getSize())] = 0;
             stack->decrementSize();
             return value;
         }
         
         Q peek(T stackNum){
-            StackInfo *stack = info[stackNum];
+            StackInfo<T, Q> *stack = info[stackNum];
             if(stack->isEmpty()){
                 throw "Stack is empty"+to_string(stackNum);
             }
-            return values[stack->lastElementIndex()];
+            return values[stack->lastIndex(values, stack->getStart(), stack->getSize())];
         }
 
         // shift over the elements of the stack and shrink it's size by one
         // if there is no space, then shift the next stack too
         void shift(T stackNum){
-            StackInfo *stack = info[stackNum];
+            StackInfo<T, Q> *stack = info[stackNum];
             
             if(stack->getSize() >= stack->getCapacity()){
                 T nextStack = (stackNum + 1) % info.size();
@@ -158,7 +158,7 @@ class MultiStack{
                 stack->incrementCapacity();
             }
 
-            T index(stack->lastCapacityIndex());
+            T index(stack->lastIndex(this->values, stack->getStart(), stack->getCapacity()));
             while(stack->isWithinStackCapacity(index)){
                 values[index] = values[previousIndex(index)];
                 index = previousIndex(index);
