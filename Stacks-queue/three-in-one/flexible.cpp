@@ -98,7 +98,7 @@ class MultiStack{
     
     void expand(T stackNum){
         shift((stackNum+1)%info.size());
-        info[stackNum].capacity++;
+        info[stackNum].incrementCapacity();
     }
 
     public:
@@ -119,7 +119,7 @@ class MultiStack{
                 expand(stackNum);
             }
 
-            stack->size++;
+            stack->incrementSize();
             values[stack->lastElementIndex()] = value;
             
         }
@@ -130,7 +130,7 @@ class MultiStack{
             }
             T value = values[stack->lastElementIndex()];
             values[stack->lastElementIndex()] = 0;
-            stack->size--;
+            stack->decrementSize();
             return value;
         }
         
@@ -147,10 +147,10 @@ class MultiStack{
         void shift(T stackNum){
             StackInfo *stack = info[stackNum];
             
-            if(stack->size >= stack->capacity){
+            if(stack->getSize() >= stack->getCapacity()){
                 T nextStack = (stackNum + 1) % info.size();
                 shift(nextStack);
-                stack->capacity++;
+                stack->incrementCapacity();
             }
 
             T index(stack->lastCapacityIndex());
@@ -159,15 +159,15 @@ class MultiStack{
                 index = previousIndex(index);
             }
 
-            values[stack->start] = 0;
-            stack->start = nextIndex(stack->start);
-            stack->capacity--;
+            values[stack->getStart()] = 0;
+            stack->setStart(nextIndex(stack->getStart()));
+            stack->decrementCapacity();
         }
 
         T numberOfElements(){
             T size(0);
             for(StackInfo *stack: info){
-                size += stack->size;
+                size += stack->getSize();
             }
             return size;
         }
