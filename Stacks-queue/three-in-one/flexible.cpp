@@ -99,11 +99,11 @@ class MultiStack{
         return adjustIndex(values, index - 1);
     }
    
-    vector<StackInfo> info;
+    vector<StackInfo<T, Q>*> info;
     
     void expand(T stackNum){
         shift((stackNum + 1) % info.size());
-        info[stackNum].incrementCapacity();
+        info[stackNum]->incrementCapacity();
     }
 
     public:
@@ -125,7 +125,7 @@ class MultiStack{
             }
 
             stack->incrementSize();
-            values[stack->lastIndex(values, stack->getStart(), stack->getSize())] = value;
+            values[lastIndex(values, stack->getStart(), stack->getSize())] = value;
             
         }
         Q pop(T stackNum){
@@ -133,8 +133,8 @@ class MultiStack{
             if(stack->isEmpty()){
                 throw "Stack is empty: "+to_string(stackNum);
             }
-            T value = values[stack->lastElementIndex()];
-            values[stack->lastIndex(values, stack->getStart(), stack->getSize())] = 0;
+            T value = values[lastIndex(values, stack->getStart, stack->getSize())];
+            values[lastIndex(values, stack->getStart(), stack->getSize())] = 0;
             stack->decrementSize();
             return value;
         }
@@ -144,7 +144,7 @@ class MultiStack{
             if(stack->isEmpty()){
                 throw "Stack is empty"+to_string(stackNum);
             }
-            return values[stack->lastIndex(values, stack->getStart(), stack->getSize())];
+            return values[lastIndex(values, stack->getStart(), stack->getSize())];
         }
 
         // shift over the elements of the stack and shrink it's size by one
@@ -158,8 +158,8 @@ class MultiStack{
                 stack->incrementCapacity();
             }
 
-            T index(stack->lastIndex(this->values, stack->getStart(), stack->getCapacity()));
-            while(stack->isWithinStackCapacity(index)){
+            T index(lastIndex(this->values, stack->getStart(), stack->getCapacity()));
+            while(stack->isWithinStackCapacity(values, index)){
                 values[index] = values[previousIndex(index)];
                 index = previousIndex(index);
             }
@@ -171,7 +171,7 @@ class MultiStack{
 
         T numberOfElements(){
             T size(0);
-            for(StackInfo *stack: info){
+            for(StackInfo<T, Q> *stack: info){
                 size += stack->getSize();
             }
             return size;
@@ -186,18 +186,18 @@ class MultiStack{
 
 int main(){
     MultiStack<int, int> *multiStack = new MultiStack<int, int>(3, 5);
-    multiStack->push(1, 4);
-    multiStack->push(3, 2);
-    multiStack->push(1, 6);
-    cout<<multiStack->peek(1)<<endl;
-    cout<<multiStack->peek(3)<<endl;
-    try{
-        cout<<multiStack->peek(2);
-    }
-    catch(const char* error)
-    {
-        cout<<error<<endl;
-    }
+    // multiStack->push(1, 4);
+    // multiStack->push(3, 2);
+    // multiStack->push(1, 6);
+    // cout<<multiStack->peek(1)<<endl;
+    // cout<<multiStack->peek(3)<<endl;
+    // try{
+    //     cout<<multiStack->peek(2);
+    // }
+    // catch(const char* error)
+    // {
+    //     cout<<error<<endl;
+    // }
 
 
     return 0;
