@@ -57,6 +57,11 @@ class StackInfo{
             return size;
         }
 
+        void setStart(T start){
+            this->start = start;
+        }
+
+
         void incrementSize(){
             this->size++;
         }
