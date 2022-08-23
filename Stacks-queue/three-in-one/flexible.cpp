@@ -115,15 +115,15 @@ class MultiStack{
             values = vector<Q>(numberOfStacks*defaultSize, 0);
         }
         void push(T stackNum, Q value){
-            if(allStacksAreFull()){
+            if(allStacksAreFull()){                
                 throw "All Stacks Are Full";
             }
-
             StackInfo<T, Q> *stack = info[stackNum];
+            
             if(stack->isFull()){
                 expand(stackNum);
             }
-
+           
             stack->incrementSize();
             values[lastIndex(values, stack->getStart(), stack->getSize())] = value;
             
@@ -142,7 +142,7 @@ class MultiStack{
         Q peek(T stackNum){
             StackInfo<T, Q> *stack = info[stackNum];
             if(stack->isEmpty()){
-                throw "Stack is empty"+to_string(stackNum);
+                throw "Stack is empty: "+to_string(stackNum);
             }
             return values[lastIndex(values, stack->getStart(), stack->getSize())];
         }
@@ -186,18 +186,18 @@ class MultiStack{
 
 int main(){
     MultiStack<int, int> *multiStack = new MultiStack<int, int>(3, 5);
-    // multiStack->push(1, 4);
-    // multiStack->push(3, 2);
-    // multiStack->push(1, 6);
-    // cout<<multiStack->peek(1)<<endl;
-    // cout<<multiStack->peek(3)<<endl;
-    // try{
-    //     cout<<multiStack->peek(2);
-    // }
-    // catch(const char* error)
-    // {
-    //     cout<<error<<endl;
-    // }
+    multiStack->push(1, 4);
+    multiStack->push(2, 2);
+    multiStack->push(1, 6);
+    cout<<multiStack->peek(1)<<endl;
+    cout<<multiStack->peek(2)<<endl;
+    try{
+        cout<<multiStack->peek(0);
+    }
+    catch(string error)
+    {
+        cout<<error<<endl;
+    }
 
 
     return 0;
