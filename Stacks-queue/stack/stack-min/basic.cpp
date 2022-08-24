@@ -63,19 +63,26 @@ class StackInfo{
 
 };
 
+// All identifier are numeric
+
 template<typename T, typename Q>
 T adjustIdentifier(vector<Q> vec, T identifier){
     return ((identifier % vec.size())+vec.size())%vec.size();
 }
 
 template<typename T, typename Q>
-T next(vector<Q> vec, T identifier){
+T nextIdentifier(vector<Q> vec, T identifier){
     return adjustIdentifier(vec, identifier + 1);
 }
 
 template<typename T, typename Q>
-T previous(vector<Q> vec, T identifier){
+T previousIdentifier(vector<Q> vec, T identifier){
     return adjustIdentifier(vec, identifier - 1);
+}
+
+template <typename T, typename Q>
+T lastIdentifier(vector<Q> vec, T start, T end){
+    return adjustIdentifier(vec, start + end -1);
 }
 
 template <typename T, typename Q>
@@ -83,18 +90,20 @@ class Stack{
     vector<StackInfo<T, Q>*> info;
     vector<Q> values;
 
-    T nextIndex(T index){
-        return adjustIndex(index+1);
-    }
-
-    T previousIndex(T index){
-        return adjustIndex(index-1);
-    }
-
     void expand(T stackNum){
         StackInfo<T, Q> *stack = info[stackNum];
-        shift(next());
+        shift(nextIdentifier(info, stackNum));
         stack->incrementCapacity();
+    }
+
+    void shift(T stackNum){
+        StackInfo<T, Q> *stack = info[stackNum];
+        if(stack->getSize() >= stack->getCapacity()){
+            shift(nextIdentifier(info, stackNum));
+            stack->incrementCapacity();
+        }
+
+
     }
 
     public:
