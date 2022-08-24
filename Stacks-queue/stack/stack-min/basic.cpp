@@ -63,6 +63,10 @@ class StackInfo{
 
 };
 
+template<typename T, typename Q>
+T adjustIdentifier(vector<Q> vec, T identifier){
+    return ((identifier % vec.size())+vec.size())%vec.size();
+}
 
 template<typename T, typename Q>
 T next(vector<Q> vec, T identifier){
