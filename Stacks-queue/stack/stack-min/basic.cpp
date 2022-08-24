@@ -162,7 +162,10 @@ class Stack{
             }
             return size;
         }
-        
+
+        bool allStacksAreFull(){
+            return values.size() == numberOfElements()s ;
+        }
 };
 
 
