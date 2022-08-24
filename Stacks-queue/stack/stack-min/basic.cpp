@@ -103,7 +103,14 @@ class Stack{
             stack->incrementCapacity();
         }
 
-
+        T index(lastIdentifier(this->values, stack->getStart(), stack->getCapacity()));
+        while(stack->isWithinStackCapacity(this->values, index)){
+            values[index] = values[previousIdentifier(values, index)];
+            index = previousIdentifier(values, index);
+        }
+        values[stack->getStart()] = 0;
+        stack->setStart(nextIdentifier(values, stack->getStart));
+        stack->decrementCapacity();
     }
 
     public:
