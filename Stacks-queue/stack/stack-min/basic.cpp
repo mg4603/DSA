@@ -154,6 +154,15 @@ class Stack{
             stack->decrementSize();
             return value;
         }
+
+        T numberOfElements(){
+            T size(0);
+            for(StackInfo<T, Q> *sd: info){
+                size += sd->getSize();
+            }
+            return size;
+        }
+        
 };
 
 
