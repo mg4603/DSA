@@ -142,6 +142,18 @@ class Stack{
             }
             return values[lastIdentifier(values, stack->getStart(), stack->getSize())];
         }
+
+        Q pop(T stackNum){
+            StackInfo<T, Q> *stack = info[stackNum];
+            if(stack->isEmpty()){
+                throw "Stack Empty: "+to_string(stackNum);
+            }
+            T index = lastIdentifier(values, stack->getStart(), stack->getSize());
+            Q value = values[index];
+            values[index] = 0;
+            stack->decrementSize();
+            return value;
+        }
 };
 
 
