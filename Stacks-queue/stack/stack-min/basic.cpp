@@ -122,7 +122,18 @@ class Stack{
             values = vector<Q>(defaultSize*numberOfStacks, 0);
         }
 
-        
+        void push(T stackNum, Q value){
+            if(allStacksAreFull()){
+                throw "All stacks are full";
+            }
+            StackInfo<T, Q> *stack = info[stackNum];
+            if(stack->isFull()){
+                expand(stackNum);
+            }
+
+            stack->incrementSize();
+            values[lastIdentifier(values, stack->getStart(), stack->getSize())] = value;
+        }        
 
 };
 
