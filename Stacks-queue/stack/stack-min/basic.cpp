@@ -64,6 +64,11 @@ class StackInfo{
 };
 
 
+template<typename T, typename Q>
+T next(vector<Q> vec, T identifier){
+    return adjustIdentifier(identifier + 1);
+}
+
 
 template <typename T, typename Q>
 class Stack{
@@ -78,6 +83,12 @@ class Stack{
         return adjustIndex(index-1);
     }
 
+    void expand(T stackNum){
+        StackInfo<T, Q> *stack = info[stackNum];
+        shift(next());
+        stack->incrementCapacity();
+    }
+
     public:
         Stack(T numberOfStacks, T defaultSize){
             for(T i(0); i < numberOfStacks; i++){
@@ -87,6 +98,7 @@ class Stack{
             values = vector<Q>(defaultSize*numberOfStacks, 0);
         }
 
+        
 
 };
 
