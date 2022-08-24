@@ -70,6 +70,14 @@ class Stack{
     vector<StackInfo<T, Q>*> info;
     vector<Q> values;
 
+    T nextIndex(T index){
+        return adjustIndex(index+1);
+    }
+
+    T previousIndex(T index){
+        return adjustIndex(index-1);
+    }
+
     public:
         Stack(T numberOfStacks, T defaultSize){
             for(T i(0); i < numberOfStacks; i++){
@@ -79,7 +87,7 @@ class Stack{
             values = vector<Q>(defaultSize*numberOfStacks, 0);
         }
 
-        
+
 };
 
 
