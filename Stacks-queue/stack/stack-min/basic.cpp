@@ -11,7 +11,9 @@ class StackInfo{
             this->capacity = capacity;
         }
 
-        
+        bool isWithinStackCapacity(vector<Q> values, T index){
+            if()
+        }
 
         T getStart(){
             return this->start;
