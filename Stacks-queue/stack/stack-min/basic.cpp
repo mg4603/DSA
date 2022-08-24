@@ -63,16 +63,30 @@ class StackInfo{
 
 };
 
+
+
 template <typename T, typename Q>
 class Stack{
     vector<StackInfo<T, Q>*> info;
     vector<Q> values;
 
     public:
-        Stack(){
-
+        Stack(T numberOfStacks, T defaultSize){
+            for(T i(0); i < numberOfStacks; i++){
+                StackInfo<T, Q> *stack = new StackInfo(i*defaultSize, defaultSize);
+                info.push_back();
+            }
+            values = vector<Q>(defaultSize*numberOfStacks, 0);
         }
+
+        
 };
+
+
+
+
+
+
 
 
 int main(){
