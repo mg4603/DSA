@@ -9,10 +9,16 @@ class StackInfo{
         StackInfo(T start, T capacity){
             this->start = start;
             this->capacity = capacity;
+            this->size = 0;
         }
 
         bool isWithinStackCapacity(vector<Q> values, T index){
-            if()
+            if(index < 0 || index >= values.size()){
+                return false;
+            }
+            T contiguousIndex(index < start ? index + values.size() : index);
+            T end(start + capacity);
+            return start <= contiguousIndex && contiguousIndex <= end;
         }
 
         T getStart(){
@@ -48,3 +54,4 @@ class StackInfo{
         }
 
 };
+
