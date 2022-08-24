@@ -66,9 +66,13 @@ class StackInfo{
 
 template<typename T, typename Q>
 T next(vector<Q> vec, T identifier){
-    return adjustIdentifier(identifier + 1);
+    return adjustIdentifier(vec, identifier + 1);
 }
 
+template<typename T, typename Q>
+T previous(vector<Q> vec, T identifier){
+    return adjustIdentifier(vec, identifier - 1);
+}
 
 template <typename T, typename Q>
 class Stack{
