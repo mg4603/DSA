@@ -53,5 +53,29 @@ class StackInfo{
             this->capacity--;
         }
 
+        bool isEmpty(){
+            return size == 0;
+        }
+
+        bool isFull(){
+            return size == capacity;
+        }
+
 };
 
+template <typename T, typename Q>
+class Stack{
+    vector<StackInfo<T, Q>*> info;
+    vector<Q> values;
+
+    public:
+        Stack(){
+
+        }
+};
+
+
+int main(){
+
+    return 0;
+}
