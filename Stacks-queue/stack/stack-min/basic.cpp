@@ -135,6 +135,13 @@ class Stack{
             values[lastIdentifier(values, stack->getStart(), stack->getSize())] = value;
         }        
 
+        Q peek(T stackNum){
+            StackInfo<T, Q> *stack = info[stackNum];
+            if(stack->isEmpty()){
+                throw "Stack Empty: "+to_string(stackNum);
+            }
+            return values[lastIdentifier(values, stack->getStart(), stack->getSize())];
+        }
 };
 
 
