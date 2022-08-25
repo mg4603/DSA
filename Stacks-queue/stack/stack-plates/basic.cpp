@@ -26,6 +26,17 @@ class SetOfStacks{
                 stacks.push_back(stack);
             }
         }
+
+        Q pop(){
+            Stack<Q> lastStack = getLastStack();
+            if(lastStack.size() == 1){
+                Q value = lastStack.pop()
+                stacks.pop_back();
+                return value
+            }else{
+                return lastStack.pop();
+            }
+        }
         
         
 };
