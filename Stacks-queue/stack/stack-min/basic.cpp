@@ -188,7 +188,15 @@ class Sol{
             values->push(0, value);
         }
 
-       
+        int pop(){
+            if(values->peek(0) == mins->peek(0)){
+                mins->pop(0);
+                return values->pop(0);
+            }
+            return values->pop(0);
+        }
+
+        
 };
 
 
