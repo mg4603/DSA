@@ -177,6 +177,18 @@ class Sol{
             mins  = new Stack<int, int> (1, 1000);
         }
 
+        void push(int value){
+            if(!values->numberOfElements()){
+                mins->push(0, value);
+            }else{
+                if(mins->peek(0) > value){
+                    mins->push(0, value);
+                }
+            }
+            values->push(0, value);
+        }
+
+       
 };
 
 
