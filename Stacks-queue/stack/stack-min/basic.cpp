@@ -196,6 +196,13 @@ class Sol{
             return values->pop(0);
         }
 
+        int min(){
+            if(!mins->numberOfElements()){
+                throw "Stack Empty";
+            }
+            return mins->peek(0);
+        }
+
         
 };
 
