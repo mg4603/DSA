@@ -16,6 +16,16 @@ class SetOfStacks{
         SetOfStacks(T capacity){
             this->capacity = capacity;
         }
+        void push(Q value){
+            Stack<Q> lastStack = getLastStack();
+            if(lastStack.size() != capacity){
+                lastStack.push(value);
+            }else{
+                Stack<Q> stack = new Stack<Q>();
+                stack.push(value);
+                stacks.push_back(stack);
+            }
+        }
         
         
 };
