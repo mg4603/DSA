@@ -168,11 +168,16 @@ class Stack{
         }
 };
 
+class Sol{
+    Stack<int, int> *values;
+    Stack<int, int> *mins;
+    public:
+        Sol(){
+            values = new Stack<int, int>(1, 1000);
+            mins  = new Stack<int, int> (1, 1000);
+        }
 
-
-
-
-
+};
 
 
 int main(){
