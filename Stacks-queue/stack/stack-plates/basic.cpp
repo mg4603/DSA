@@ -1,40 +1,56 @@
 #include<iostream>
 #include<vector>
 #include<stack>
+#include<typeinfo>
 using namespace std;
 
 // Q is value type 
 // T is size type 
 template<typename T, typename Q>
 class SetOfStacks{
-    vector<Stack<Q>> stacks;
+    vector<stack<Q>> stacks;
     T capacity;
-    Stack<Q> getLastStack(){
-        return *stacks.back()
+    stack<Q> getLastStack(){
+        return stacks.back();
     }
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
         }
+        void addStack(Q value){
+            stack<Q> newStack;
+            newStack.push(value);
+            stacks.push_back(newStack);
+        }
+
         void push(Q value){
-            Stack<Q> lastStack = getLastStack();
-            if(lastStack.size() != capacity){
+            if(stacks.size() != 0){
+                stack<Q> lastStack = this->getLastStack();
+                if(lastStack.size() == this->capacity){
+                    addStack(value);
+                }
                 lastStack.push(value);
             }else{
-                Stack<Q> stack = new Stack<Q>();
-                stack.push(value);
-                stacks.push_back(stack);
+                addStack(value);
             }
         }
 
         Q pop(){
-            Stack<Q> lastStack = getLastStack();
+            cout<<1<<endl;
+            if(stacks.size() == 0){
+                throw "Stacks empty";
+            }
+            stack<Q> lastStack = this->getLastStack();
             if(lastStack.size() == 1){
-                Q value = lastStack.pop()
+                Q value = lastStack.top();
+                lastStack.pop();
                 stacks.pop_back();
-                return value
+                cout<<stacks.size()<<endl;
+                return value;
             }else{
-                return lastStack.pop();
+                Q value =  lastStack.top();
+                lastStack.pop();
+                return value;
             }
         }
         
@@ -42,5 +58,19 @@ class SetOfStacks{
 };
 
 int main(){
+    SetOfStacks<int, int> *setOfStacks = new SetOfStacks<int, int>(10);
+    setOfStacks->push(1);
+    setOfStacks->push(2);
+    setOfStacks->push(3);
+    setOfStacks->push(4);
+    setOfStacks->push(5);
+    setOfStacks->push(6);
+    setOfStacks->push(7);
+    setOfStacks->push(8);
+    setOfStacks->push(9);
+    setOfStacks->push(10);
+    setOfStacks->push(11);
+    cout<<setOfStacks->pop()<<endl;
+    cout<<setOfStacks->pop()<<endl;
     return 0;
 }
