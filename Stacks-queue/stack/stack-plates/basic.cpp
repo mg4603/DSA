@@ -8,9 +8,9 @@ using namespace std;
 // T is size type 
 template<typename T, typename Q>
 class SetOfStacks{
-    vector<stack<Q>> stacks;
+    vector<stack<Q>*> stacks;
     T capacity;
-    stack<Q> getLastStack(){
+    stack<Q>* getLastStack(){
         return stacks.back();
     }
     public:
@@ -18,38 +18,37 @@ class SetOfStacks{
             this->capacity = capacity;
         }
         void addStack(Q value){
-            stack<Q> newStack;
-            newStack.push(value);
+            stack<Q> *newStack = new stack<Q>();
+            newStack->push(value);
             stacks.push_back(newStack);
         }
 
         void push(Q value){
             if(stacks.size() != 0){
-                stack<Q> lastStack = this->getLastStack();
-                if(lastStack.size() == this->capacity){
+                stack<Q> *lastStack = this->getLastStack();
+                if(lastStack->size() == this->capacity){
                     addStack(value);
+                }else{
+                    lastStack->push(value);
                 }
-                lastStack.push(value);
             }else{
                 addStack(value);
             }
         }
 
         Q pop(){
-            cout<<1<<endl;
             if(stacks.size() == 0){
                 throw "Stacks empty";
             }
-            stack<Q> lastStack = this->getLastStack();
-            if(lastStack.size() == 1){
-                Q value = lastStack.top();
-                lastStack.pop();
+            stack<Q> *lastStack = this->getLastStack();
+            if(lastStack->size() == 1){
+                Q value = lastStack->top();
+                lastStack->pop();
                 stacks.pop_back();
-                cout<<stacks.size()<<endl;
                 return value;
             }else{
-                Q value =  lastStack.top();
-                lastStack.pop();
+                Q value =  lastStack->top();
+                lastStack->pop();
                 return value;
             }
         }
