@@ -9,10 +9,19 @@ template<typename T, typename Q>
 class SetOfStack{
     vector<Stack<Q>> stacks;
     T capacity;
+    stack<T>* getLastStack(){
+        if(stacks.size() == 0){
+            throw "Stack Empty";
+        }
+        return stacks.back();
+    }
+
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
         }    
+
+        
 };
 
 int main(){
