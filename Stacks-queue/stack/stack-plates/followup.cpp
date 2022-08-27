@@ -39,6 +39,20 @@ class SetOfStack{
                 }
             }
         }
+
+        Q pop(){
+            if(stacks.size() == 0){
+                throw "Stack Empty";
+            }else{
+                stack<Q> *lastStack = this->getLastStack();
+                Q value = lastStack->top();
+                lastStack->pop();
+                if(lastStack->size() == 0){
+                    stacks.pop_back();
+                }
+                return value;
+            }
+        }
 };
 
 int main(){
