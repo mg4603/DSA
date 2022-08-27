@@ -16,6 +16,12 @@ class SetOfStack{
         return stacks.back();
     }
 
+    void addStack(value){
+        stack<Q> *newStack = new stack<Q>();
+        newStack->push(value);
+        stacks.push_back(newStack);
+    }
+
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
@@ -23,17 +29,13 @@ class SetOfStack{
 
         void push(Q value){
             if(stacks.size() == 0){
-                stack<Q> *newStack = new stack<Q>();
-                newStack->push(value);
-                stacks.push_back(newStack);
+                addStack(value);
             }else{
                 stack<Q> *lastStack = this->getLastStack();
                 if(lastStack->size() == this->capacity){
                     lastStack->push(value);
                 }else{
-                    stack<Q> *newStack = new stack<Q>();
-                    newStack->push(value);
-                    stacks.push_back(newStack);
+                    addStack(value);
                 }
             }
         }
