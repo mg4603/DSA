@@ -21,7 +21,22 @@ class SetOfStack{
             this->capacity = capacity;
         }    
 
-        
+        void push(Q value){
+            if(stacks.size() == 0){
+                stack<Q> *newStack = new stack<Q>();
+                newStack->push(value);
+                stacks.push_back(newStack);
+            }else{
+                stack<Q> *lastStack = this->getLastStack();
+                if(lastStack->size() == this->capacity){
+                    lastStack->push(value);
+                }else{
+                    stack<Q> *newStack = new stack<Q>();
+                    newStack->push(value);
+                    stacks.push_back(newStack);
+                }
+            }
+        }
 };
 
 int main(){
