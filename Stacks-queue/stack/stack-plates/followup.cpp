@@ -53,6 +53,14 @@ class SetOfStack{
                 return value;
             }
         }
+
+        Q popAt(T index){
+            return leftShift(index, true);
+        }
+
+        
+
+
 };
 
 int main(){
