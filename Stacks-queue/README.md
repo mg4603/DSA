@@ -1,4 +1,5 @@
-
+todo:
+- stack plates followup
 # Stack
 
 ## What?
