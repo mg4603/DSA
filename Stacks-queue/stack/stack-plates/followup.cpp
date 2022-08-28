@@ -22,6 +22,26 @@ class SetOfStack{
         stacks.push_back(newStack);
     }
 
+    Q leftShift(T index, bool removeTop){
+        if(stacks.size() < index){
+            throw "Stack doesn't exist";
+        }
+        Q removedItem;
+        stack<Q> *stack = stacks.at(index);
+        if(removeTop){
+            removedItem = stack->pop();
+        }else{
+            // remove bottom of stack
+        }
+        if(stack->size() == 0){
+            stacks.erase(index);
+        }else if(stacks.size() > index + 1){
+            int v = leftShift(index + 1 , false);
+            stack->push(v);
+        }
+        return removedItem;
+    }
+
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
