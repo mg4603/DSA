@@ -27,7 +27,17 @@ class Queue{
             return firstValue;
         }
 
-        
+        T peek(){
+            if(oldest.empty()){
+                while(!newest.empty()){
+                    T value = newest.top();
+                    newest.pop();
+                    oldest.push(value);
+                }
+            }
+            T firstValue = oldest.top();
+            return firstValue;
+        }
         
 };
 
