@@ -18,7 +18,7 @@ class Queue{
     }
 
     public:
-        Queue();
+        Queue(){};
 
         Q size(){
             return oldest.size() + newest.size();
@@ -29,7 +29,7 @@ class Queue{
         }
 
         T pop(){
-            shiftStack();
+            this->shiftStack();
             if(this->size() == 0){
                 throw "Queue empty";
             }
@@ -39,7 +39,7 @@ class Queue{
         }
 
         T peek(){
-            shiftStack();
+            this->shiftStack();
             if(this->size() == 0){
                 throw "Queue empty";
             }
@@ -51,8 +51,13 @@ class Queue{
 
 int main(){
     Queue<int, int> *queue = new Queue<int, int>();
-    queue->push(1);
-    cout<<queue->peek()<<endl;
-    cout<<queue->pop()<<endl;
+    try{
+        queue->push(1);
+        cout<<queue->peek()<<endl;
+        cout<<queue->pop()<<endl;
+        queue->pop();
+    }catch(const char* error){
+        cout<<error<<endl;
+    }
     return 0;
 }
