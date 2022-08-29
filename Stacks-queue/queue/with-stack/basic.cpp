@@ -30,6 +30,9 @@ class Queue{
 
         T pop(){
             shiftStack();
+            if(this->size() == 0){
+                throw "Queue empty";
+            }
             T firstValue = oldest.top();
             oldest.pop();
             return firstValue;
@@ -37,6 +40,9 @@ class Queue{
 
         T peek(){
             shiftStack();
+            if(this->size() == 0){
+                throw "Queue empty";
+            }
             T firstValue = oldest.top();
             return firstValue;
         }
@@ -44,6 +50,9 @@ class Queue{
 };
 
 int main(){
-    
+    Queue<int, int> *queue = new Queue<int, int>();
+    queue->push(1);
+    cout<<queue->peek()<<endl;
+    cout<<queue->pop()<<endl;
     return 0;
 }
