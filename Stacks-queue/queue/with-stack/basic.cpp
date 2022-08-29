@@ -7,13 +7,23 @@ class Queue{
     stack<T> oldest;
     stack<T> newest;
     
+    void shiftStack(){
+        if(oldest.empty()){
+            while(!newest.empty()){
+                T value = newest.top();
+                newest.pop();
+                oldest.push(value);
+            }
+        }
+    }
+
     public:
         Queue();
 
         Q size(){
             return oldest.size() + newest.size();
         }
-        
+
         void push(T value){
             newest.push(value);
         }
