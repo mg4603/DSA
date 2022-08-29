@@ -29,26 +29,14 @@ class Queue{
         }
 
         T pop(){
-            if(oldest.empty()){
-                while(!newest.empty()){
-                    T value = newest.top();
-                    newest.pop();
-                    oldest.push(value);
-                }
-            }
+            shiftStack();
             T firstValue = oldest.top();
             oldest.pop();
             return firstValue;
         }
 
         T peek(){
-            if(oldest.empty()){
-                while(!newest.empty()){
-                    T value = newest.top();
-                    newest.pop();
-                    oldest.push(value);
-                }
-            }
+            shiftStack();
             T firstValue = oldest.top();
             return firstValue;
         }
