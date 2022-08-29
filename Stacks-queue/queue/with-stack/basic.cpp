@@ -2,7 +2,7 @@
 #include<stack>
 using namespace std;
 
-template <typename T>
+template <typename T, typename Q>
 class Queue{
     stack<T> oldest;
     stack<T> newest;
@@ -10,6 +10,10 @@ class Queue{
     public:
         Queue();
 
+        Q size(){
+            return oldest.size() + newest.size();
+        }
+        
         void push(T value){
             newest.push(value);
         }
@@ -42,5 +46,6 @@ class Queue{
 };
 
 int main(){
+    
     return 0;
 }
