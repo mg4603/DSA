@@ -10,7 +10,11 @@ class Queue{
     public:
         Queue();
 
-       
+        void push(T value){
+            newest.push(value);
+        }
+
+        
         
 };
 
