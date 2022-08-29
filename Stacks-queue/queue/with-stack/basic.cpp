@@ -14,6 +14,19 @@ class Queue{
             newest.push(value);
         }
 
+        T pop(){
+            if(oldest.empty()){
+                while(!newest.empty()){
+                    T value = newest.top();
+                    newest.pop();
+                    oldest.push(value);
+                }
+            }
+            T firstValue = oldest.top();
+            oldest.pop();
+            return firstValue;
+        }
+
         
         
 };
