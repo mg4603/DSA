@@ -42,6 +42,12 @@ class SetOfStack{
         return removedItem;
     }
 
+    bool isEmpty(){
+        if(stacks.size() == 0)
+            return true;
+        return false;
+    }
+
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
