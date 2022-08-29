@@ -48,6 +48,8 @@ class SetOfStack{
         return false;
     }
 
+    
+
     public:
         SetOfStacks(T capacity){
             this->capacity = capacity;
