@@ -33,6 +33,9 @@ class Dog: public Animal{
 class Cat: public Animal{
     public:
         Cat(string n): Animal(n){}
+        bool isOlderThan(Animal* a){
+            return this->getOrder() < a->getOrder();
+        }
 };
 
 
