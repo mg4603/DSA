@@ -17,9 +17,8 @@ class Animal{
             return this->order;
         }
 
-        bool isOlderThan(Animal a){
-            return this->order < a.order;
-        }
+        virtual bool isOlderThan() = 0;
+        
 };
 
 class Dog: public Animal{
@@ -33,11 +32,24 @@ class Cat: public Animal{
         Cat(string n): Animal(n){}
 };
 
+
+
 class AnimalQueue{
-    queue<Dog> dogs;
-    queue<Cat> cats;
+    queue<Dog*> dogs;
+    queue<Cat*> cats;
     int order = 0;
-    
+    public:
+        void enqueue(Animal* a){
+            a->setOrder(order);
+            order++;
+
+            if(Dog* dog = dynamic_cast<Dog*>(a)){
+                dogs.push(dog);
+            }else if(Cat* cat = dynamic_cast<Cat*>(a)){
+                cats.push(cat);
+            }
+
+        }
 
 };
 
