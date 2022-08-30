@@ -30,8 +30,16 @@ class Dog: public Animal{
 
 class Cat: public Animal{
     public:
-        Cat(string n): Animal(n){};
-}
+        Cat(string n): Animal(n){}
+};
+
+class AnimalQueue{
+    queue<Dog> dogs;
+    queue<Cat> cats;
+    int order = 0;
+    
+
+};
 
 int main(){
     return 0;
