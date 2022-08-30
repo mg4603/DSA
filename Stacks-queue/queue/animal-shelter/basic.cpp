@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 
@@ -18,6 +19,12 @@ class Animal{
 
         bool isOlderThan(Animal a){
             return this->order < a.order;
+        }
+};
+
+class Dog: public Animal{
+    public:
+        Dog(string n) : Animal(n){
         }
 };
 
