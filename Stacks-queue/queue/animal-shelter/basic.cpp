@@ -9,6 +9,9 @@ class Animal{
         Animal(string n){
             name = n;    
         }
+        void setOrder(int order){
+            this->order = order;
+        }
         
 };
 
