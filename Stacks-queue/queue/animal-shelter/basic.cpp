@@ -15,6 +15,10 @@ class Animal{
         int getOrder(){
             return this->order;
         }
+
+        bool isOlderThan(Animal a){
+            return this->order < a.order;
+        }
 };
 
 int main(){
