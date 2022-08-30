@@ -28,6 +28,11 @@ class Dog: public Animal{
         }
 };
 
+class Cat: public Animal{
+    public:
+        Cat(string n): Animal(n){};
+}
+
 int main(){
     return 0;
 }
