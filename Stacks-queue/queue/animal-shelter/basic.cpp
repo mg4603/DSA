@@ -12,7 +12,9 @@ class Animal{
         void setOrder(int order){
             this->order = order;
         }
-        
+        int getOrder(){
+            return this->order;
+        }
 };
 
 int main(){
