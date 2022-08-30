@@ -25,6 +25,9 @@ class Dog: public Animal{
     public:
         Dog(string n) : Animal(n){
         }
+        bool isOlderThan(Animal* a){
+            return this->getOrder() < a->getOrder();
+        }
 };
 
 class Cat: public Animal{
