@@ -9,7 +9,7 @@ stack<Q> sortStack(stack<Q> unsortedStack){
     while(!unsortedStack.empty()){
         Q tmp = unsortedStack.top();
         unsortedStack.pop();
-        while(!sortedStack.empty() && tmp > sortedStack.top()){
+        while(!sortedStack.empty() && tmp < sortedStack.top()){
             unsortedStack.push(sortedStack.top());
             sortedStack.pop();
         }
@@ -20,6 +20,16 @@ stack<Q> sortStack(stack<Q> unsortedStack){
 }
 
 int main(){
-    
+    stack<int> s;
+    s.push(1);
+    s.push(5);
+    s.push(1);
+    s.push(1);
+    s.push(0);
+    s.push(7);
+    s.push(6);
+    s.push(5);
+    stack<int> sorted = sortStack(s);
+    cout<<sorted.top()<<endl;
     return 0;
 }
