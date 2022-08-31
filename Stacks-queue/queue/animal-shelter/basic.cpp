@@ -70,7 +70,7 @@ class AnimalQueue{
             if(cats.size() == 0){
                 throw "No cats available";
             }
-            Cat* cat = cats.back();
+            Cat* cat = cats.front();
             cats.pop();
             return cat;
         }
@@ -79,7 +79,7 @@ class AnimalQueue{
             if(dogs.size() == 0){
                 throw "No dogs available";
             }
-            Dog* dog = dogs.back();
+            Dog* dog = dogs.front();
             dogs.pop();
             return dog;
         }
@@ -91,8 +91,8 @@ class AnimalQueue{
                 return dequeueDogs();
             }
 
-            Dog* dog = dogs.back();
-            Cat* cat = cats.back();
+            Dog* dog = dogs.front();
+            Cat* cat = cats.front();
 
             if(cat->isOlderThan(dog)){
                 return dequeueCats();
@@ -112,6 +112,6 @@ int main(){
     aq->enqueue(dog1);
     aq->enqueue(dog2);
     Animal* deqAni = aq->dequeueAny();
-    
+    cout<<deqAni->getName()<<endl;
     return 0;
 }
