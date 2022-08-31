@@ -108,10 +108,13 @@ class AnimalQueue{
 int main(){
     Dog* dog1 = new Dog("Dog1");
     Dog* dog2 = new Dog("Dog2");
+    Cat* cat1 = new Cat("Cat1");
     AnimalQueue* aq = new AnimalQueue();
-    aq->enqueue(dog1);
     aq->enqueue(dog2);
-    Animal* deqAni = aq->dequeueAny();
+    aq->enqueue(cat1);
+    aq->enqueue(dog1);
+
+    Animal* deqAni = aq->dequeueDogs();
     cout<<deqAni->getName()<<endl;
     return 0;
 }
