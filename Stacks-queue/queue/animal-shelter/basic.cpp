@@ -56,21 +56,29 @@ class AnimalQueue{
             }
         }
 
-
+        Cat* dequeueCats(){
+            if(cats.size() == 0){
+                return nullptr;
+            }
+            Cat* cat = cats.back();
+            cats.pop();
+            return cat;
+        }
+        
         Animal* dequeueAny(){
             if(dogs.size() == 0){
-                dequeueCats();
+                return dequeueCats();
             }else if(cats.size() == 0){
-                dequeueDogs();
+                return dequeueDogs();
             }
 
             Dog* dog = dogs.back();
             Cat* cat = cats.back();
 
             if(cat->isOlderThan(dog)){
-                dequeueCats();
+                return dequeueCats();
             }else if(dog->isOlderThan(cat)){
-                dequeueDogs();
+                return dequeueDogs();
             }
 
 
