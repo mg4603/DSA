@@ -6,6 +6,7 @@ using namespace std;
 class Animal{
     int order;
     string name;
+    virtual void fun1() = 0;
     public:
         Animal(string n){
             name = n;    
@@ -16,12 +17,15 @@ class Animal{
         int getOrder(){
             return this->order;
         }
-
-        virtual bool isOlderThan() = 0;
+        
+        // virtual bool isOlderThan() = 0;
         
 };
 
 class Dog: public Animal{
+    void fun1(){
+
+    }
     public:
         Dog(string n) : Animal(n){
         }
@@ -31,6 +35,9 @@ class Dog: public Animal{
 };
 
 class Cat: public Animal{
+    void fun1(){
+
+    }
     public:
         Cat(string n): Animal(n){}
         bool isOlderThan(Animal* a){
@@ -90,11 +97,18 @@ class AnimalQueue{
                 return dequeueDogs();
             }
 
-
+            return nullptr;
         }
 
 };
 
 int main(){
+    Dog* dog1 = new Dog("Dog1");
+    Dog* dog2 = new Dog("Dog2");
+    AnimalQueue* aq = new AnimalQueue();
+    aq->enqueue(dog1);
+    aq->enqueue(dog2);
+    Animal* deqAni = aq->dequeueAny();
+    
     return 0;
 }
