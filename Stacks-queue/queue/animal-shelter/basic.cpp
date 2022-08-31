@@ -18,6 +18,9 @@ class Animal{
             return this->order;
         }
         
+        string getName(){
+            return this->name;
+        }
         // virtual bool isOlderThan() = 0;
         
 };
