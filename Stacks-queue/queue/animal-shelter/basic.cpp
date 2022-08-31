@@ -58,13 +58,22 @@ class AnimalQueue{
 
         Cat* dequeueCats(){
             if(cats.size() == 0){
-                return nullptr;
+                throw "No cats available";
             }
             Cat* cat = cats.back();
             cats.pop();
             return cat;
         }
-        
+
+        Dog* dequeueDogs(){
+            if(dogs.size() == 0){
+                throw "No dogs available";
+            }
+            Dog* dog = dogs.back();
+            dogs.pop();
+            return dog;
+        }
+
         Animal* dequeueAny(){
             if(dogs.size() == 0){
                 return dequeueCats();
