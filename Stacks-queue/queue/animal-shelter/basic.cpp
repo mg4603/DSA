@@ -54,6 +54,25 @@ class AnimalQueue{
             }else if(Cat* cat = dynamic_cast<Cat*>(a)){
                 cats.push(cat);
             }
+        }
+
+
+        Animal* dequeueAny(){
+            if(dogs.size() == 0){
+                dequeueCats();
+            }else if(cats.size() == 0){
+                dequeueDogs();
+            }
+
+            Dog* dog = dogs.back();
+            Cat* cat = cats.back();
+
+            if(cat->isOlderThan(dog)){
+                dequeueCats();
+            }else if(dog->isOlderThan(cat)){
+                dequeueDogs();
+            }
+
 
         }
 
