@@ -3,6 +3,10 @@
 #include<vector>
 using namespace std;
 
+enum State{
+    Unvisited, Visited, Visiting
+};
+
 template <typename Q>
 struct Node{
     Q value;
@@ -18,6 +22,11 @@ class Graph{
     vector<Node<Q>*> nodes;
     public:
         Graph(){}
+        void addNode(Node* node){
+            this->nodes.push_back(node);
+        }
+
+        
 };
 
 
