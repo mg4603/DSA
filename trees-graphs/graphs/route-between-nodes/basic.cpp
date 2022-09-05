@@ -13,6 +13,12 @@ struct Node{
         }
 };
 
+template<typename Q>
+class Graph{
+    vector<Node<Q>*> nodes;
+    public:
+        Graph(){}
+};
 
 
 int main(){
