@@ -18,6 +18,10 @@ struct Node{
         void addAdjacentNode(Node<Q>* node){
             this->adjacentNodes.push_back(node);
         }
+        void getAdjacentNodes(){
+            return this->adjacentNodes;
+        }
+
 };
 
 template<typename Q>
@@ -29,11 +33,11 @@ class Graph{
             this->nodes.push_back(node);
         }
 
-    void connectNodes(Node<Q>* node1, Node<Q>* node2){
+        void connectNodes(Node<Q>* node1, Node<Q>* node2){
             node1->addAdjacentNode(node2);
             node2->addAdjacentNode(node1);
-    }
-    
+        }
+        
 };  
 
 
