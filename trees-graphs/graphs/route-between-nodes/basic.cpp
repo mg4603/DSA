@@ -1,6 +1,7 @@
 #include<iostream>
 #include<queue>
 #include<vector>
+#include<map>
 using namespace std;
 
 enum State{
@@ -37,7 +38,29 @@ class Graph{
             node1->addAdjacentNode(node2);
             node2->addAdjacentNode(node1);
         }
-        
+        // uses bfs
+        bool checkIfConnected(Node<Q>* node1, Node<Q>* node2){
+
+            map<Node<Q>*, State> visitState;
+            if(node1 == node2){return true;}
+            queue<Node<Q>*> queue;
+            queue.push(node1);
+            while(!queue.empty()){
+                Node<Q>* node = queue.pop();
+                for(Node<Q>* adjNode: node->adjacentNodes){
+                    if(visitState.find(adjNode) == visitState.end()){
+                        visitState.insert(pair<Node*, State>(adjNode, State.Visited));
+                        queue.push(adjNode);
+                    }else{
+                        if(adjNode == node2){
+                            return true;
+                        }
+                    }
+                    
+                }
+            }
+            return false;
+        }
 };  
 
 
