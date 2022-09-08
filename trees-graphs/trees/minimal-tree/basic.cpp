@@ -29,6 +29,10 @@ template<typename Q>
 class Tree{
     Node<Q>* root;
     public:
+        Tree(){}
+        Node<Q>* getRoot(){
+            return this->root;
+        }
         
 };
 
