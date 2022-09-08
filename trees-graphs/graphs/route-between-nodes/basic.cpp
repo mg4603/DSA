@@ -19,7 +19,7 @@ struct Node{
         void addAdjacentNode(Node<Q>* node){
             this->adjacentNodes.push_back(node);
         }
-        void getAdjacentNodes(){
+        vector<Node*> getAdjacentNodes(){
             return this->adjacentNodes;
         }
 
@@ -30,7 +30,7 @@ class Graph{
     vector<Node<Q>*> nodes;
     public:
         Graph(){}
-        void addNode(Node* node){
+        void addNode(Node<Q>* node){
             this->nodes.push_back(node);
         }
 
@@ -41,7 +41,7 @@ class Graph{
         // uses bfs
         bool checkIfConnected(Node<Q>* node1, Node<Q>* node2){
 
-            map<Node<Q>*, State> visitState;
+            map<Node<Q>*, bool> visitState;
             if(node1 == node2){return true;}
             queue<Node<Q>*> queue;
             queue.push(node1);
@@ -49,7 +49,7 @@ class Graph{
                 Node<Q>* node = queue.pop();
                 for(Node<Q>* adjNode: node->adjacentNodes){
                     if(visitState.find(adjNode) == visitState.end()){
-                        visitState.insert(pair<Node*, State>(adjNode, State.Visited));
+                        visitState.insert(pair<Node<Q>*, bool>(adjNode, true));
                         queue.push(adjNode);
                     }else{
                         if(adjNode == node2){
@@ -65,5 +65,14 @@ class Graph{
 
 
 int main(){
+    Node<int>* node1 = new Node<int>(1);
+    Node<int>* node2 = new Node<int>(2);
+    Node<int>* node3 = new Node<int>(3);
+    Node<int>* node4 = new Node<int>(4);
+    Node<int>* node5 = new Node<int>(5);
+
+    Graph<int>* graph = new Graph<int>();
+    graph->addNode(node1);
+
     return 0;
 }
