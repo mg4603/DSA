@@ -46,7 +46,8 @@ class Graph{
             queue<Node<Q>*> queue;
             queue.push(node1);
             while(!queue.empty()){
-                Node<Q>* node = queue.pop();
+                Node<Q>* node = queue.front();
+                queue.pop();
                 for(Node<Q>* adjNode: node->adjacentNodes){
                     if(visitState.find(adjNode) == visitState.end()){
                         visitState.insert(pair<Node<Q>*, bool>(adjNode, true));
@@ -70,9 +71,28 @@ int main(){
     Node<int>* node3 = new Node<int>(3);
     Node<int>* node4 = new Node<int>(4);
     Node<int>* node5 = new Node<int>(5);
+    Node<int>* node6 = new Node<int>(6);
+
 
     Graph<int>* graph = new Graph<int>();
     graph->addNode(node1);
+    graph->addNode(node2);
+    graph->addNode(node3);
+    graph->addNode(node4);
+    graph->addNode(node5);
+    graph->addNode(node6);
+
+    graph->connectNodes(node1, node2);
+    // graph->connectNodes(node1, node4);
+    graph->connectNodes(node1, node5);
+
+    graph->connectNodes(node2, node3);
+    graph->connectNodes(node3, node6);
+    
+    graph->connectNodes(node6, node5);
+    graph->connectNodes(node5, node4);
+
+    cout<<graph->checkIfConnected(node4, node1)<<endl;
 
     return 0;
 }
