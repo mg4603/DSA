@@ -23,6 +23,9 @@ struct Node{
         Node<Q>* getLeft(){
             return this->left;
         }
+        Node<Q>* getValue(){
+            return this->value;
+        }
 };
 
 template<typename T, typename Q>
@@ -49,6 +52,9 @@ class Tree{
 };
 
 int main(){
-    
+    vector<int> vec = {1,2,3,4,5,6,7};
+    Tree<int, int>* tree = new Tree<int, int>();
+    tree->createMinimalBST(vec);
+    cout<<tree->getRoot()->getLeft();
     return 0;
 }
