@@ -6,7 +6,7 @@ template <typename Q>
 struct Node{
     private:
         Q value;
-        Node<Q>* left, right;
+        Node<Q>* left, *right;
     public:
         Node(Q value){
             this->value = value;
@@ -23,7 +23,7 @@ struct Node{
         Node<Q>* getLeft(){
             return this->left;
         }
-        Node<Q>* getValue(){
+        Q getValue(){
             return this->value;
         }
 };
@@ -44,7 +44,7 @@ class Tree{
                 return nullptr;
             }
             T mid((start+end)/2);
-            Node<Q>* n= = new Node(vec[mid]);
+            Node<Q>* n = new Node<Q>(vec[mid]);
             n->setLeft(createMinimalBST(vec, start, mid - 1));
             n->setRight(createMinimalBST(vec, mid + 1, end));
             return n;
@@ -52,9 +52,9 @@ class Tree{
 };
 
 int main(){
-    vector<int> vec = {1,2,3,4,5,6,7};
+    vector<int> vec = {1,2,3,4,5,6,7, 8};
     Tree<int, int>* tree = new Tree<int, int>();
     tree->createMinimalBST(vec);
-    cout<<tree->getRoot()->getLeft();
+    cout<<tree->getRoot()->getRight()->getRight()->getRight()->getValue();
     return 0;
 }
