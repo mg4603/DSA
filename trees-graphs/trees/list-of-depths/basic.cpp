@@ -38,12 +38,14 @@ struct ListNode{
 
 template <typename Q>
 class LinkedList{
-    ListNode<Q>* front,*back;
+    ListNode<Q> *front;
+    ListNode<Q> *back;
     public:
         LinkedList(){
             front = nullptr;
+            back = nullptr;
         }
-        Node<Q>* front(){
+        ListNode<Q>* getFront(){
             if(front == nullptr){
                 throw "List empty";
             }
@@ -69,7 +71,24 @@ class LinkedList{
             back->setNext(newNode);
             back = back->getNext();
         }
-        
+        Q pop_front(){
+            if(front == nullptr){
+                throw "List empty";
+            }
+            
+            Q value = front->getValue();
+            ListNode<Q>* nodeToDelete = front;
+            
+            if(front == back){    
+                front = nullptr;
+                back = nullptr;
+            }else{
+                front = front->getNext();
+            }
+
+            free(nodeToDelete);
+            return value;            
+        }
 };
 
 int main(){
