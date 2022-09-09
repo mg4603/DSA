@@ -36,7 +36,7 @@ struct ListNode{
         }
 };
 
-template <typename Q>
+template <typename T, typename Q>
 class LinkedList{
     ListNode<Q> *front;
     public:
@@ -136,6 +136,18 @@ class LinkedList{
             return false;
         }
 
+        T size(){
+            if(this->empty()){
+                return 0;
+            }
+            ListNode<Q> *runner = front;
+            T cnt(1);
+            while(runner->getNext() != nullptr){
+                runner = runner->getNext();
+                cnt++;
+            }
+            return cnt;
+        }
 };
 
 int main(){
