@@ -38,7 +38,7 @@ struct ListNode{
 
 template <typename Q>
 class LinkedList{
-    ListNode<Q>* front;
+    ListNode<Q>* front,*back;
     public:
         LinkedList(){
             front = nullptr;
@@ -53,12 +53,23 @@ class LinkedList{
             ListNode<Q>* newNode = new ListNode<Q>(value);
             if(front == nullptr){
                 front = newNode;   
+                back = newNode;
                 return;
             }
             newNode->setNext(front);
             front = newNode;
         }    
-
+        void push_back(Q value){
+            ListNode<Q>* newNode = new ListNode<Q>(value);
+            if(front == nullptr){
+                front = newNode;
+                back = newNode;
+                return;
+            }
+            back->setNext(newNode);
+            back = back->getNext();
+        }
+        
 };
 
 int main(){
