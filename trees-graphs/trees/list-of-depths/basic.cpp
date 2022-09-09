@@ -45,12 +45,20 @@ class LinkedList{
             front = nullptr;
             back = nullptr;
         }
-        ListNode<Q>* getFront(){
+        Q getFront(){
             if(front == nullptr){
                 throw "List empty";
             }
-            return this->front;
+            return this->front->getValue();
         }
+
+        Q getBack(){
+            if(front == nullptr){
+                throw "List Empty";
+            }
+            return this->back->getValue();
+        }
+
         void push_front(Q value){
             ListNode<Q>* newNode = new ListNode<Q>(value);
             if(front == nullptr){
