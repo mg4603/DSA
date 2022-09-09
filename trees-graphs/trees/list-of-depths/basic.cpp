@@ -36,6 +36,19 @@ struct ListNode{
         }
 };
 
+template <typename Q>
+class LinkedList{
+    ListNode<Q>* front;
+    public:
+        LinkedList(){
+            front = nullptr;
+        }
+        
+
+
+
+
+};
 
 int main(){
 
