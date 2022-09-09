@@ -22,7 +22,18 @@ struct ListNode{
         ListNode(Q value){
             this->value = value;
         }
-        
+        void setValue(Q value){
+            this->value = value;
+        }
+        void setNext(ListNode<Q>* next){
+            this->next = next;
+        }
+        Q getValue(){
+            return this->value;
+        }
+        ListNode<Q>* getNext(){
+            return this->next;
+        }
 };
 
 
