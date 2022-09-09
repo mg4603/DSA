@@ -44,14 +44,14 @@ class LinkedList{
             front = nullptr;
         }
         Q getFront(){
-            if(front == nullptr){
+            if(this->empty()){
                 throw "List empty";
             }
             return this->front->getValue();
         }
 
         Q getBack(){
-            if(front == nullptr){
+            if(this->empty()){
                 throw "List Empty";
             }
             ListNode<Q>* runner = front;
@@ -63,7 +63,7 @@ class LinkedList{
 
         void push_front(Q value){
             ListNode<Q>* newNode = new ListNode<Q>(value);
-            if(front == nullptr){
+            if(this->empty()){
                 front = newNode;   
                 return;
             }
@@ -72,7 +72,7 @@ class LinkedList{
         }    
         void push_back(Q value){
             ListNode<Q>* newNode = new ListNode<Q>(value);
-            if(front == nullptr){
+            if(this->empty()){
                 front = newNode;
                 return;
             }
@@ -84,7 +84,7 @@ class LinkedList{
         }
 
         Q pop_front(){
-            if(front == nullptr){
+            if(this->empty()){
                 throw "List empty";
             }
             
@@ -101,7 +101,7 @@ class LinkedList{
             return value;            
         }
         Q pop_back(){
-            if(front == nullptr){
+            if(this->empty()){
                 throw "List Empty";
             }
 
@@ -123,7 +123,7 @@ class LinkedList{
 
         }
         ListNode<Q>* begin(){
-            if(front == nullptr){
+            if(this->empty()){
                 throw "List Empty";
             }
             return this->front;
