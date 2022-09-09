@@ -128,7 +128,13 @@ class LinkedList{
             }
             return this->front;
         }
-        
+
+        bool empty(){
+            if(front == nullptr){
+                return true;
+            }
+            return false;
+        }
 
 };
 
