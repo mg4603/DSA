@@ -122,6 +122,14 @@ class LinkedList{
             return value;
 
         }
+        ListNode<Q>* begin(){
+            if(front == nullptr){
+                throw "List Empty";
+            }
+            return this->front;
+        }
+        
+
 };
 
 int main(){
