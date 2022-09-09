@@ -104,15 +104,22 @@ class LinkedList{
             if(front == nullptr){
                 throw "List Empty";
             }
+
             Q value = front->getValue();
-            ListNode<Q>* nodeToDelete = front;
-            if(front == back){
+            ListNode<Q>* nodeToDelete;
+            if(front->getNext() == nullptr){
+                nodeToDelete = front;
                 front = nullptr;
-                back = nullptr;
             }else{
-                ba
+                ListNode<Q> *runner = front;
+                while(runner->getNext() != nullptr ){
+                    runner = runner->getNext();
+                }
+                nodeToDelete = runner;
             }
 
+            free(nodeToDelete);
+            return value;
 
         }
 };
