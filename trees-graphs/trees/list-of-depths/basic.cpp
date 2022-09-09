@@ -49,10 +49,15 @@ class LinkedList{
             }
             return this->front;
         }
-        
-
-
-
+        void push_front(Q value){
+            ListNode<Q>* newNode = new ListNode<Q>(value);
+            if(front == nullptr){
+                front = newNode;   
+                return;
+            }
+            newNode->setNext(front);
+            front = newNode;
+        }    
 
 };
 
