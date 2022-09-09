@@ -39,11 +39,9 @@ struct ListNode{
 template <typename Q>
 class LinkedList{
     ListNode<Q> *front;
-    ListNode<Q> *back;
     public:
         LinkedList(){
             front = nullptr;
-            back = nullptr;
         }
         Q getFront(){
             if(front == nullptr){
@@ -56,14 +54,17 @@ class LinkedList{
             if(front == nullptr){
                 throw "List Empty";
             }
-            return this->back->getValue();
+            ListNode<Q>* runner = front;
+            while(runner->getNext() != nullptr){
+                runner = runner->getNext();
+            }
+            return runner->getValue();
         }
 
         void push_front(Q value){
             ListNode<Q>* newNode = new ListNode<Q>(value);
             if(front == nullptr){
                 front = newNode;   
-                back = newNode;
                 return;
             }
             newNode->setNext(front);
@@ -73,12 +74,15 @@ class LinkedList{
             ListNode<Q>* newNode = new ListNode<Q>(value);
             if(front == nullptr){
                 front = newNode;
-                back = newNode;
                 return;
             }
-            back->setNext(newNode);
-            back = back->getNext();
+            ListNode<Q>* runner = front;
+            while(runner != nullptr){
+                runner =  runner->getNext();
+            }
+            runner = newNode;
         }
+
         Q pop_front(){
             if(front == nullptr){
                 throw "List empty";
@@ -87,15 +91,29 @@ class LinkedList{
             Q value = front->getValue();
             ListNode<Q>* nodeToDelete = front;
             
-            if(front == back){    
+            if(front->getNext() == nullptr){    
                 front = nullptr;
-                back = nullptr;
             }else{
                 front = front->getNext();
             }
 
             free(nodeToDelete);
             return value;            
+        }
+        Q pop_back(){
+            if(front == nullptr){
+                throw "List Empty";
+            }
+            Q value = front->getValue();
+            ListNode<Q>* nodeToDelete = front;
+            if(front == back){
+                front = nullptr;
+                back = nullptr;
+            }else{
+                ba
+            }
+
+
         }
 };
 
