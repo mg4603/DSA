@@ -43,6 +43,12 @@ class LinkedList{
         LinkedList(){
             front = nullptr;
         }
+        Node<Q>* front(){
+            if(front == nullptr){
+                throw "List empty";
+            }
+            return this->front;
+        }
         
 
 
