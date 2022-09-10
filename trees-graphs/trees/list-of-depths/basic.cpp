@@ -11,6 +11,9 @@ struct TreeNode{
         TreeNode(Q value){
             this->value = value;
         }
+        Q getValue(){
+            return this->value;
+        }
 };
 
 template <typename Q>
@@ -166,16 +169,19 @@ class LinkedList{
 
 template <typename Q>
 class Tree{
+    
     TreeNode<Q> *root;
+
+    TreeNode<Q>* getRoot(){
+        return this->root;
+    }
+    void setRoot(TreeNode<Q> *root){
+        this->root = root;
+    }
+    
     public:
         Tree(){}
-        TreeNode<Q>* getRoot(){
-            return this->root;
-        }
-        void setRoot(TreeNode<Q> *root){
-            this->root = root;
-        }
-        
+       
 };
 
 int main(){
