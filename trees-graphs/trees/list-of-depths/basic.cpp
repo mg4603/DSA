@@ -148,6 +148,20 @@ class LinkedList{
             }
             return cnt;
         }
+
+        void insert(T pos, Q value){
+            if(pos > this->size()){
+                cout<<"Pos greater than size of list.\n Appending to end of list";
+                this->push_back(value);
+            }
+            ListNode<Q> *runner = this->front;
+            while(pos--){
+                runner = runner->getNext();
+            }
+            ListNode<Q> *newNode = new ListNode<Q>(value);
+            newNode->setNext(runner->getNext());
+            runner->setNext(newNode);
+        }
 };
 
 int main(){
