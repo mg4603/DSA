@@ -164,6 +164,20 @@ class LinkedList{
         }
 };
 
+template <typename Q>
+class Tree{
+    TreeNode<Q> *root;
+    public:
+        Tree(){}
+        TreeNode<Q>* getRoot(){
+            return this->root;
+        }
+        void setRoot(TreeNode<Q> *root){
+            this->root = root;
+        }
+        
+};
+
 int main(){
 
     return 0;
