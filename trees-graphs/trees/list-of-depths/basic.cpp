@@ -197,8 +197,29 @@ class Tree{
     public:
         Tree(){}
 
-       
+        void insert(Q value){
+            TreeNode<Q> *newNode = new TreeNode<Q>(value);
+            if(root == nullptr){
+                this->setRoot(newNode);
+                return;
+            }
+            TreeNode<Q> *ptr = root;
+            while(ptr != null){
+                if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+            if(value > ptr->getValue()){
+                ptr->setRight(newNode);
+            }else{
+                ptr->setLeft(newNode);
+            }
+        }
+        
 };
+
 
 int main(){
 
