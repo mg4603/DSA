@@ -14,6 +14,21 @@ struct TreeNode{
         Q getValue(){
             return this->value;
         }
+        void setValue(Q value){
+            this->value = value;
+        }
+        TreeNode<Q>* getLeft(){
+            return this->left;
+        }
+        TreeNode<Q>* getRight(){
+            return this->right;
+        }
+        void setLeft(TreeNode<Q>* left){
+            this->left = left;
+        }
+        void setRight(TreeNode<Q>* right){
+            this->right = right;
+        }
 };
 
 template <typename Q>
@@ -181,6 +196,7 @@ class Tree{
     
     public:
         Tree(){}
+
        
 };
 
