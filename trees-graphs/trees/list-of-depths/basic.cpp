@@ -204,7 +204,7 @@ class Tree{
                 return;
             }
             TreeNode<Q> *ptr = root;
-            while(ptr != null){
+            while(ptr != nullptr){
                 if(ptr->getValue() < value){
                     ptr = ptr->getRight();
                 }else{
@@ -218,19 +218,20 @@ class Tree{
             }
         }
 
-        bool search(TreeNode<Q>* ptr, Q value){
-            if(ptr == NULL || ptr->getValue() == value){
-                return True;
+        TreeNode<Q>* search(TreeNode<Q>* ptr, Q key){
+            if(ptr == NULL || ptr->getValue() == key){
+                return ptr;
             }
-            if(ptr->getValue() < value){
-                search(ptr->getRight(), value);
+            if(ptr->getValue() < key){
+                return search(ptr->getRight(), key);
             }else{
-                search(ptr->getLeft(), value);
+                return search(ptr->getLeft(), key);
             }   
+            
         }
         
-        bool search(Q value){
-            search(this->root, value);
+        TreeNode<Q>* search(Q key){
+            return search(this->root, key);
         }
 
         void createLevelLinkedLists(TreeNode<Q> *ptr, vector<LinkedList<T, Q>*> lists ,T level){
