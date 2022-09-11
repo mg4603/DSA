@@ -182,7 +182,7 @@ class LinkedList{
         }
 };
 
-template <typename Q>
+template <typename T, typename Q>
 class Tree{
     
     TreeNode<Q> *root;
@@ -231,6 +231,22 @@ class Tree{
         
         bool search(Q value){
             search(this->root, value);
+        }
+
+        void createLevelLinkedLists(TreeNode<Q> *ptr, vector<LinkedList<T, Q>*> lists ,T level){
+            if(ptr == nullptr){
+                return;
+            }
+            LinkedList<T, Q> *list;
+            if(lists.size() == level){
+                list = new LinkedList<T, Q>();
+                lists.push_back(list);
+            }else{
+                list = lists.at(level);
+            }
+            list->push_back(root);
+            createLevelLinkedLists(ptr->getLeft(), lists, level + 1);
+            createLevelLinkedLists(ptr->getRight(), lists, level + 1);
         }
         
 };
