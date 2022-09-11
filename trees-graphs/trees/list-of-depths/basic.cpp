@@ -204,17 +204,20 @@ class Tree{
                 return;
             }
             TreeNode<Q> *ptr = root;
+            TreeNode<Q> *prevPtr;
             while(ptr != nullptr){
                 if(ptr->getValue() < value){
+                    prevPtr = ptr;
                     ptr = ptr->getRight();
                 }else{
+                    prevPtr = ptr;
                     ptr = ptr->getLeft();
                 }
             }
-            if(value > ptr->getValue()){
-                ptr->setRight(newNode);
+            if(value > prevPtr->getValue()){
+                ptr = newNode;
             }else{
-                ptr->setLeft(newNode);
+                ptr = newNode;
             }
         }
 
@@ -254,6 +257,17 @@ class Tree{
 
 
 int main(){
-
+    Tree<int, int> *tree = new Tree<int, int>();
+    tree->insert(1);
+    tree->insert(2);
+    tree->insert(3);
+    tree->insert(4);
+    tree->insert(5);
+    tree->insert(6);
+    tree->insert(7);
+    tree->insert(8);
+    tree->insert(9);
+    tree->insert(10);
+    cout<<tree->search(5)->getRight()->getValue();
     return 0;
 }
