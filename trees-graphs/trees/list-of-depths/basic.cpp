@@ -217,6 +217,21 @@ class Tree{
                 ptr->setLeft(newNode);
             }
         }
+
+        bool search(TreeNode<Q>* ptr, Q value){
+            if(ptr == NULL || ptr->getValue() == value){
+                return True;
+            }
+            if(ptr->getValue() < value){
+                search(ptr->getRight(), value);
+            }else{
+                search(ptr->getLeft(), value);
+            }   
+        }
+        
+        bool search(Q value){
+            search(this->root, value);
+        }
         
 };
 
