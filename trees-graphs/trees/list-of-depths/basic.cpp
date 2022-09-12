@@ -188,6 +188,9 @@ class Tree{
     TreeNode<Q> *root;
 
     TreeNode<Q>* getRoot(){
+        if(this->root == nullptr){
+            throw "Tree is empty"
+        }
         return this->root;
     }
     void setRoot(TreeNode<Q> *root){
