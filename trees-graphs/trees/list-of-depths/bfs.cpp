@@ -18,6 +18,9 @@ class LinkedList{
             void setValue(Q value){
                 this->value = value;
             }
+            void setNext(ListNode* next){
+                this->next = next;
+            }
     };
     public:
         LinkedList(){
