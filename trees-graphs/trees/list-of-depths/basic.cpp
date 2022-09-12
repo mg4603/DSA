@@ -152,6 +152,9 @@ class LinkedList{
         }
 
         void print(){
+            if(front == nullptr){
+                throw "List empty";
+            }
             ListNode* runner = front;
             while(runner != nullptr){
                 cout<<runner->getValue()<<endl;
@@ -283,6 +286,7 @@ int main(){
     tree->insert(10);
     vector<LinkedList<int, int>*> lists;
     tree->createLevelLinkedLists(lists);
-    lists[0]->print();
+    // lists[0]->print();
+    
     return 0;
 }
