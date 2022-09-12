@@ -7,7 +7,7 @@ class LinkedList{
     struct ListNode{
         private:
             Q value;
-            ListNode* next;
+            ListNode *next, *prev;
         public:
             ListNode(Q value){
                 this->value = value;
@@ -21,14 +21,22 @@ class LinkedList{
             void setNext(ListNode* next){
                 this->next = next;
             }
-            ListNode getNext(){
+            ListNode* getNext(){
                 return this->next;
             }
+            void setPrev(ListNode* prev){
+                this->prev = prev;
+            }
+            ListNode* getPrev(){
+                return this->prev
+            } 
     };
+    ListNode *front;
     public:
         LinkedList(){
-
+            front = nullptr;
         }
+        
 };
 
 
