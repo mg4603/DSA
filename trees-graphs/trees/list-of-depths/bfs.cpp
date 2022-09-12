@@ -56,9 +56,12 @@ class LinkedList{
                 end = newNode;
                 return;
             }
-
+            
             newNode->setNext(start);
             start->setPrev(newNode);
+            if(start->getNext() == nullptr){
+                end->setPrev(newNode);
+            }
             start = newNode;
         }
 
@@ -84,6 +87,7 @@ class LinkedList{
             start->setPrev(nullptr);
         }
 
+        
 
 };
 
