@@ -3,9 +3,6 @@
 using namespace std;
 
 
-
-
-
 template <typename T, typename Q>
 class LinkedList{
     struct ListNode{
@@ -153,6 +150,14 @@ class LinkedList{
             newNode->setNext(runner->getNext());
             runner->setNext(newNode);
         }
+
+        void print(){
+            ListNode* runner = front;
+            while(runner != nullptr){
+                cout<<runner->getValue()<<endl;
+                runner = runner->getNext();
+            }
+        }
 };
 
 template <typename T, typename Q>
@@ -278,5 +283,6 @@ int main(){
     tree->insert(10);
     vector<LinkedList<int, int>*> lists;
     tree->createLevelLinkedLists(lists);
+    lists[0]->print();
     return 0;
 }
