@@ -44,6 +44,9 @@ class LinkedList{
             return start->getValue()
         }
         Q back(){
+            if(end == nullptr){
+                throw "List Empty";
+            }
             return end->getValue();
         }
         void push_front(Q value){
