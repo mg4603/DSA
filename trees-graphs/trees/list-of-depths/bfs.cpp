@@ -73,6 +73,18 @@ class LinkedList{
             end = newNode;
         }
         
+        void pop_front(){
+            if(start == nullptr && end == nullptr){
+                throw "List Empty";
+            }
+            if(start->getNext() == nullptr){
+                start = nullptr;
+            }
+            start = start->getNext();
+            start->setPrev(nullptr);
+        }
+
+
 };
 
 
