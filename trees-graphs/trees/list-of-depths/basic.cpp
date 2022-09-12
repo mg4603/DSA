@@ -215,9 +215,9 @@ class Tree{
                 }
             }
             if(value > prevPtr->getValue()){
-                ptr = newNode;
+                prevPtr->setRight(newNode);
             }else{
-                ptr = newNode;
+                prevPtr->setLeft(newNode);
             }
         }
 
