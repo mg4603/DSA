@@ -30,6 +30,7 @@ class LinkedList{
             ListNode* getPrev(){
                 return this->prev
             } 
+
     };
     ListNode *front;
     public:
