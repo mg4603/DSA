@@ -30,12 +30,14 @@ class LinkedList{
             ListNode* getPrev(){
                 return this->prev
             } 
-
     };
-    ListNode *front;
+    ListNode *start;
     public:
         LinkedList(){
             front = nullptr;
+        }
+        Q front(){
+            return start->getValue()
         }
         
 };
