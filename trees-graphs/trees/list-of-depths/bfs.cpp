@@ -12,6 +12,9 @@ class LinkedList{
             ListNode(Q value){
                 this->value = value;
             }
+            Q getValue(){
+                return this->value;
+            }
             
     };
     public:
