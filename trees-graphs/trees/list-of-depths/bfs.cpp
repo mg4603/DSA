@@ -56,6 +56,16 @@ class LinkedList{
             start = newNode;
         }
 
+        void push_back(Q value){
+            ListNode *newNode = new ListNode(value);
+            if(start == nullptr && end == nullptr){
+                start = newNode;
+                end = newNode;
+            }
+            end->setNext(newNode);
+            newNode->setPrev(end);
+            end = newNode;
+        }
         
 };
 
