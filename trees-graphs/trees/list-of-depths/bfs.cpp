@@ -1,6 +1,26 @@
 #include<vector>
 #include<iostream>
 using namespace std;
+
+template <typename T, typename Q>
+class LinkedList{
+    struct ListNode{
+        private:
+            Q value;
+            ListNode* next;
+        public:
+            ListNode(Q value){
+                this->value = value;
+            }
+            
+    };
+    public:
+        LinkedList(){
+
+        }
+};
+
+
 int main(){
     Tree<int, int> *tree = new Tree<int, int>();
     tree->insert(1);
