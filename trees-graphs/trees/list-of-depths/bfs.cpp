@@ -15,7 +15,9 @@ class LinkedList{
             Q getValue(){
                 return this->value;
             }
-            
+            void setValue(Q value){
+                this->value = value;
+            }
     };
     public:
         LinkedList(){
