@@ -34,7 +34,8 @@ class LinkedList{
     ListNode *start, *end;
     public:
         LinkedList(){
-            front = nullptr;
+            start = nullptr;
+            end = nullptr;
         }
         Q front(){
             return start->getValue()
@@ -42,6 +43,19 @@ class LinkedList{
         Q back(){
             return end->getValue();
         }
+        void push_front(Q value){
+            ListNode* newNode = new ListNode(value);
+            if(start == nullptr && end == nullptr){
+                start = newNode;
+                end = newNode;
+                return;
+            }
+
+            newNode->setNext(start);
+            start->setPrev(newNode);
+            start = newNode;
+        }
+
         
 };
 
