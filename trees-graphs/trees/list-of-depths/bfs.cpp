@@ -38,6 +38,9 @@ class LinkedList{
             end = nullptr;
         }
         Q front(){
+            if(start == nullptr){
+                throw "List Empty";
+            }
             return start->getValue()
         }
         Q back(){
