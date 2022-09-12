@@ -31,13 +31,16 @@ class LinkedList{
                 return this->prev
             } 
     };
-    ListNode *start;
+    ListNode *start, *end;
     public:
         LinkedList(){
             front = nullptr;
         }
         Q front(){
             return start->getValue()
+        }
+        Q back(){
+            return end->getValue();
         }
         
 };
