@@ -205,7 +205,7 @@ class Tree{
         this->root = root;
     }
     
-    void createLevelLinkedLists(TreeNode *ptr, vector<LinkedList<T, Q>*> lists ,T level){
+    void createLevelLinkedLists(TreeNode *ptr, vector<LinkedList<T, Q>*> &lists ,T level){
             if(ptr == nullptr){
                 return;
             }
@@ -266,7 +266,7 @@ class Tree{
 
         
         
-        void createLevelLinkedLists(vector<LinkedList<T, Q>*> lists){
+        void createLevelLinkedLists(vector<LinkedList<T, Q>*> &lists){
             this->createLevelLinkedLists(this->root, lists, 0);
         }
 };
@@ -286,7 +286,7 @@ int main(){
     tree->insert(10);
     vector<LinkedList<int, int>*> lists;
     tree->createLevelLinkedLists(lists);
-    // lists[0]->print();
+    lists[0]->print();
     
     return 0;
 }
