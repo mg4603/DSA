@@ -2,40 +2,16 @@
 #include<vector>
 using namespace std;
 
-template <typename Q>
-struct TreeNode{
-    private:
-        Q value;
-        TreeNode<Q> *left, *right;
-    public:
-        TreeNode(Q value){
-            this->value = value;
-        }
-        Q getValue(){
-            return this->value;
-        }
-        void setValue(Q value){
-            this->value = value;
-        }
-        TreeNode<Q>* getLeft(){
-            return this->left;
-        }
-        TreeNode<Q>* getRight(){
-            return this->right;
-        }
-        void setLeft(TreeNode<Q>* left){
-            this->left = left;
-        }
-        void setRight(TreeNode<Q>* right){
-            this->right = right;
-        }
-};
 
-template <typename Q>
-struct ListNode{
+
+
+
+template <typename T, typename Q>
+class LinkedList{
+    struct ListNode{
     private:
         Q value;
-        ListNode<Q>* next;
+        ListNode* next;
     public:
         ListNode(Q value){
             this->value = value;
@@ -43,20 +19,17 @@ struct ListNode{
         void setValue(Q value){
             this->value = value;
         }
-        void setNext(ListNode<Q>* next){
+        void setNext(ListNode* next){
             this->next = next;
         }
         Q getValue(){
             return this->value;
         }
-        ListNode<Q>* getNext(){
+        ListNode* getNext(){
             return this->next;
         }
 };
-
-template <typename T, typename Q>
-class LinkedList{
-    ListNode<Q> *front;
+    ListNode *front;
     public:
         LinkedList(){
             front = nullptr;
@@ -72,7 +45,7 @@ class LinkedList{
             if(this->empty()){
                 throw "List Empty";
             }
-            ListNode<Q>* runner = front;
+            ListNode* runner = front;
             while(runner->getNext() != nullptr){
                 runner = runner->getNext();
             }
@@ -80,7 +53,7 @@ class LinkedList{
         }
 
         void push_front(Q value){
-            ListNode<Q>* newNode = new ListNode<Q>(value);
+            ListNode* newNode = new ListNode(value);
             if(this->empty()){
                 front = newNode;   
                 return;
@@ -89,12 +62,12 @@ class LinkedList{
             front = newNode;
         }    
         void push_back(Q value){
-            ListNode<Q>* newNode = new ListNode<Q>(value);
+            ListNode* newNode = new ListNode(value);
             if(this->empty()){
                 front = newNode;
                 return;
             }
-            ListNode<Q>* runner = front;
+            ListNode* runner = front;
             while(runner != nullptr){
                 runner =  runner->getNext();
             }
@@ -107,7 +80,7 @@ class LinkedList{
             }
             
             Q value = front->getValue();
-            ListNode<Q>* nodeToDelete = front;
+            ListNode* nodeToDelete = front;
             
             if(front->getNext() == nullptr){    
                 front = nullptr;
@@ -124,12 +97,12 @@ class LinkedList{
             }
 
             Q value = front->getValue();
-            ListNode<Q>* nodeToDelete;
+            ListNode* nodeToDelete;
             if(front->getNext() == nullptr){
                 nodeToDelete = front;
                 front = nullptr;
             }else{
-                ListNode<Q> *runner = front;
+                ListNode *runner = front;
                 while(runner->getNext() != nullptr ){
                     runner = runner->getNext();
                 }
@@ -140,7 +113,7 @@ class LinkedList{
             return value;
 
         }
-        ListNode<Q>* begin(){
+        ListNode* begin(){
             if(this->empty()){
                 throw "List Empty";
             }
@@ -158,7 +131,7 @@ class LinkedList{
             if(this->empty()){
                 return 0;
             }
-            ListNode<Q> *runner = front;
+            ListNode *runner = front;
             T cnt(1);
             while(runner->getNext() != nullptr){
                 runner = runner->getNext();
@@ -172,11 +145,11 @@ class LinkedList{
                 cout<<"Pos greater than size of list.\n Appending to end of list";
                 this->push_back(value);
             }
-            ListNode<Q> *runner = this->front;
+            ListNode *runner = this->front;
             while(pos--){
                 runner = runner->getNext();
             }
-            ListNode<Q> *newNode = new ListNode<Q>(value);
+            ListNode *newNode = new ListNode(value);
             newNode->setNext(runner->getNext());
             runner->setNext(newNode);
         }
@@ -184,30 +157,73 @@ class LinkedList{
 
 template <typename T, typename Q>
 class Tree{
-    
-    TreeNode<Q> *root;
+    struct TreeNode{
+        private:
+            Q value;
+            TreeNode *left, *right;
+        public:
+            TreeNode(Q value){
+                this->value = value;
+            }
+            Q getValue(){
+                return this->value;
+            }
+            void setValue(Q value){
+                this->value = value;
+            }
+            TreeNode* getLeft(){
+                return this->left;
+            }
+            TreeNode* getRight(){
+                return this->right;
+            }
+            void setLeft(TreeNode* left){
+                this->left = left;
+            }
+            void setRight(TreeNode* right){
+                this->right = right;
+            }
+    };
 
-    TreeNode<Q>* getRoot(){
+    TreeNode *root;
+
+    TreeNode* getRoot(){
         if(this->root == nullptr){
-            throw "Tree is empty"
+            throw "Tree is empty";
         }
         return this->root;
     }
-    void setRoot(TreeNode<Q> *root){
+    void setRoot(TreeNode *root){
         this->root = root;
     }
     
+    void createLevelLinkedLists(TreeNode *ptr, vector<LinkedList<T, Q>*> lists ,T level){
+            if(ptr == nullptr){
+                return;
+            }
+            LinkedList<T, Q> *list;
+            if(lists.size() == level){
+                list = new LinkedList<T, Q>();
+                lists.push_back(list);
+            }else{
+                list = lists.at(level);
+            }
+            list->push_back(ptr->getValue());
+            createLevelLinkedLists(ptr->getLeft(), lists, level + 1);
+            createLevelLinkedLists(ptr->getRight(), lists, level + 1);
+    }
+
     public:
         Tree(){}
 
         void insert(Q value){
-            TreeNode<Q> *newNode = new TreeNode<Q>(value);
+            TreeNode *newNode = new TreeNode(value);
             if(root == nullptr){
                 this->setRoot(newNode);
                 return;
             }
-            TreeNode<Q> *ptr = root;
-            TreeNode<Q> *prevPtr;
+            TreeNode *ptr = root;
+            TreeNode *prevPtr;
             while(ptr != nullptr){
                 if(ptr->getValue() < value){
                     prevPtr = ptr;
@@ -224,7 +240,7 @@ class Tree{
             }
         }
 
-        TreeNode<Q>* search(TreeNode<Q>* ptr, Q key){
+        TreeNode* search(TreeNode* ptr, Q key){
             if(ptr == NULL || ptr->getValue() == key){
                 return ptr;
             }
@@ -236,26 +252,15 @@ class Tree{
             
         }
         
-        TreeNode<Q>* search(Q key){
+        TreeNode* search(Q key){
             return search(this->root, key);
         }
 
-        void createLevelLinkedLists(TreeNode<Q> *ptr, vector<LinkedList<T, Q>*> lists ,T level){
-            if(ptr == nullptr){
-                return;
-            }
-            LinkedList<T, Q> *list;
-            if(lists.size() == level){
-                list = new LinkedList<T, Q>();
-                lists.push_back(list);
-            }else{
-                list = lists.at(level);
-            }
-            list->push_back(root);
-            createLevelLinkedLists(ptr->getLeft(), lists, level + 1);
-            createLevelLinkedLists(ptr->getRight(), lists, level + 1);
-        }
         
+        
+        void createLevelLinkedLists(vector<LinkedList<T, Q>*> lists){
+            this->createLevelLinkedLists(this->root, lists, 0);
+        }
 };
 
 
@@ -271,6 +276,7 @@ int main(){
     tree->insert(8);
     tree->insert(9);
     tree->insert(10);
-    cout<<tree->search(5)->getRight()->getValue();
+    vector<LinkedList<int, int>*> lists;
+    tree->createLevelLinkedLists(lists);
     return 0;
 }
