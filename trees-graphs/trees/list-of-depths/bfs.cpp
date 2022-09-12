@@ -21,6 +21,9 @@ class LinkedList{
             void setNext(ListNode* next){
                 this->next = next;
             }
+            ListNode getNext(){
+                return this->next;
+            }
     };
     public:
         LinkedList(){
