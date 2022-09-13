@@ -176,9 +176,7 @@ class Tree{
             return search(ptr->getRight(), key);
         }
 
-
         TreeNode* root;
-
 
         void setRoot(Q value){
             TreeNode* root = new TreeNode(value);
@@ -193,6 +191,18 @@ class Tree{
         TreeNode* getRoot(){
             return this->root;
         }
+
+        void insert(TreeNode* ptr, Q value){
+            if(ptr == nullptr){
+                TreeNode* newNode = new TreeNode(value);
+                ptr = newNode;
+            }
+            if(ptr->getValue() < value){
+                insert(ptr->getRight(), value);
+            }
+            insert(ptr->getLeft(), value);
+        }        
+
     public:
         Tree():root(NULL){}
         TreeNode* search(Q key){
