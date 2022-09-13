@@ -88,8 +88,10 @@ class LinkedList{
                 start = nullptr;
                 end = nullptr;
             }
+            ListNode* nodeToDelete = start;
             start = start->getNext();
             start->setPrev(nullptr);
+            free(nodeToDelete);
         }
 
         void pop_back(){
@@ -103,7 +105,6 @@ class LinkedList{
             ListNode* nodeToDelete = end;
             end = end->getPrev();
             free(nodeToDelete);
-
         }
         
 
