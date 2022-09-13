@@ -126,6 +126,14 @@ class LinkedList{
             }
             return count;
         }
+
+        void print(){
+            ListNode* runner = this->start;
+            while(runner != nullptr){
+                cout<<runner->getValue()<<endl;
+                runner = runner->getNext();
+            }
+        }
 };
 
 template<typename T, typename Q>
