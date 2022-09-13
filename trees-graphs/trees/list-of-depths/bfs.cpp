@@ -155,6 +155,10 @@ class Tree{
                 TreeNode* getLeft(){
                     return this->left;
                 }
+
+                void setRight(TreeNode* right){
+                    this->right = right;
+                }
                 
         };
     public:
