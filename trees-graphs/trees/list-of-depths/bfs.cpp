@@ -140,6 +140,10 @@ class Tree{
                 TreeNode(Q value){
                     this->value = value;
                 }
+                void setValue(Q value){
+                    this->value = value;
+                }
+                
         };
     public:
         Tree(){}
