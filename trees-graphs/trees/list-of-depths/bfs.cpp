@@ -126,9 +126,24 @@ class LinkedList{
             }
             return count;
         }
-
 };
 
+template<typename T, typename Q>
+class Tree{
+    private:
+        struct TreeNode{
+            private:
+                Q value;
+                TreeNode *left;
+                TreeNode *right;
+            public:
+                TreeNode(Q value){
+                    this->value = value;
+                }
+        };
+    public:
+        Tree(){}
+};
 
 int main(){
     Tree<int, int> *tree = new Tree<int, int>();
