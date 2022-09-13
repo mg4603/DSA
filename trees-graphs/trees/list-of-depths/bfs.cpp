@@ -211,6 +211,7 @@ class Tree{
             insert(ptr->getLeft(), value);
         }        
 
+        
     public:
         Tree():root(NULL){}
         TreeNode* search(Q key){
@@ -220,7 +221,13 @@ class Tree{
         void insert(Q value){
             insert(this->root, value);
         }
-        
+
+        void createLevelLinkedLists(vector<LinkedList*> lists){
+            if(root == nullptr){
+                throw "Tree empty";
+            }
+            createLevelLinkedLists(this->root, lists);
+        } 
 };
 
 int main(){
