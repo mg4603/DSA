@@ -143,7 +143,10 @@ class Tree{
                 void setValue(Q value){
                     this->value = value;
                 }
-                
+
+                Q getValue(){
+                    return this->value;
+                }
         };
     public:
         Tree(){}
