@@ -209,6 +209,9 @@ class Tree{
             return search(this->root, key);
         }       
 
+        void insert(Q value){
+            insert(this->root, value);
+        }
         
 };
 
