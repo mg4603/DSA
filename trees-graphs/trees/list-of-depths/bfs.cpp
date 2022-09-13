@@ -176,9 +176,20 @@ class Tree{
             return search(ptr->getRight(), key);
         }
 
+        void setRoot(Q value){
+            TreeNode* root = new TreeNode(value);
+            if(this->root == nullptr){
+                this->root = root;
+            }else{
+                free(this->root);
+                this->root = root;
+            }
+
+        }
+
         TreeNode* root;
     public:
-        Tree(){}
+        Tree():root(NULL){}
         TreeNode* search(Q key){
             return search(this->root, key);
         }       
