@@ -114,6 +114,19 @@ class LinkedList{
             return false;
         }
 
+        T size(){
+            if(this->empty()){
+                return 0;
+            }
+            ListNode* runner = start;
+            T count(0);
+            while(runner != nullptr){
+                count++;
+                runner = runner->getNext();
+            }
+            return count;
+        }
+
 };
 
 
