@@ -107,6 +107,12 @@ class LinkedList{
             free(nodeToDelete);
         }
         
+        bool empty(){
+            if(start == nullptr && end == nullptr){
+                return true;
+            }
+            return false;
+        }
 
 };
 
