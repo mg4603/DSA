@@ -212,10 +212,7 @@ class Tree{
             insert(ptr->getLeft(), value);
         }        
 
-<<<<<<< HEAD
         
-=======
->>>>>>> 92961daa09ed79cd9d5f807a27fc48ab75a76dcf
     public:
         Tree():root(NULL){}
         TreeNode* search(Q key){
@@ -225,7 +222,6 @@ class Tree{
         void insert(Q value){
             insert(this->root, value);
         }
-<<<<<<< HEAD
         void createLevelLinkedLists(vector<LinkedList<T, Q>*> lists){
             deque<TreeNode*> q;
             if(root != nullptr){
@@ -248,14 +244,7 @@ class Tree{
                     }
                 }
             }
-=======
-        void createLevelLinkedLists(vector<LinkedList*> lists){
-            if(root == nullptr){
-                throw "Tree empty";
-            }
-            createLevelLinkedLists(this->root, lists);
->>>>>>> 92961daa09ed79cd9d5f807a27fc48ab75a76dcf
-        } 
+        }
 };
 
 int main(){
