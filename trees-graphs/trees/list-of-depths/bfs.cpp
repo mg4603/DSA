@@ -147,6 +147,10 @@ class Tree{
                 Q getValue(){
                     return this->value;
                 }
+
+                void setLeft(ListNode* left){
+                    this->left = left;
+                }
         };
     public:
         Tree(){}
