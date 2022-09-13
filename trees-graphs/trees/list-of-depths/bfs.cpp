@@ -159,7 +159,10 @@ class Tree{
                 void setRight(TreeNode* right){
                     this->right = right;
                 }
-                
+
+                TreeNode* getRight(){
+                    return this->right;
+                }
         };
     public:
         Tree(){}
