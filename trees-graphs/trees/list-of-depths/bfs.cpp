@@ -164,8 +164,26 @@ class Tree{
                     return this->right;
                 }
         };
+        
+
+        TreeNode* search(TreeNode* ptr, Q key){
+            if(ptr == nullptr || ptr->getValue() == key){
+                return ptr;
+            }
+            if(ptr->getValue() < key){
+                return search(ptr->getLeft(), key);
+            }
+            return search(ptr->getRight(), key);
+        }
+
+        TreeNode* root;
     public:
         Tree(){}
+        
+
+        
+
+        
 };
 
 int main(){
