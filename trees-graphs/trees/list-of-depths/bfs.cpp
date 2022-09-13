@@ -53,8 +53,7 @@ class LinkedList{
         void push_front(Q value){
             ListNode* newNode = new ListNode(value);
             if(start == nullptr && end == nullptr){
-                start = newNode;
-                end = newNode;
+                start = end = newNode;
                 return;
             }
             
@@ -69,8 +68,8 @@ class LinkedList{
         void push_back(Q value){
             ListNode *newNode = new ListNode(value);
             if(start == nullptr && end == nullptr){
-                start = newNode;
-                end = newNode;
+                start = end = newNode;
+                return;
             }
             if(start->getNext() == nullptr){
                 start->setNext(newNode);
@@ -132,6 +131,8 @@ class LinkedList{
             ListNode* runner = this->start;
             while(runner != nullptr){
                 cout<<runner->getValue()<<endl;
+                cout<<(runner->getNext() == nullptr);
+                return;
                 runner = runner->getNext();
             }
         }
@@ -235,7 +236,7 @@ class Tree{
                     newList->push_back(current->getValue());
                 }
                 lists.push_back(newList);
-                deque<TreeNode*> parents = q;
+                deque<TreeNode*> parents = deque<TreeNode*>(q);
                 q.clear();
                 for(TreeNode* parent: parents){
                     if(parent->getLeft() != nullptr){
