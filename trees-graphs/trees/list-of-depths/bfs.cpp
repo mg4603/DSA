@@ -71,8 +71,12 @@ class LinkedList{
                 start = newNode;
                 end = newNode;
             }
+            if(start->getNext() == nullptr){
+                start->setNext(newNode);
+            }
             end->setNext(newNode);
             newNode->setPrev(end);
+            
             end = newNode;
         }
         
@@ -87,6 +91,14 @@ class LinkedList{
             start->setPrev(nullptr);
         }
 
+        void pop_back(){
+            if(start == nullptr && end == nullptr){
+                throw "List Empty";
+            }
+            if(end->getPrev() == nullptr){
+
+            }
+        }
         
 
 };
