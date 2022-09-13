@@ -131,8 +131,6 @@ class LinkedList{
             ListNode* runner = this->start;
             while(runner != nullptr){
                 cout<<runner->getValue()<<endl;
-                cout<<(runner->getNext() == nullptr);
-                return;
                 runner = runner->getNext();
             }
         }
