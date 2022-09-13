@@ -148,9 +148,14 @@ class Tree{
                     return this->value;
                 }
 
-                void setLeft(ListNode* left){
+                void setLeft(TreeNode* left){
                     this->left = left;
                 }
+
+                TreeNode* getLeft(){
+                    return this->left;
+                }
+                
         };
     public:
         Tree(){}
