@@ -29,7 +29,7 @@ class LinkedList{
                 this->prev = prev;
             }
             ListNode* getPrev(){
-                return this->prev
+                return this->prev;
             } 
     };
     ListNode *start, *end;
@@ -42,7 +42,7 @@ class LinkedList{
             if(start == nullptr){
                 throw "List Empty";
             }
-            return start->getValue()
+            return start->getValue();
         }
         Q back(){
             if(end == nullptr){
@@ -201,15 +201,17 @@ class Tree{
             return this->root;
         }
 
-        void insert(TreeNode* ptr, Q value){
+        TreeNode* insert(TreeNode* ptr, Q value){
             if(ptr == nullptr){
                 TreeNode* newNode = new TreeNode(value);
                 ptr = newNode;
+                return ptr;
             }
             if(ptr->getValue() < value){
-                insert(ptr->getRight(), value);
+                return insert(ptr->getRight(), value);
+                
             }
-            insert(ptr->getLeft(), value);
+            return insert(ptr->getLeft(), value);
         }        
 
         
@@ -220,9 +222,9 @@ class Tree{
         }       
 
         void insert(Q value){
-            insert(this->root, value);
+            this->root = insert(this->root, value);
         }
-        void createLevelLinkedLists(vector<LinkedList<T, Q>*> lists){
+        void createLevelLinkedLists(vector<LinkedList<T, Q>*> &lists){
             deque<TreeNode*> q;
             if(root != nullptr){
                 q.push_back(root);
