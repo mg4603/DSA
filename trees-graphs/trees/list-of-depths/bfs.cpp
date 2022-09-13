@@ -1,5 +1,6 @@
 #include<vector>
 #include<iostream>
+#include<deque>
 using namespace std;
 
 template <typename T, typename Q>
@@ -211,6 +212,8 @@ class Tree{
             insert(ptr->getLeft(), value);
         }        
 
+        
+        
     public:
         Tree():root(NULL){}
         TreeNode* search(Q key){
@@ -220,7 +223,30 @@ class Tree{
         void insert(Q value){
             insert(this->root, value);
         }
-        
+
+        void createLevelLinkedLists(vector<LinkedList<T, Q>*> lists){
+            deque<TreeNode*> q;
+            if(root != nullptr){
+                q.push_back(root);
+            }
+            while(!q.empty()){
+                LinkedList<T, Q>* newList = new LinkedList<T, Q>();
+                for(TreeNode* current: q){
+                    newList->push_back(current->getValue());
+                }
+                lists.push_back(newList);
+                deque<TreeNode*> parents = q;
+                q.clear();
+                for(TreeNode* parent: parents){
+                    if(parent->getLeft() != nullptr){
+                        q.push_back(parent->getLeft());
+                    }
+                    if(parent->getRight() != nullptr){
+                        q.push_back(parent->getRight());
+                    }
+                }
+            }
+        } 
 };
 
 int main(){
