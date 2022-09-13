@@ -179,9 +179,9 @@ class Tree{
         TreeNode* root;
     public:
         Tree(){}
-        
-
-        
+        TreeNode* search(Q key){
+            return search(this->root, key);
+        }       
 
         
 };
