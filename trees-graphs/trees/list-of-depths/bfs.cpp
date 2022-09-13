@@ -97,8 +97,13 @@ class LinkedList{
                 throw "List Empty";
             }
             if(end->getPrev() == nullptr){
-                
+                start = nullptr;
+                end = nullptr;
             }
+            ListNode* nodeToDelete = end;
+            end = end->getPrev();
+            free(nodeToDelete);
+
         }
         
 
