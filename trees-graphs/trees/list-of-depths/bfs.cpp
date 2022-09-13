@@ -86,6 +86,7 @@ class LinkedList{
             }
             if(start->getNext() == nullptr){
                 start = nullptr;
+                end = nullptr;
             }
             start = start->getNext();
             start->setPrev(nullptr);
@@ -96,7 +97,7 @@ class LinkedList{
                 throw "List Empty";
             }
             if(end->getPrev() == nullptr){
-
+                
             }
         }
         
