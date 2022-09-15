@@ -22,6 +22,9 @@ class Tree{
                 void setLeft(TreeNode* left){
                     this->left = left;
                 }
+                void setRight(TreeNode* right){
+                    this->right = right;
+                }
         };
     
         TreeNode* root;
