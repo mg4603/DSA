@@ -19,6 +19,9 @@ class Tree{
                 void setValue(Q value){
                     this->value = value;
                 }
+                void setLeft(TreeNode* left){
+                    this->left = left;
+                }
         };
     
         TreeNode* root;
