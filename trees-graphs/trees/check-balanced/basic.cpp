@@ -65,6 +65,9 @@ class Tree{
             ptr = newNode;
         }
 
+        void inorder(){
+            inorder(this->root);
+        }
         
 };
 
