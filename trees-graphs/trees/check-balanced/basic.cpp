@@ -48,10 +48,10 @@ class Tree{
     }
 
     bool isBalanced(TreeNode* ptr){
-            if(root == nullptr){
+            if(ptr == nullptr){
                 return true;
             }
-            T heightDiff(getHeight(ptr->getLeft) - getHeight(ptr->getRight()));
+            T heightDiff(getHeight(ptr->getLeft()) - getHeight(ptr->getRight()));
             if(abs(heightDiff) > 1){
                 return false;
             }else{
@@ -99,5 +99,6 @@ class Tree{
 int main(){
     Tree<int, int> *tree = new Tree<int, int>();
     tree->insert(1);
+    cout<<tree->isBalanced();
     return 0;
 }
