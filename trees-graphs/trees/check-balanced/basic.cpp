@@ -38,6 +38,9 @@ class Tree{
         TreeNode* getRoot(){
             return this->root;
         }
+        TreeNode* setRoot(TreeNode* root){
+            this->root = root;
+        }
 };
 
 int main(){
