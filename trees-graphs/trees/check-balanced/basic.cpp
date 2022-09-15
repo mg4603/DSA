@@ -67,9 +67,9 @@ class Tree{
         
         if(ptr->getValue() < value){
             return insert(ptr->getRight(), value);
-        }else{
-            return insert(ptr->getLeft(), value);
         }
+        return insert(ptr->getLeft(), value);
+        
     }
     TreeNode* root;
     public:
@@ -78,9 +78,13 @@ class Tree{
             return this->root;
         }
         void setRoot(TreeNode* root){
-            this->root = root;
+            if(this->root == nullptr){
+                this->root = root;
+            }else{
+                free(this->root);
+                this->root = root;
+            }
         }
-     
 
         void inorder(){
             inorder(this->root);
@@ -108,7 +112,7 @@ int main(){
     tree->insert(8);
     tree->insert(9);
     tree->insert(10);
-    cout<<tree->getRoot()->getLeft();
+    cout<<tree->getRoot()->getValue();
     // tree->inorder();
     // cout<<tree->isBalanced();
     return 0;
