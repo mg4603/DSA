@@ -44,8 +44,21 @@ class Tree{
         if(ptr == nullptr){
             return -1;
         }
-        return max(getHeight(ptr->getRight()), getHeight(ptr->getLeft()));
+        return max(getHeight(ptr->getRight()), getHeight(ptr->getLeft())) + 1;
     }
+
+    bool isBalanced(TreeNode* ptr){
+            if(root == nullptr){
+                return true;
+            }
+            T heightDiff(getHeight(ptr->getLeft) - getHeight(ptr->getRight()));
+            if(abs(heightDiff) > 1){
+                return false;
+            }else{
+                return isBalanced(ptr->getLeft()) && isBalanced(ptr->getRight());
+            }
+    }
+
     TreeNode* root;
     public:
         Tree():root(NULL){}
@@ -75,6 +88,8 @@ class Tree{
         void inorder(){
             inorder(this->root);
         }
+
+        
         
 };
 
