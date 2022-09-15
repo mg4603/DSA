@@ -32,6 +32,13 @@ class Tree{
                 this->right = right;
             }
     };
+    void inorder(TreeNode* ptr){ 
+        if(ptr != nullptr){
+            inorder(ptr->getLeft());
+            cout<<ptr->getValue()<<endl;
+            inorder(ptr->getRight());
+        }
+    }
     TreeNode* root;
     public:
         Tree():root(NULL){}
@@ -57,6 +64,8 @@ class Tree{
             }
             ptr = newNode;
         }
+
+        
 };
 
 int main(){
