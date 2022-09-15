@@ -28,6 +28,9 @@ class Tree{
                 Q getValue(){
                     return this->value;
                 }
+                TreeNode* getLeft(){
+                    return this->left;
+                }
         };
     
         TreeNode* root;
