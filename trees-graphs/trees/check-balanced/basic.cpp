@@ -35,7 +35,9 @@ class Tree{
     TreeNode* root;
     public:
         Tree():root(NULL){}
-
+        TreeNode* getRoot(){
+            return this->root;
+        }
 };
 
 int main(){
