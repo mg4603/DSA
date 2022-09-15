@@ -89,6 +89,9 @@ class Tree{
             inorder(this->root);
         }
 
+        bool isBalanced(){
+            return isBalanced(this->root);
+        }
         
         
 };
