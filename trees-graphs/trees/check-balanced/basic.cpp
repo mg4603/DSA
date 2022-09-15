@@ -39,6 +39,13 @@ class Tree{
             inorder(ptr->getRight());
         }
     }
+    T getHeight(TreeNode* ptr){
+        // base case
+        if(ptr == nullptr){
+            return -1;
+        }
+        return max(getHeight(ptr->getRight()), getHeight(ptr->getLeft()));
+    }
     TreeNode* root;
     public:
         Tree():root(NULL){}
