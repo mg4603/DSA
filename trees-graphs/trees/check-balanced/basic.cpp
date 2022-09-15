@@ -38,11 +38,29 @@ class Tree{
         TreeNode* getRoot(){
             return this->root;
         }
-        TreeNode* setRoot(TreeNode* root){
+        void setRoot(TreeNode* root){
             this->root = root;
+        }
+        void insert(Q value){
+            TreeNode* newNode = new TreeNode(value);
+            if(root == nullptr){
+                this->setRoot(newNode);
+                return;
+            }
+            TreeNode *ptr = this->getRoot();
+            while(ptr != nullptr){
+                if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+            ptr = newNode;
         }
 };
 
 int main(){
+    Tree<int, int> *tree = new Tree<int, int>();
+    tree->insert(1);
     return 0;
 }
