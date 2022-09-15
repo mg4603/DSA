@@ -13,6 +13,9 @@ class Tree{
             TreeNode(Q value){
                 this->value = value;
             }
+            Q getValue(){
+                return this->value;
+            }
     };
     TreeNode* root;
     public:
