@@ -198,21 +198,7 @@ class Tree{
 
         TreeNode* getRoot(){
             return this->root;
-        }
-
-        TreeNode* insert(TreeNode* ptr, Q value){
-            if(ptr == nullptr){
-                TreeNode* newNode = new TreeNode(value);
-                ptr = newNode;
-                return ptr;
-            }
-            if(ptr->getValue() < value){
-                return insert(ptr->getRight(), value);
-                
-            }
-            return insert(ptr->getLeft(), value);
-        }        
-
+        } 
         
     public:
         Tree():root(NULL){}
@@ -221,7 +207,30 @@ class Tree{
         }       
 
         void insert(Q value){
-            this->root = insert(this->root, value);
+            TreeNode* newNode = new TreeNode(value);
+            if(root == nullptr){
+                this->setRoot(newNode);
+                return;
+            }
+            TreeNode *ptr = root;
+            TreeNode *prevPtr;
+            while(ptr != nullptr){
+                if(ptr->getValue() < value){
+                    prevPtr = ptr;
+                    ptr = ptr->getRight();
+                }else{
+                    prevPtr = ptr;
+                    ptr = ptr->getLeft();
+                }
+            }
+
+            if(prevPtr->getValue() < value){
+                prevPtr->setRight(newNode);
+            }else{
+                prevPtr->setLeft(newNode);
+            }
+
+
         }
         void createLevelLinkedLists(vector<LinkedList<T, Q>*> &lists){
             deque<TreeNode*> q;
@@ -262,7 +271,7 @@ int main(){
     tree->insert(10);
     vector<LinkedList<int, int>*> lists;
     tree->createLevelLinkedLists(lists);
-    lists[0]->print();
+    lists[1]->print();
     
     return 0;
 }
