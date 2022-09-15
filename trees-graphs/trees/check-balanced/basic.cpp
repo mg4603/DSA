@@ -91,6 +91,9 @@ class Tree{
             return isBalanced(this->root);
         }
         
+        void insert(Q value){
+            insert(this->root, value);
+        }
         
 };
 
