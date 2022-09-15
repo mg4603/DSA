@@ -186,8 +186,7 @@ class Tree{
 
         TreeNode* root;
 
-        void setRoot(Q value){
-            TreeNode* root = new TreeNode(value);
+        void setRoot(TreeNode* root){
             if(this->root == nullptr){
                 this->root = root;
             }else{
