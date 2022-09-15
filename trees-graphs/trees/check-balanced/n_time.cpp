@@ -31,6 +31,9 @@ class Tree{
                 TreeNode* getLeft(){
                     return this->left;
                 }
+                TreeNode* getRight(){
+                    return this->right;
+                }
         };
     
         TreeNode* root;
