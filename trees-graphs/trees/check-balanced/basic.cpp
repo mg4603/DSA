@@ -58,18 +58,17 @@ class Tree{
                 return isBalanced(ptr->getLeft()) && isBalanced(ptr->getRight());
             }
     }
-    void insert(TreeNode* ptr, Q value){
+    TreeNode* insert(TreeNode* ptr, Q value){
         TreeNode* newNode = new TreeNode(value);
         if(ptr == nullptr){
             ptr = newNode;
-            return;
+            return ptr;
         }
-        while(ptr != nullptr){
-            if(ptr->getValue() < value){
-                insert(ptr->getRight(), value);
-            }else{
-                insert(ptr->getLeft(), value);
-            }
+        
+        if(ptr->getValue() < value){
+            return insert(ptr->getRight(), value);
+        }else{
+            return insert(ptr->getLeft(), value);
         }
     }
     TreeNode* root;
@@ -92,7 +91,7 @@ class Tree{
         }
         
         void insert(Q value){
-            insert(this->root, value);
+            this->setRoot(insert(this->root, value));
         }
         
 };
