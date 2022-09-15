@@ -58,19 +58,7 @@ class Tree{
                 return isBalanced(ptr->getLeft()) && isBalanced(ptr->getRight());
             }
     }
-    TreeNode* insert(TreeNode* ptr, Q value){
-        TreeNode* newNode = new TreeNode(value);
-        if(ptr == nullptr){
-            ptr = newNode;
-            return ptr;
-        }
-        
-        if(ptr->getValue() < value){
-            return insert(ptr->getRight(), value);
-        }
-        return insert(ptr->getLeft(), value);
-        
-    }
+    
     TreeNode* root;
     public:
         Tree():root(NULL){}
@@ -94,9 +82,31 @@ class Tree{
             return isBalanced(this->root);
         }
         
-        void insert(Q value){
-            this->setRoot(insert(this->root, value));
+        void insert( Q value){
+        TreeNode* newNode = new TreeNode(value);
+        if(root == nullptr){
+            root = newNode;
+            return;
         }
+        TreeNode *ptr = root;
+        TreeNode *prevPtr;
+        while(ptr != nullptr){
+            if(ptr->getValue() < value){
+                prevPtr = ptr;
+                ptr = ptr->getRight();
+            }else{
+                prevPtr = ptr;
+                ptr = ptr->getLeft();
+            }
+        }
+
+        if(prevPtr->getValue() < value){
+            prevPtr->setRight(newNode);
+        }else{
+            prevPtr->setLeft(newNode);
+        }
+        
+    }
         
 };
 
@@ -112,8 +122,8 @@ int main(){
     tree->insert(8);
     tree->insert(9);
     tree->insert(10);
-    cout<<tree->getRoot()->getValue();
+    // cout<<tree->getRoot()->getValue();
     // tree->inorder();
-    // cout<<tree->isBalanced();
+    cout<<tree->isBalanced();
     return 0;
 }
