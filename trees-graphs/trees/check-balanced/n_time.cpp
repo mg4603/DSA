@@ -52,7 +52,9 @@ class Tree{
             return this->root;
         }
         
-
+        void inorderPrint(){
+            inorderPrint(this->getRoot());
+        }
 
 };
 
