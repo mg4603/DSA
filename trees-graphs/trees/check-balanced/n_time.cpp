@@ -53,6 +53,9 @@ class Tree{
         Tree():root(nullptr){}
 
         void setRoot(TreeNode* root){
+            if(this->getRoot() != nullptr){
+                free(this->getRoot());
+            }
             this->root = root;
         }
 
