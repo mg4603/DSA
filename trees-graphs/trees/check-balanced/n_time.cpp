@@ -20,9 +20,15 @@ class Tree{
                     this->value = value;
                 }
                 void setLeft(TreeNode* left){
+                    if(this->getLeft() != nullptr){
+                        free(this->getLeft());
+                    }
                     this->left = left;
                 }
                 void setRight(TreeNode* right){
+                    if(this->getRight() != nullptr){
+                        free(this->getRight());
+                    }
                     this->right = right;
                 }
                 Q getValue(){
@@ -45,9 +51,11 @@ class Tree{
         TreeNode* root;
     public:
         Tree():root(nullptr){}
+
         void setRoot(TreeNode* root){
             this->root = root;
         }
+
         TreeNode* getRoot(){
             return this->root;
         }
@@ -56,6 +64,13 @@ class Tree{
             inorderPrint(this->getRoot());
         }
 
+        void insert(Q value){
+            TreeNode* newNode = new TreeNode(value);
+            if(root == nullptr){
+                this->setRoot(newNode);
+                return;
+            }
+        }
 };
 
 int main(){
