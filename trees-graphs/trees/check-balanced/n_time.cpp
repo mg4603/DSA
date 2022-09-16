@@ -39,6 +39,11 @@ class Tree{
         TreeNode* root;
     public:
         Tree():root(nullptr){}
+        void setRoot(TreeNode* root){
+            this->root = root;
+        }
+        
+
 };
 
 int main(){
