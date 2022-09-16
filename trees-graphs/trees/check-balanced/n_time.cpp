@@ -90,6 +90,11 @@ class Tree{
                 prevPtr->setLeft(newNode);
             }
         }
+
+        bool isBalanced(){
+            return checkHeight(this->getRoot()) != INT_MIN;
+        }
+
 };
 
 int main(){
