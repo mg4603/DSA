@@ -35,7 +35,13 @@ class Tree{
                     return this->right;
                 }
         };
-    
+        void inorderPrint(TreeNode* root){
+            if(root != nullptr){
+                inorderPrint(root->getLeft());
+                cout<<root->getValue()<<" ";
+                inorderPrint(root->getRight());
+            }
+        }
         TreeNode* root;
     public:
         Tree():root(nullptr){}
@@ -46,6 +52,7 @@ class Tree{
             return this->root;
         }
         
+
 
 };
 
