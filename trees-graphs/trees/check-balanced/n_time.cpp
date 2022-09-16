@@ -69,9 +69,25 @@ class Tree{
 
         void insert(Q value){
             TreeNode* newNode = new TreeNode(value);
-            if(root == nullptr){
+            if(this->getRoot() == nullptr){
                 this->setRoot(newNode);
                 return;
+            }
+            TreeNode *ptr = this->getRoot();
+            TreeNode *prevPtr;
+            while(ptr != nullptr){
+                prevPtr = ptr;
+                if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+
+            if(prevPtr->getValue() < value){
+                prevPtr->setRight(newNode);
+            }else{
+                prevPtr->setLeft(newNode);
             }
         }
 };
