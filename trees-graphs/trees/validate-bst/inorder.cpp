@@ -22,6 +22,9 @@ class BinaryTree{
                 void setRight(Node* right){
                     this->right = right;
                 }
+                Q getValue(){
+                    return this->value;
+                }
         };
         Node* root;
     public:
