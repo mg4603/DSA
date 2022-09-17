@@ -16,6 +16,12 @@ class Tree{
                 void setValue(Q value){
                     this->value = value;
                 }
+                void setLeft(Node* left){
+                    if(this->getLeft() != nullptr){
+                        free(this->getLeft());
+                    }
+                    this->left = left;
+                }
         };
 
         Node *root;
