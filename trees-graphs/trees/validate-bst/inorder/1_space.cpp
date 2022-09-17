@@ -85,6 +85,9 @@ class Tree{
             }
         }
 
+        void inorderPrint(){
+            inorderPrint(this->getRoot());
+        }
 
 };
 
