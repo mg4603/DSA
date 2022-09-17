@@ -10,7 +10,7 @@ class Tree{
                 Node* left;
                 Node* right;
             public:
-                Node(Q value){
+                Node(Q value):left(nullptr):right(nullptr){
                     this->value = value;
                 }
                 Q getValue(){
