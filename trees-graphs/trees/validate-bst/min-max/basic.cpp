@@ -49,7 +49,19 @@ class Tree{
         }
 
         bool checkBst(Node* root, Q &minimum, Q &maximum){
+            if(root == nullptr){
+                return true;
+            }
 
+            if((minimum != 0 && root->getValue() <= minimum) || maximum != 0 && root->getValue() > maximum){
+                return false;
+            }
+
+            if(!checkBst(root->getLeft(), minimum, root->getValue())  && !checkBst(root->getRight(), root->getValue(), maximum));
+            {
+                return false;
+            }
+            return true;
         }
 
         Node *root;
