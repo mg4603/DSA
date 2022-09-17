@@ -1,4 +1,5 @@
 #include<iostream>
+#include<limits>
 using namespace std;
 
 template <typename T, typename Q>
@@ -47,6 +48,10 @@ class Tree{
             }
         }
 
+        bool checkBst(Node* root, Q &minimum, Q &maximum){
+
+        }
+
         Node *root;
 
     public:
@@ -88,6 +93,11 @@ class Tree{
             inorderPrint(this->getRoot());
         }
 
+        bool checkBst(){
+            Q minium(numeric_limits<Q>::min());
+            Q maximum(numeric_limits<Q>::max());
+            return checkBst(this->getRoot(), minium, maximum);
+        }
 };
 
 int main(){
