@@ -32,9 +32,14 @@ class BinaryTree{
                     return this->right;
                 }
         };
-        Node* root;
+        Node *root;
     public:
         BinaryTree():root(nullptr){}
+        void setRoot(Node *root){
+            this->root = root;
+        }
+        
+
 };
 
 int main(){
