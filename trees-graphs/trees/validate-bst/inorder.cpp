@@ -32,6 +32,13 @@ class BinaryTree{
                     return this->right;
                 }
         };
+        void inorderPrint(Node *root){
+            if(root != nullptr){
+                inorderPrint(root->getLeft());
+                cout<<root->getValue()<<" ";
+                inorderPrint(root->getRight());
+            }
+        }
         Node *root;
     public:
         BinaryTree():root(nullptr){}
@@ -41,8 +48,8 @@ class BinaryTree{
         Node* getRoot(){
             return this->root;
         }
-        void inorder(){
-            inorder(this->getRoot());
+        void inorderPrint(){
+            inorderPrint(this->getRoot());
         }
 
 };
