@@ -48,8 +48,33 @@ class BinaryTree{
         Node* getRoot(){
             return this->root;
         }
+
         void inorderPrint(){
             inorderPrint(this->getRoot());
+        }
+
+        void insert(Q value){
+            Node *newNode = new Node(value);
+            if(root == nullptr){
+                this->setRoot(newNode);
+            }
+            Node *ptr = this->getRoot();
+            Node *prevPtr;
+            while(ptr != nullptr){
+                prevPtr = ptr;
+                if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+
+            if(prevPtr->getValue() < value){
+                prevPtr->setRight(newNode);
+            }else{
+                prevPtr->setLeft(newNode);
+            }
+
         }
 
 };
