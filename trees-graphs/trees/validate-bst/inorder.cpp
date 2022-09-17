@@ -38,7 +38,9 @@ class BinaryTree{
         void setRoot(Node *root){
             this->root = root;
         }
-        
+        Node* getRoot(){
+            return this->root;
+        }
 
 };
 
