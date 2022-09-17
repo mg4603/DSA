@@ -19,7 +19,7 @@ class BinaryTree{
                 }
                 void setLeft(Node* left){
                     if(this->left != nullptr){
-                        free(this->left)
+                        free(this->left);
                     }
                     this->left = left;
                 }
