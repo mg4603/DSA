@@ -16,6 +16,9 @@ class BinaryTree{
                 void setValue(Q value){
                     this->value = value;
                 }
+                void setLeft(Node* left){
+                    this->left = left;
+                }
         };
         Node* root;
     public:
