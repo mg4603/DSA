@@ -65,9 +65,9 @@ class BinaryTree{
     public:
         BinaryTree():root(nullptr){}
         void setRoot(Node *root){
-            // if(this->root != nullptr){
-            //     free(this->root);
-            // }
+            if(this->root != nullptr){
+                free(this->root);
+            }
             this->root = root;
         }
         Node* getRoot(){
