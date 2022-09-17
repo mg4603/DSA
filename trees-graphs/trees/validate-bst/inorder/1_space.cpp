@@ -55,6 +55,29 @@ class Tree{
             }
             this->root = root;
         }
+        void insert(Q value){
+            Node *newNode = new Node(value);
+            if(this->getRoot() == nullptr){
+                this->setRoot(newNode);
+                return;
+            }
+            Node *ptr = this->getRoot();
+            Node *prevPtr;
+            while(ptr != nullptr){
+                prevPtr = ptr;
+                if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+
+            if(prevPtr->getValue() < value){
+                prevPtr->setRight(newNode);
+            }else{
+                prevPtr->setLeft(newNode);
+            }
+        }
 };
 
 int main(){
