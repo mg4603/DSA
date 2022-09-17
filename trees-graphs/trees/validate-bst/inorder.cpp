@@ -41,6 +41,9 @@ class BinaryTree{
         Node* getRoot(){
             return this->root;
         }
+        void inorder(){
+            inorder(this->getRoot());
+        }
 
 };
 
