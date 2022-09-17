@@ -13,6 +13,12 @@ class Tree{
                 Node(Q value):left(nullptr), right(nullptr){
                     this->value = value;
                 }
+                Q getValue(Q value){
+                    this->value = value;
+                }
+                Node* getLeft(){
+                    return this->left;
+                }
         };
     public:
         Tree():root(nullptr){}
