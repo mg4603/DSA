@@ -39,6 +39,14 @@ class Tree{
                 }
         };
 
+        void inorderPrint(Node *root){
+            if(root != nullptr){
+                inorderPrint(root->getLeft());
+                cout<<root->getValue()<<" ";
+                inorderPrint(root->getRight());
+            }
+        }
+
         Node *root;
 
     public:
