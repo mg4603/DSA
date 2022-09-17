@@ -42,6 +42,13 @@ class Tree{
         Node *root;
     public:
         Tree():root(nullptr){}
+        Node* getRoot(){
+            if(this->root == nullptr)
+            {
+                throw "Tree empty";
+            }
+            return this->root;
+        }
 };
 
 int main(){
