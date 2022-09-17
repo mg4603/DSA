@@ -19,6 +19,7 @@ class Tree{
                 Node* getLeft(){
                     return this->left;
                 }
+                
         };
     public:
         Tree():root(nullptr){}
