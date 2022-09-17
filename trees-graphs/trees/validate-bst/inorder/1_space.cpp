@@ -22,6 +22,12 @@ class Tree{
                     }
                     this->left = left;
                 }
+                void setRight(Node* right){
+                    if(this.getRight() != nullptr){
+                        free(this.getRight());
+                    }
+                    this->right = right;
+                }
         };
 
         Node *root;
