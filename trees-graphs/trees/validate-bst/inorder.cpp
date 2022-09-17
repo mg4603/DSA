@@ -41,7 +41,7 @@ class BinaryTree{
             }
         }
 
-        vector<Q> inorderList(Node* root, vector<Q> vec){
+        void inorderList(Node* root, vector<Q> &vec){
             if(root != nullptr){
                 inorderList(root->getLeft());
                 vec.push_back(root->getValue());
@@ -49,6 +49,11 @@ class BinaryTree{
             }
         }   
 
+        vector<Q> inorderList(){
+            vector<Q> vec;
+            inorderList(this->getRoot(), vec);
+            return vec;
+        }
         Node *root;
     public:
         BinaryTree():root(nullptr){}
