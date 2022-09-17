@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 template <typename T, typename Q>
@@ -39,6 +40,15 @@ class BinaryTree{
                 inorderPrint(root->getRight());
             }
         }
+
+        vector<Q> inorderList(Node* root, vector<Q> vec){
+            if(root != nullptr){
+                inorderList(root->getLeft());
+                vec.push_back(root->getValue());
+                inorderList(root->getRight());
+            }
+        }   
+
         Node *root;
     public:
         BinaryTree():root(nullptr){}
@@ -76,6 +86,8 @@ class BinaryTree{
             }
 
         }
+
+        
 
 };
 
