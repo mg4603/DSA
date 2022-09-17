@@ -18,9 +18,15 @@ class BinaryTree{
                     this->value = value;
                 }
                 void setLeft(Node* left){
+                    if(this->left != nullptr){
+                        free(this->left)
+                    }
                     this->left = left;
                 }
                 void setRight(Node* right){
+                    // if(this->right != nullptr){
+                    //     free(this->right);
+                    // }
                     this->right = right;
                 }
                 Q getValue(){
@@ -43,9 +49,9 @@ class BinaryTree{
 
         void inorderList(Node* root, vector<Q> &vec){
             if(root != nullptr){
-                inorderList(root->getLeft());
+                inorderList(root->getLeft(), vec);
                 vec.push_back(root->getValue());
-                inorderList(root->getRight());
+                inorderList(root->getRight(), vec);
             }
         }   
 
@@ -54,10 +60,14 @@ class BinaryTree{
             inorderList(this->getRoot(), vec);
             return vec;
         }
+
         Node *root;
     public:
         BinaryTree():root(nullptr){}
         void setRoot(Node *root){
+            // if(this->root != nullptr){
+            //     free(this->root);
+            // }
             this->root = root;
         }
         Node* getRoot(){
@@ -83,7 +93,7 @@ class BinaryTree{
                     ptr = ptr->getLeft();
                 }
             }
-
+            cout<<value<<endl;
             if(prevPtr->getValue() < value){
                 prevPtr->setRight(newNode);
             }else{
@@ -92,10 +102,23 @@ class BinaryTree{
 
         }
 
-        
+        bool validateBST(){
+            vector<Q> vec = this->inorderList();
+            for(T i(0); i < vec.size()-1; i++){
+                if(vec.at(i) > vec.at(i+1)){
+                    return false;
+                }
+            }
+            return true;
+        }        
 
 };
 
 int main(){
+    BinaryTree<int, int> *tree = new BinaryTree<int, int>();
+    tree->insert(2);
+    tree->insert(1);
+    tree->insert(3);
+    cout<<tree->validateBST();
     return 0;
 }
