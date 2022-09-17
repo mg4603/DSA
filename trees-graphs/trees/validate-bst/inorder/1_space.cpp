@@ -45,6 +45,24 @@ class Tree{
                 inorderPrint(root->getRight());
             }
         }
+        bool checkBst(Node *root, Q lastVisited){
+            if(root == nullptr){
+                return true;
+            }
+            if(!checkBst(root->getLeft())){
+                return false;
+            }
+
+            if(lastVisited != NULL && root->getValue() <= lastVisited){
+                return false;
+            }
+
+            if(!checkBst(root->getRight())){
+                return false;
+            }
+            return true;
+        }
+
         Node *root;
     public:
         Tree():root(nullptr){}
