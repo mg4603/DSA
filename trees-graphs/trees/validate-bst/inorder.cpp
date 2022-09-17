@@ -28,6 +28,9 @@ class BinaryTree{
                 Node* getLeft(){
                     return this->left;
                 }
+                Node* getRight(){
+                    return this->right;
+                }
         };
         Node* root;
     public:
