@@ -12,7 +12,7 @@ class Tree{
                 Node* left;
                 Node* right;
             public:
-                Node(Q value):left(nullptr):right(nullptr){
+                Node(Q value):left(nullptr),right(nullptr){
                     this->value = value;
                 }
                 Q getValue(){
@@ -34,8 +34,8 @@ class Tree{
                     this->left = left;
                 }
                 void setRight(Node* right){
-                    if(this.getRight() != nullptr){
-                        free(this.getRight());
+                    if(this->getRight() != nullptr){
+                        free(this->getRight());
                     }
                     this->right = right;
                 }
@@ -69,10 +69,6 @@ class Tree{
     public:
         Tree():root(nullptr){}
         Node* getRoot(){
-            if(this->root == nullptr)
-            {
-                throw "Tree empty";
-            }
             return this->root;
         }
         void setRoot(Node* root){
@@ -117,5 +113,19 @@ class Tree{
 };
 
 int main(){
+    Tree<int, int> *tree = new Tree<int, int>();
+    tree->insert(1);
+    tree->insert(2);
+    tree->insert(3);
+    try
+    {
+        tree->inorderPrint();
+    }
+    catch(const char* error)
+    {
+        cout<< error << '\n';
+    }
+    
+    
     return 0;
 }
