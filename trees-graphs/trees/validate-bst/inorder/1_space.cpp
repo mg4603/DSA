@@ -51,15 +51,15 @@ class Tree{
             if(root == nullptr){
                 return true;
             }
-            if(!checkBst(root->getLeft())){
+            if(!checkBst(root->getLeft(), lastVisited)){
                 return false;
             }
 
-            if(lastVisited != NULL && root->getValue() <= lastVisited){
+            if(lastVisited != INT_MIN && root->getValue() <= lastVisited){
                 return false;
             }
 
-            if(!checkBst(root->getRight())){
+            if(!checkBst(root->getRight(), lastVisited)){
                 return false;
             }
             return true;
@@ -101,9 +101,9 @@ class Tree{
             }
         }
 
-        void checkBst(){
+        bool checkBst(){
             Q lastVisited(INT_MIN);
-            this->checkBst(this->getRoot(), lastVisited);
+            return this->checkBst(this->getRoot(), lastVisited);
         }
 
         void inorderPrint(){
@@ -117,15 +117,8 @@ int main(){
     tree->insert(1);
     tree->insert(2);
     tree->insert(3);
-    try
-    {
-        tree->inorderPrint();
-    }
-    catch(const char* error)
-    {
-        cout<< error << '\n';
-    }
     
+    cout<<tree->checkBst();
     
     return 0;
 }
