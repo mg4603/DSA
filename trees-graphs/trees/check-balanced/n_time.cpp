@@ -48,6 +48,27 @@ class Tree{
                 inorderPrint(root->getRight());
             }
         }
+        T checkHeight(TreeNode *root){
+            // base case
+            if(root == nullptr)
+            {
+                return -1;
+            }
+            T leftHeight = checkHeight(root->getLeft());
+            if(leftHeight == INT_MIN){
+                return INT_MIN; 
+            }
+            T rightHeight = checkHeight(root->getRight());
+            if(rightHeight == INT_MIN){
+                return INT_MIN;
+            }
+            T heightDiff = (leftHeight - rightHeight);
+            if(abs(heightDiff) > 1){
+                return INT_MIN;
+            }else{
+                return max(leftHeight, rightHeight) + 1;
+            }
+        }
         TreeNode* root;
     public:
         Tree():root(nullptr){}
