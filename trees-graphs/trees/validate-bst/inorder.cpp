@@ -82,6 +82,7 @@ class BinaryTree{
             Node *newNode = new Node(value);
             if(root == nullptr){
                 this->setRoot(newNode);
+                return;
             }
             Node *ptr = this->getRoot();
             Node *prevPtr;
@@ -93,7 +94,7 @@ class BinaryTree{
                     ptr = ptr->getLeft();
                 }
             }
-            cout<<value<<endl;
+
             if(prevPtr->getValue() < value){
                 prevPtr->setRight(newNode);
             }else{
@@ -119,6 +120,7 @@ int main(){
     tree->insert(2);
     tree->insert(1);
     tree->insert(3);
+    tree->inorderPrint();
     cout<<tree->validateBST();
     return 0;
 }
