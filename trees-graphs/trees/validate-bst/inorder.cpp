@@ -120,7 +120,6 @@ int main(){
     tree->insert(2);
     tree->insert(1);
     tree->insert(3);
-    tree->inorderPrint();
     cout<<tree->validateBST();
     return 0;
 }
