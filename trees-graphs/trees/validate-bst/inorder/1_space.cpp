@@ -1,4 +1,6 @@
 #include<iostream>
+#include<limits>
+#define INT_MIN numeric_limits<int>::min()
 using namespace std;
 
 template <typename T, typename Q>
@@ -45,7 +47,7 @@ class Tree{
                 inorderPrint(root->getRight());
             }
         }
-        bool checkBst(Node *root, Q lastVisited){
+        bool checkBst(Node *root, Q &lastVisited){
             if(root == nullptr){
                 return true;
             }
@@ -101,6 +103,11 @@ class Tree{
             }else{
                 prevPtr->setLeft(newNode);
             }
+        }
+
+        void checkBst(){
+            Q lastVisited(INT_MIN);
+            this->checkBst(this->getRoot(), lastVisited);
         }
 
         void inorderPrint(){
