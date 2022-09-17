@@ -24,9 +24,9 @@ class BinaryTree{
                     this->left = left;
                 }
                 void setRight(Node* right){
-                    // if(this->right != nullptr){
-                    //     free(this->right);
-                    // }
+                    if(this->right != nullptr){
+                        free(this->right);
+                    }
                     this->right = right;
                 }
                 Q getValue(){
