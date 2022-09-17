@@ -22,7 +22,9 @@ class Tree{
                 Node* getRight(){
                     return this->right;
                 }
-                
+                void setValue(Q value){
+                    this->value = value;
+                }
         };
     public:
         Tree():root(nullptr){}
