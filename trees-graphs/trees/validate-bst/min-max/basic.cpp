@@ -47,6 +47,12 @@ class Tree{
         Node* getRoot(){
             return this->root;
         }
+        void setRoot(Node* root){
+            if(this->getRoot() != nullptr){
+                free(this->getRoot());
+            }
+            this->root = root;
+        }
         
 
 };
