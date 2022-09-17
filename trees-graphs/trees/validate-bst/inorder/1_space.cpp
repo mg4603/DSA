@@ -13,6 +13,9 @@ class Tree{
                 Node(Q value){
                     this->value = value;
                 }
+                void setValue(Q value){
+                    this->value = value;
+                }
         };
 
         Node *root;
