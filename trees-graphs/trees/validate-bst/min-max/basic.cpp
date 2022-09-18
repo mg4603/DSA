@@ -48,16 +48,15 @@ class Tree{
             }
         }
 
-        bool checkBst(Node* root, Q &minimum, Q &maximum){
+        bool checkBst(Node* root, Q minimum, Q maximum){
             if(root == nullptr){
                 return true;
             }
-
-            if((minimum != 0 && root->getValue() <= minimum) || maximum != 0 && root->getValue() > maximum){
+            if((minimum != 0 && root->getValue() <= minimum) || (maximum != 0 && root->getValue() > maximum)){
                 return false;
             }
 
-            if(!checkBst(root->getLeft(), minimum, root->getValue())  && !checkBst(root->getRight(), root->getValue(), maximum));
+            if(!checkBst(root->getLeft(), minimum, root->getValue())  || !checkBst(root->getRight(), root->getValue(), maximum))
             {
                 return false;
             }
@@ -106,9 +105,7 @@ class Tree{
         }
 
         bool checkBst(){
-            Q minium(numeric_limits<Q>::min());
-            Q maximum(numeric_limits<Q>::max());
-            return checkBst(this->getRoot(), minium, maximum);
+            return checkBst(this->getRoot(), 0, 0);
         }
 };
 
@@ -117,6 +114,7 @@ int main(){
     tree->insert(1);
     tree->insert(2);
     tree->insert(3);
-    tree->inorderPrint();
+    // tree->inorderPrint();
+    cout<<tree->checkBst();
     return 0;
 }
