@@ -58,6 +58,11 @@ class Tree{
         Node *root;
     public:
         Tree():root(nullptr){}
+
+        Node* getRoot(){
+            return this->root;
+        }
+        
 };
 
 int main(){
