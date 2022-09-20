@@ -32,6 +32,13 @@ class Tree{
                     this->right = right;
                 }
 
+                void setParent(Node* parent){
+                    if(this->getParent() != nullptr){
+                        free(this->getParent());
+                    }
+                    this->parent = parent;
+                }
+
                 Q getValue(){
                     return this->value;
                 }
