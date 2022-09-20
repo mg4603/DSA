@@ -33,3 +33,18 @@ implement and then to debug in the case of an error.
     is O(f(N)xg(N))
     5. Ignore constant multiples. If C is a constant, O(Cxf(N)) is the same as O(f(N))
     and O(f(CxN)) is the same as O(f(N))
+
+### Rule 1
+If an algorithm performs a certain sequence of steps f(N) times for a mathematical 
+function f, it takes O(f(N)) steps
+```
+Integer: FindLargest(Integer: array[])
+    Integer: largest = array[0]
+    For i = 1 To <largest_index>
+        If(array[i] > largest) largest = array[i]
+    Next i
+    Return largest
+End FindLargest
+```
+The algorithm examines each of the N items in the array once, so it has O(N)
+performance
