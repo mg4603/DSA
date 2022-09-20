@@ -18,6 +18,10 @@ class Tree{
                     this->value = value;
                 }
 
+                void setLeft(Node *left){
+                    this->left = left;
+                }
+                
                 Q getValue(){
                     return this->value;
                 }
