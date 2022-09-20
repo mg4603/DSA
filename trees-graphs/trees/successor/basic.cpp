@@ -19,6 +19,9 @@ class Tree{
                 }
 
                 void setLeft(Node *left){
+                    if(this->getLeft() != nullptr){
+                        free(this->getLeft());
+                    }
                     this->left = left;
                 }
                 
