@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+// find the greatest common divisor of a and b
+// GCD(a,b) = GCD(b, a mod b)
 template<typename T>
 T gcd(T a, T b){
     while(b != 0){
