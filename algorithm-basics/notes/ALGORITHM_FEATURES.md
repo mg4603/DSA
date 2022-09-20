@@ -48,3 +48,22 @@ End FindLargest
 ```
 The algorithm examines each of the N items in the array once, so it has O(N)
 performance
+
+### Rule 2
+If an algorithm performs an operation that takes f(N) steps and then performs a
+second operation that takes g(N) steps for function f and g, the algorithm's total
+performance is O(f(N)+g(N)).
+```
+Integer: FindLargest(Integer: array[])
+    Integer: largest = array[0]                             // O(1)
+    For i = 1 to <largest_index>                            // O(N)
+        If(array[i] > largest) largest = array[i]
+    Next i
+    Return largest                                          // O(1)
+End FindLargest
+```
+There are two constant time operations:
+- initializing the largest element
+- returning the largest element
+So the total performance of the loop: O(1 + N + 1) = O(2 + N)
+
