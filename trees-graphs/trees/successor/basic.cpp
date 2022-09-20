@@ -42,6 +42,10 @@ class Tree{
                 Q getValue(){
                     return this->value;
                 }
+
+                Node* getLeft(){
+                    return this->left
+                }
         };
         Node *root;
     public:
