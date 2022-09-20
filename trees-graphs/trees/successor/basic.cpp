@@ -14,6 +14,9 @@ class Tree{
                 Node(Q value):left(nullptr), right(nullptr), parent(nullptr){
                     this->value = value;
                 }
+                void setValue(Q value){
+                    this->value = value;
+                }
         };
         Node *root;
     public:
