@@ -44,7 +44,11 @@ class Tree{
                 }
 
                 Node* getLeft(){
-                    return this->left
+                    return this->left;
+                }
+                
+                Node* getRight(){
+                    return this->right;
                 }
         };
         Node *root;
