@@ -50,6 +50,10 @@ class Tree{
                 Node* getRight(){
                     return this->right;
                 }
+
+                Node* getParent(){
+                    return this->parent;
+                }
         };
         Node *root;
     public:
