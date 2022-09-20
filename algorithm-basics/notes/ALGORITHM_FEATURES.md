@@ -67,3 +67,10 @@ There are two constant time operations:
 - returning the largest element
 So the total performance of the loop: O(1 + N + 1) = O(2 + N)
 
+### Rule 3
+If an algorithm has a performance of O(f(N)+g(N)) and g(N) is smaller than f(N) for
+large N, then the algorithm's performance can be simplified to O(f(N)).
+In the preceding example the performance of the FindLargest fn was seen to be O(2+N),
+which can be simplified to O(N) as the fn N is larger than the constant 2.
+Ignoring the smaller fn allows for focus on the algorithm's asymptotic behavior
+as the problem size become large.
