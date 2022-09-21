@@ -95,3 +95,10 @@ The outer loop iterates over all N items in the array taking O(N) steps
 and the inner loop runs N times for each iteration of the outer loop so it also
 takes O(N) steps. Because one loop is nested inside another, the combined performance
 is O(N X N) = O(N<sup>2</sup>)
+
+### Rule 5
+Ignore constant multiples. If C is a constant, O(C x f(N)) is the same as O(f(N)) and
+O(f(C x N)) is the same as O(f(N))
+In the previous ContainsDuplicates example, each iteration of the inner loop had 2 ops.
+This means that O(N x 2 x N) ops occurred in total or performance is O(2 x N<sup>2</sup>).
+According to rule 5, the 2 can be ignored to make the performance O(N<sup>2</sup>).
