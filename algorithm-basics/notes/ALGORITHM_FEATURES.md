@@ -102,3 +102,20 @@ O(f(C x N)) is the same as O(f(N))
 In the previous ContainsDuplicates example, each iteration of the inner loop had 2 ops.
 This means that O(N x 2 x N) ops occurred in total or performance is O(2 x N<sup>2</sup>).
 According to rule 5, the 2 can be ignored to make the performance O(N<sup>2</sup>).
+
+## Common Runtime Functions
+### Constant time O(1)
+Trivial fn that is independent of the input size.
+```
+Integer: DividingPoint(Integer: array[])
+    Integer: number1 = array[0]
+    Integer: number2 = array[<last index of array>]
+    Integer: number3 = array[<last index of array>/2]
+    If(<number1 is between number2 and number3>) Return number1
+    If(<number2 is between number1 and number3>) Return number2
+    Return number3
+End DividingPoint
+```
+The algorithm picks the middle value between the values at the beginning, end and
+middle of the array. Because of the fixed number of steps, it has O(1) performance
+and its runtime is independent of number of inputs N.
