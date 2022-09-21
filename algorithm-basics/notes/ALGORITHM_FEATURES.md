@@ -74,3 +74,24 @@ In the preceding example the performance of the FindLargest fn was seen to be O(
 which can be simplified to O(N) as the fn N is larger than the constant 2.
 Ignoring the smaller fn allows for focus on the algorithm's asymptotic behavior
 as the problem size become large.
+
+### Rule 4
+If an algorithm performs an operation that takes O(f(N)) steps and for every step in 
+the operation, if it performs another O(g(N)) steps, the algorithm's total performance
+is O(f(N)xg(N)).
+```
+Boolean: ContainsDuplicates(Integer: array[])
+    For i = 0 to <largest_index>
+        For j = 0 to <largest_index>
+            If i != j
+                If(array[i] == array[j]) Then Return True
+            End If
+        Next j
+    Next i
+    Return False
+End ContainsDuplicates
+```
+The outer loop iterates over all N items in the array taking O(N) steps
+and the inner loop runs N times for each iteration of the outer loop so it also
+takes O(N) steps. Because one loop is nested inside another, the combined performance
+is O(N X N) = O(N<sup>2</sup>)
