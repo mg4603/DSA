@@ -20,5 +20,7 @@ bool containsDuplicates(vector<T> array){
 }
 
 int main(){
+    vector<int> vec = {1, 2, 3, 5, 1};
+    cout<<containsDuplicates(vec);
     return 0;
 }
