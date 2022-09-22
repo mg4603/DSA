@@ -164,3 +164,9 @@ step, performs some action on all N inputs to it.
 ### N<sup>2</sup>
 An algorithm that has N inputs and for each input loops over the inputs again has 
 O(N<sup>2</sup>) performance.
+
+### 2<sup>N</sup>
+- Grow extremely quickly such that they are practical only for small problem.
+- Solutions to problems that look for optimal selection of inputs.
+- Heuristic algorithms need to be used to solve problems with exponential runtimes.
+    - Produce good results but cannot guarantee the best possible results.
