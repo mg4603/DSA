@@ -146,3 +146,9 @@ leaf which is h nodes long, to check if the balanced bst has the value it is loo
 for. This is log(N), where N is the size of the problem
 The logarithmic fn log(N) grows relatively slowly as N increases, so algorithms with 
 O(logN) performance are generally fast enough to be useful.
+
+### Sqrt N
+- Grow slowly but faster than logN.
+- Not very common.
+
+### N
