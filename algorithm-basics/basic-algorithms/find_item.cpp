@@ -55,6 +55,7 @@ class Tree{
 
             if(ptr == nullptr){
                 this->setRoot(newNode);
+                return;
             }
 
             Node *prevPtr;
@@ -66,6 +67,7 @@ class Tree{
                     ptr = ptr->getLeft();
                 }
             }
+            
             if(prevPtr->getValue() < value){
                 prevPtr->setRight(newNode);
             }else{
@@ -73,8 +75,15 @@ class Tree{
             }
             
         }
+
+        
 };
 
 int main(){
+    Tree<int> *tree = new Tree<int>();
+    tree->insert(3);
+    // tree->insert(1);
+    // tree->insert(2);
+    // cout<<tree->findItem(2)->getValue();
     return 0;
 }
