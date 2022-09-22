@@ -76,14 +76,28 @@ class Tree{
             
         }
 
-        
+        Node* findItem(Q value){
+            Node* ptr = this->getRoot();
+            while(true){
+                if(ptr == nullptr){
+                    return nullptr;
+                }
+                if(ptr->getValue() == value){
+                    return ptr;
+                }else if(ptr->getValue() < value){
+                    ptr = ptr->getRight();
+                }else{
+                    ptr = ptr->getLeft();
+                }
+            }
+        }
 };
 
 int main(){
     Tree<int> *tree = new Tree<int>();
     tree->insert(3);
-    // tree->insert(1);
-    // tree->insert(2);
-    // cout<<tree->findItem(2)->getValue();
+    tree->insert(1);
+    tree->insert(2);
+    cout<<tree->findItem(2)->getValue();
     return 0;
 }
