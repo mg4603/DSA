@@ -12,6 +12,9 @@ class Tree{
                 Node(Q value): left(nullptr), right(nullptr){
                     this->value = value;
                 }
+                Q getValue(){
+                    return this->value;
+                }
         };
         Node *root;     
     public:
