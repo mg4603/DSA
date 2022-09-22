@@ -161,3 +161,6 @@ calculation on that item. The algorithm has O(N logN) performance.
 This is similarly the case if the algorithm performs O(logN) operations and for each 
 step, performs some action on all N inputs to it.
 
+### N<sup>2</sup>
+An algorithm that has N inputs and for each input loops over the inputs again has 
+O(N<sup>2</sup>) performance.
