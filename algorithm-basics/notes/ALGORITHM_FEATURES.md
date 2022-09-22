@@ -154,3 +154,10 @@ O(logN) performance are generally fast enough to be useful.
 
 ### N
 - Grows faster than logN and sqrtN but slowly enough to be useful.
+
+### N logN
+If an algorithm loops over N items in it's input set, and for each item performs O(logN)
+calculation on that item. The algorithm has O(N logN) performance.
+This is similarly the case if the algorithm performs O(logN) operations and for each 
+step, performs some action on all N inputs to it.
+
