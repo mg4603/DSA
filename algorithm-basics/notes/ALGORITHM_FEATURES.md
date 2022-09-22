@@ -151,4 +151,6 @@ O(logN) performance are generally fast enough to be useful.
 - Grow slowly but faster than logN.
 - Not very common.
 
+
 ### N
+- Grows faster than logN and sqrtN but slowly enough to be useful.
