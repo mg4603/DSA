@@ -119,3 +119,30 @@ End DividingPoint
 The algorithm picks the middle value between the values at the beginning, end and
 middle of the array. Because of the fixed number of steps, it has O(1) performance
 and its runtime is independent of number of inputs N.
+
+### Log n
+An algorithm with a O(logN) performance typically divides the number of items it must
+consider by a fixed fraction at every step.
+```
+// Finding an item in balanced bst
+Node: FindItem(Integer: target_value)
+    Node: test_node = <root of tree>
+    Do forever
+        If(test_node == null) Return null
+        
+        If(target_value == test_node.Value) Then
+            Return test_node
+        If(target_value < test_node.Value) Then
+            test_node = test_node.Left
+        Else
+            test_node = test_node.Right
+        End If
+    End Do
+End FindItem
+```
+A balanced bst has roughly 2<sup>h</sup> nodes at the lowest level, where h is the 
+height of the tree. The algorithm at most has to travel a single branch from root to
+leaf which is h nodes long, to check if the balanced bst has the value it is looking
+for. This is log(N), where N is the size of the problem
+The logarithmic fn log(N) grows relatively slowly as N increases, so algorithms with 
+O(logN) performance are generally fast enough to be useful.
