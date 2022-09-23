@@ -170,3 +170,9 @@ O(N<sup>2</sup>) performance.
 - Solutions to problems that look for optimal selection of inputs.
 - Heuristic algorithms need to be used to solve problems with exponential runtimes.
     - Produce good results but cannot guarantee the best possible results.
+
+
+### N!
+- Grow even faster than exponential functions.
+- Look for optimal arrangement of inputs (eg.: Traveling sales man problem)
+
