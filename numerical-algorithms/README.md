@@ -20,3 +20,12 @@ as details of the algorithm and it's internal state are known.
     - Analyzing static in radio waves
     - Studying brownian motion
     - Measuring atmospheric noise
+
+#### Generating values
+- Linear congruential generator:<br>
+X<sub>n+1</sub> = (A x X<sub>n</sub> + B) Mod M,<br> where A, B and M are constants 
+and X<sub>0</sub> is the seed(a value used to initialize the the pseudo-random number 
+generator)<br>The sequence repeats after M numbers.<br>Note: Some pseudo-random number
+generation algorithms use multiple linear congruential generator with different 
+constants and select from one of the several values generated at each step.
+
