@@ -22,7 +22,7 @@ as details of the algorithm and it's internal state are known.
     - Measuring atmospheric noise
 
 #### Generating values
-- Linear congruential generator:<br>
+- Linear congruential generator (LCG):<br>
 X<sub>n+1</sub> = (A x X<sub>n</sub> + B) Mod M,<br> where A, B and M are constants 
 and X<sub>0</sub> is the seed(a value used to initialize the the pseudo-random number 
 generator)<br>The sequence repeats after M numbers.<br>Note: Some pseudo-random number
