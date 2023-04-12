@@ -15,6 +15,9 @@ def parse_tests(tests):
         parsed_tests += 'assert('+test[0]+' == '+test[1]+');\n'
     return parsed_tests
 
+def print_tests(test):
+    print(test)
+
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument('file', 
