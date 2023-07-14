@@ -4,6 +4,9 @@
 
 void play_game1()
 {
+    int guesses[251];
+    int guess_count(0);
+
     int random(rand() % 251);
     std::cout << "Guessing Game\n\n";
     while(true)
@@ -11,6 +14,13 @@ void play_game1()
         int guess;
         std::cout << "Guess a number between 0 and 250\n";
         std::cin >> guess;
+
+        if(already_guessed(guesses, guess_count, guess))
+        {
+            continue;
+        }
+        guesses[guess_count++] = guess;
+        
         if(guess == random)
         {
             std::cout << "Congratulation! You win.\n\n";
@@ -25,6 +35,8 @@ void play_game1()
             std::cout << "Too low!\n";
         }
     }
+
+    print_array(guesses, guess_count);
 }
 
 int main()
