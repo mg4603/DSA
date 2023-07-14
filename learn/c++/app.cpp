@@ -14,6 +14,15 @@ bool already_guessed(int guesses[], int guess_count, int guess)
     return false;
 }
 
+void print_array(int array[], int size)
+{
+    for(int i(0); i < size; i++)
+    {
+        std::cout << array[i] << ' ';
+    }
+    std::cout << std::endl;
+}
+
 void play_game1()
 {
     int guesses[251];
@@ -29,6 +38,7 @@ void play_game1()
 
         if(already_guessed(guesses, guess_count, guess))
         {
+            std::cout << "Already guessed that number! Try again.\n";
             continue;
         }
         guesses[guess_count++] = guess;
@@ -40,15 +50,17 @@ void play_game1()
         }
         else if(guess > random)
         {
-            std::cout << "Too high!\n";
+            std::cout << "Too high! Try again.\n";
         }
         else
         {
-            std::cout << "Too low!\n";
+            std::cout << "Too low! Try again.\n";
         }
     }
 
+    std::cout << "Guesses Made: ";
     print_array(guesses, guess_count);
+    std::cout << std::endl;
 }
 
 int main()
