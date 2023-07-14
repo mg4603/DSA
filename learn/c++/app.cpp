@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
-bool already_guessed(int guesses[], int guess_count, int guess)
+bool already_guessed(std::vector<int> guesses, int guess)
 {
-    for(int i(0); i < guess_count; i++)
+    for(int i(0); i < guesses.size(); i++)
     {
         if(guesses[i] == guess)
         {
@@ -14,19 +15,18 @@ bool already_guessed(int guesses[], int guess_count, int guess)
     return false;
 }
 
-void print_array(int array[], int size)
+void print_vector(std::vector<int> data)
 {
-    for(int i(0); i < size; i++)
+    for(int i(0); i < data.size(); i++)
     {
-        std::cout << array[i] << ' ';
+        std::cout << data[i] << ' ';
     }
     std::cout << std::endl;
 }
 
 void play_game1()
 {
-    int guesses[251];
-    int guess_count(0);
+    std::vector<int> guesses;
 
     int random(rand() % 251);
     std::cout << "Guessing Game\n\n";
@@ -36,12 +36,12 @@ void play_game1()
         std::cout << "Guess a number between 0 and 250\n";
         std::cin >> guess;
 
-        if(already_guessed(guesses, guess_count, guess))
+        if(already_guessed(guesses, guess))
         {
             std::cout << "Already guessed that number! Try again.\n";
             continue;
         }
-        guesses[guess_count++] = guess;
+        guesses.push_back(guess);
         
         if(guess == random)
         {
@@ -59,7 +59,7 @@ void play_game1()
     }
 
     std::cout << "Guesses Made: ";
-    print_array(guesses, guess_count);
+    print_vector(guesses);
     std::cout << std::endl;
 }
 
