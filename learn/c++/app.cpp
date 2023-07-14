@@ -2,6 +2,18 @@
 #include <cstdlib>
 #include <ctime>
 
+bool already_guessed(int guesses[], int guess_count, int guess)
+{
+    for(int i(0); i < guess_count; i++)
+    {
+        if(guesses[i] == guess)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void play_game1()
 {
     int guesses[251];
