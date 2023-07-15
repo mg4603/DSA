@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <fstream>
+#include <limits>
 
 bool already_guessed(std::vector<int> guesses, int guess)
 {
@@ -57,6 +59,26 @@ void play_game1()
             std::cout << "Too low! Try again.\n";
         }
     }
+    std::ifstream input_obj("best_score.txt");
+    int best_score(std::numeric_limits<int>::max());
+    if(input_obj.is_open())
+    {
+        input_obj >> best_score;
+    }
+    input_obj.close();
+
+    std::ofstream output_obj("best_score.txt");
+    if(!output_obj.is_open())
+    {
+        std::cout << "Error: unable to open best scores file.\n";
+        return;
+    }
+
+    if(guesses.size() < best_score)
+    {
+        best_score = guesses.size();
+    }
+    output_obj << best_score;
 
     std::cout << "Guesses Made: ";
     print_vector(guesses);
