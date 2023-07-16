@@ -11,7 +11,7 @@
 // 
 int main()
 {
-    std::cout << "Multi-File Compilation\n\n";
+    std::cout << "Multi-File Compilation with makefile\n\n";
 
     std::cout << "3 ^ 2: " << pow(3) << std::endl;
     std::cout << "3 ^ 3: " << pow(3, 3) << std::endl;
