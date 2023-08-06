@@ -4,6 +4,10 @@
 template <typename T>
 int binary_search(std::vector<T> &vec, T key, int left, int right)
 {
+    if(left > right)
+    {
+        return -1;
+    }
     int mid((left + right) / 2);
     if(vec[mid] ==  key)
     {
@@ -32,6 +36,6 @@ int main()
                         31, 36, 42, 47, 53, 55, 62
                         };
 
-    std::cout << binary_search(vec, 6) << std::endl;;
+    std::cout << binary_search(vec, 41) << std::endl;;
     return 0;
 }
