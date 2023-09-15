@@ -5,7 +5,7 @@ int main()
 {
     Solution sol;
     {
-        assert(sol. == );
+        assert(sol == );
     }
     return 0;
 }
