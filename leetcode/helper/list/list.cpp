@@ -1,4 +1,6 @@
 #include "list.h"
+#include <assert.h>
+#include <vector>
 
 template <typename T>
 ListNode<T>::ListNode()
@@ -40,9 +42,14 @@ ListNode<T>* to_list(std::vector<T> vec)
 template <typename T>
 void list_equal(ListNode<T> *a, ListNode<T> *b)
 {
-    if(!a || ! b)
+    if(!a && ! b)
     {
-        assert(a == b);
+        assert(true);
+        return;
+    }
+    if(!a || !b)
+    {
+        assert(false);
         return;
     }
     assert(a->val == b->val);
