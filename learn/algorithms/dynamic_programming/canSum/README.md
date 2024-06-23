@@ -41,5 +41,33 @@ replacement.
 
 - Time Complexity:  
     $O(n * m)$ 
+    where,  
+        - n is the number of non-negative integers in vector  
+        - m is targetSum
+- Space Complexity:  
+    $O(m)$
+
+
+## Tabulation:
+
+```
+    canSum(targetSum, [numbers]) : bool
+        table := initialize array of length targetSum + 1 with False
+
+        table[0] = True
+
+        for i = 0 to targetSum + 1:
+            if table[i] == True:
+                for num in numbers:
+                        table[i + num] = True
+
+        return table[i + num]
+```
+
+- Time Complexity:  
+    $O(n * m)$ 
+    where,  
+        - n is the number of non-negative integers in vector  
+        - m is targetSum
 - Space Complexity:  
     $O(m)$
