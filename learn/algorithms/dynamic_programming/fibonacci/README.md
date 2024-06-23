@@ -16,7 +16,7 @@ Store the results of computed sub-problems
 
 ```
     fib(n, memo): int
-        if n im memo: return memo[n]
+        if n in memo: return memo[n]
         if n <= 2: return 1
 
         memo[n] = fib(n - 1) + fib(n - 2)
@@ -27,3 +27,17 @@ Store the results of computed sub-problems
 
 - Space Complexity:  
     $O(n) = O(n)$
+
+## Tabulation 
+```
+    fib(n) : int
+        table := initialize array of size n + 1
+        table[1] = 1
+        for i = 2 to n + 1:
+            table[i] = table[i - 1] + table[i - 2]
+        return table[n]
+```
+- Time Complexity:  
+    $O(n)$
+- Space Complexity:  
+    $O(n)$
