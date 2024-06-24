@@ -60,6 +60,27 @@ std::vector<int> memoBestSum(int targetSum, std::vector<int> &nums,
     return shortestCombination;
 }
 
+std::vector<int> tabBestSum(int targetSum, std::vector<int> &numbers) {
+    std::vector<bool> canSumTable(targetSum + 1);
+    std::vector<std::vector<int>> table(targetSum + 1);
+    canSumTable[0] = true;
+
+    for(int i = 0; i < targetSum + 1; i++) {
+        if(canSumTable[i] == true) {
+            for(int &num: numbers) {
+                if(i + num <= targetSum) {
+                    canSumTable[i + num] = true;
+                    if(table[i + num].empty() ||  
+                            table[i + num].size() > table[i].size()) {
+                        table[i + num] = table[i];
+                        table[i + num].push_back(num);
+                    }
+                }
+            }
+        }
+    }
+    return table[targetSum];
+}
 void printRes(int targetSum, std::vector<int> &nums, 
                 std::vector<int> &res) {
     
@@ -107,6 +128,11 @@ int main() {
     nums = {1, 2, 5, 25};
     std::unordered_map<int, std::vector<int>> memo;
     res = memoBestSum(targetSum, nums, memo, flag);
+    printRes(targetSum, nums, res);
+
+    nums = {1, 4, 5};
+    targetSum = 8;
+    res = tabBestSum(targetSum, nums);
     printRes(targetSum, nums, res);
 
     return 0;

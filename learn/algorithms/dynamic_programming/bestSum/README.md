@@ -53,6 +53,38 @@ without replacement.
 ``` 
 - Time Complexity:  
     $O(n * m * m)$  
+    - Copying combination to shortestCombination takes $O(m)$ time
+    where,  
+    - n is the number of elements in numbers  
+    - m is targetSum
+- Space Complexity:  
+    $O(m^2)$
+
+## Tabulation
+```
+    bestSum(targetSum, [numbers]) : => [int]
+        table := initialize a 2D array of size targetSum + 1 with empty 
+                integer arrays
+        canSumTable := initialize an array of size targetSum + 1 with 
+                false values
+        
+        canSumTable[0] := true
+
+        for i := 0 to targetSum + 1:
+            if canSumTable[i] = true:
+                for number in numbers:
+                    if i + number <= targetSum: 
+                        canSumTable[i + number] := true
+
+                        if table[i + number] is empty or 
+                                table[i + number].length > table[i].length:
+                             - table[i + number] := table[i]
+                             - append number to table[i + number]
+
+        return table[targetSum]
+```
+- Time Complexity:  
+    $O(n * m * m)$  
     where,  
     - n is the number of elements in numbers  
     - m is targetSum
