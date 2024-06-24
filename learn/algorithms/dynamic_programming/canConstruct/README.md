@@ -56,14 +56,45 @@ replacement.
 
 - Time Complexity:  
     $O(n \times m^2)$  
-    where,
+    - In the worst case, where word is a single letter, m becomes the height  
+        of tree.
+    - Getting suffix takes m time, and the program runs $n \times m$ times  
     - n is the number of words in wordBank
     - m is the length of targetString
-- In the worst case, where word is a single letter, m becomes the height of  
-    tree.
-- Getting suffix takes m time, and the program runs $n \times m$ times
 
 - Space Complexity:    
     $O(m^3)$  
     - where size of call stack is m, suffix takes takes m space and memo  
         takes m space
+
+## Tabulation
+
+```
+    canConstruct(targetString, [wordBank]) : -> bool
+        table := initialize array of size targetString.length + 1 with 
+                false values
+        table[0] = true
+
+        for i = 0 to targetString.length + 1:
+            if table[i] = true:
+                for word in wordBank:
+                    pos := targetString.find(word, i)
+
+                    if pos = i:
+                        table[i + word.length] = true
+        return table[targetString.length]
+
+```
+
+
+- Time Complexity:  
+    $O(n \times m^2)$  
+    - In the worst case, where word is a single letter, m becomes the height  
+        of tree.
+    - Getting suffix takes m time, and the program runs $n \times m$ times  
+    - n is the number of words in wordBank
+    - m is the length of targetString
+
+- Space Complexity:    
+    $O(m)$  
+    - table takes $O(m)$ space

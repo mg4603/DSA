@@ -36,6 +36,27 @@ bool memoCanConstruct(std::string targetString,
     return canConstruct;
 }
 
+bool tabCanConstruct(std::string targetString, 
+                std::vector<std::string> &wordBank) {
+        std::vector<bool> table(targetString.length() + 1, false);
+        table[0] = true;
+
+        for(int i = 0; i < targetString.length() + 1; i++) {   
+            if(table[i] == true) {
+                for(std::string &word: wordBank) {
+
+                    int pos = targetString.find(word, i);
+
+                    if(pos == i) {
+
+                        table[i + word.length()] = true;
+                    }
+                }
+            }
+        }
+        return table[targetString.length()];
+} 
+
 void printRes(std::string targetString,  
         std::vector<std::string> &wordBank, bool res) {
 
@@ -69,6 +90,10 @@ int main() {
     std::unordered_map<std::string, bool> memo;
     res = memoCanConstruct(targetString, wordBank, memo);
     printRes(targetString, wordBank, res);
-
+    
+    targetString = "enterapotentpot";
+    wordBank = {"a", "p", "ent", "enter", "ot", "o", "t"};
+    res = tabCanConstruct(targetString, wordBank);
+    printRes(targetString, wordBank, res);
     return 0;
 }
