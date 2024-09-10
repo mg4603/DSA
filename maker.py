@@ -12,6 +12,8 @@ def main():
     args = parse_args()
 
     des_folder = Path(args.name)
+    if(des_folder.exists()):
+        exit("Folder already exists")
     des_folder.mkdir(parents=True, exist_ok=True)
 
     template_folder = Path(args.template)
