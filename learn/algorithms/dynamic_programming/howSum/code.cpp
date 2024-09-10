@@ -50,6 +50,28 @@ std::vector<int> memo_howSum(int tgtSum, std::vector<int> &nums,
     return {};
 }
 
+std::vector<int> tab_howSum(int targetSum, 
+                        std::vector<int> &nums) {
+    std::vector<bool> canSumTable(targetSum + 1, false);
+    std::vector<std::vector<int>> table(targetSum + 1);
+
+    canSumTable[0] = true;
+
+    for(int i = 0; i < targetSum + 1; i++) {
+        if(canSumTable[i]) {
+            for(int &num: nums) {
+                if(i + num <= targetSum && table[i + num].empty()) {
+                    canSumTable[i + num] = true;
+                    table[i + num] = table[i];
+                    table[i + num].push_back(num);
+                }
+            }
+        }
+    }
+    return table[targetSum];
+}
+
+
 void printRes(int tgtSum, std::vector<int> &nums, std::vector<int> &res) {
     std::cout << "Target Sum: " << tgtSum << " Numbers: [";
     for(int i = 0; i < nums.size(); i++) {
@@ -102,6 +124,11 @@ int main() {
     std::unordered_map<int, std::vector<int>> memo;
     res = memo_howSum(300, nums, flag, memo);
     printRes(300, nums, res);
+
+    res.clear();
+    nums = {7, 14};
+    res = tab_howSum(315, nums);
+    printRes(315, nums, res);
 
     return 0;
 }

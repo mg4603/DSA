@@ -40,6 +40,35 @@ result in targetSum.
         return res
 ```
 - Time Complexity  
-    $O(n*m^2)$
+    $O(n*m^2)$  
+    - copying res takes m time
+- Space Complexity:  
+    $O(m^2)$  
+    - worst case is if res is all 1s
+
+## Tabulation
+
+```
+    howSum(targetSum, [numbers]) : => [int]
+        table := initialize a 2D array of of size targetSum  + 1 of  
+                size empty integer arrays
+        canSumTable := initialize an array of size targetSum  + 1 
+                with False
+        
+        canSumTable[0] = True
+
+        for i = 1 to targetSum + 1;
+            if canSumTable[i] = True:
+                if i + num <= targetSum:
+                    - canSumTable[i + num] = True
+                    - table[i + num] := table[i]
+                    - append num to table[i + num]
+        return table[i + num]
+```
+
+- Time Complexity  
+    $O(n*m^2)$  
+    - copying res takes m time
 - Space Complexity:  
     $O(m^2)$
+
