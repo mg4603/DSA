@@ -90,6 +90,7 @@ int tableShortestCommonSupersequenceLength(
     return table[m][n];
 }
 
+
 int main() {
     std::string s1 = "ABCBDAB";
     std::string s2 = "BDCABA";
