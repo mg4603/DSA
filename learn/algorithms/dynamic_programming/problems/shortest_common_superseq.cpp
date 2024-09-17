@@ -1,6 +1,28 @@
 #include <iostream>
 #include <vector>
 
+std::string getSCS(std::string s1, std::string s2,
+                int m, int n, 
+                std::vector<std::vector<int>> &lookup) {
+    
+    if(m == 0) {
+        return s2.substr(0, n); 
+    }
+    if(n == 0) {
+        return s1.substr(0, m);
+    }
+
+    if(s1[m - 1] == s2[n - 1]) {
+        return getSCS(s1, s2, m - 1, n - 1, lookup) + s1[m - 1];
+    } else {
+        if(lookup[m - 1][n] < lookup[m][n - 1]) {
+            return getSCS(s1, s2, m - 1, n, lookup) + s1[m - 1];
+        }else {
+            return getSCS(s1, s2, m, n - 1, lookup) + s2[n - 1];
+        }
+    }
+}
+
 int shortestCommonSupersequenceLength(
             std::string s1, std::string s2,
             int m, int n){
@@ -48,11 +70,11 @@ int tableShortestCommonSupersequenceLength(
     int m, int n, std::vector<std::vector<int>> &table) {
     
     for(int i = 0; i <= m; i++) {
-        table[i][0] = 0;
+        table[i][0] = i;
     }
 
     for(int j = 0; j <= n; j++) {
-        table[0][j] = 0;
+        table[0][j] = j;
     }
 
     for(int i = 1; i <= m; i++) {
@@ -60,11 +82,8 @@ int tableShortestCommonSupersequenceLength(
             if(s1[i - 1] == s2[j - 1]) {
                 table[i][j] = 1 + table[i - 1][j - 1];
             }else {
-                if(table[i - 1][j] < table[i][j - 1]) {
-                    table[i][j] = 1 + table[i - 1][j];
-                }else {
-                    table[i][j] = 1 + table[i][j - 1];
-                }
+                table[i][j] = std::min(table[i - 1][j] + 1,
+                                table[i][j - 1] + 1);
             }
         }
     }
@@ -87,6 +106,10 @@ int main() {
     std::vector<std::vector<int>> table(m + 1, std::vector<int>(n + 1, 0));
     std::cout << "Len of shortest common supersequence(table): " 
             << memoShortestCommonSupersequenceLength(s1, s2, m, n, memo)
+            << std::endl;
+
+    std::cout << "Shortest Common Supersequence: " 
+            << getSCS(s1, s2, m, n, memo)
             << std::endl;
     return 0;
 }
