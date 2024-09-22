@@ -6,36 +6,27 @@
 
 #include <vector>
 #include <iostream>
-#include <assert.h>
+#include <climits>
 
-int maxSumIncreasingSubseq(std::vector<int> &nums) {
-    int res = 0;
-    int n = nums.size();
-    std::vector<int> sums = nums;
-    for(int i = 0; i < n; i++) {
-        for(int j = i + 1; j < n; j++) {
-            if(nums[j] > nums[i]) {
-                sums[j] += nums[i];
-            }
-        }
+int maxSumIncreasingSubseq(std::vector<int> &nums, int i, int n, int prev) {
+    if(i == n)return 0;
 
-        res = std::max(res, sums[i]);
+    int exc = maxSumIncreasingSubseq(nums, i + 1, n, prev);
+    int inc = 0;
+    if(nums[i] > prev) {
+        inc = nums[i] + maxSumIncreasingSubseq(nums, i + 1, n, nums[i]);
     }
-    return res;
+    return std::max(inc, exc);
 }
 
 int main() {
-    std::vector<int> nums = {1, 101, 2, 3, 100, 4, 5};
-    int res = 106;
-    assert(maxSumIncreasingSubseq(nums) == res);
-
-    nums = {3, 4, 5, 10};
-    res = 22;
-    assert(maxSumIncreasingSubseq(nums) == res);
+    std::vector<int> nums = {0, 8, 4, 12, 2, 10, 6, 14, 
+                             1, 9, 5, 13, 3, 11};
     
-    nums = {10, 5, 4, 3};
-    res = 10;
-    assert(maxSumIncreasingSubseq(nums) == res);
+    int n = nums.size();
+    std::cout << "The maximum sum of increasing subsequence: " 
+                << maxSumIncreasingSubseq(nums, 0, n, INT_MIN)
+                << std::endl;;
     
     return 0;
 }
