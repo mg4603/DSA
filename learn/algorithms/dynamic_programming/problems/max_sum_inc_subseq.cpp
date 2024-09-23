@@ -19,6 +19,31 @@ int maxSumIncreasingSubseq(std::vector<int> &nums, int i, int n, int prev) {
     return std::max(inc, exc);
 }
 
+int dynamicMaxSumIncreasingSubseq(std::vector<int> &nums) {
+
+    int n = nums.size();
+    if(n == 0)return 0;
+
+    std::vector<int> sums(n, 0);
+    sums[0] = nums[0];
+
+    for(int i = 1; i < n; i++) {
+        for(int j = 0; j < i; j++) {
+            if(nums[i] > nums[j] && sums[i] < sums[j]) {
+                sums[i] = sums[j];
+            }
+        }
+        sums[i] += nums[i];
+    }
+
+    int res = 0;
+    for(int &sum: sums) {
+        res = std::max(res, sum);
+    }
+
+    return res;
+}
+
 int main() {
     std::vector<int> nums = {0, 8, 4, 12, 2, 10, 6, 14, 
                              1, 9, 5, 13, 3, 11};
@@ -26,6 +51,10 @@ int main() {
     int n = nums.size();
     std::cout << "The maximum sum of increasing subsequence: " 
                 << maxSumIncreasingSubseq(nums, 0, n, INT_MIN)
+                << std::endl;;
+
+    std::cout << "The maximum sum of increasing subsequence(dynamic): " 
+                << dynamicMaxSumIncreasingSubseq(nums)
                 << std::endl;;
     
     return 0;
