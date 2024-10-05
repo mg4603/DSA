@@ -10,6 +10,18 @@ int findMinCost(std::vector<std::vector<int>> &grid, int n, int m) {
             findMinCost(grid, n, m - 1)) + grid[n - 1][m - 1];
 }
 
+int dynamicFindMinCost(std::vector<std::vector<int>> &grid,
+                int n, int m, std::vector<std::vector<int>> &memo) {
+    
+    if(n == 0 || m == 0)return INT_MAX;
+    if(n == 1 && m == 1)return grid[0][0];
+    if(memo[n][m] != INT_MAX)return memo[n][m];
+
+    memo[n][m] = std::min(dynamicFindMinCost(grid, n - 1, m, memo),
+                dynamicFindMinCost(grid, n, m - 1, memo)) + grid[n - 1][m - 1];
+    return memo[n][m];
+}
+
 int main() {
 
     std::vector<std::vector<int>> grid = {
@@ -24,5 +36,12 @@ int main() {
     std::cout << "The minimum cost is: " 
         << findMinCost(grid, n, m) 
         << std::endl;;
+
+    std::vector<std::vector<int>> memo(n + 1, 
+                std::vector<int>(m + 1, INT_MAX));
+    
+    std::cout << "The minimum cost(dynamic) is: " 
+            << dynamicFindMinCost(grid, n, m, memo) 
+            << std::endl;
     return 0;
 }
