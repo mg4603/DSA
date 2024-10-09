@@ -1,18 +1,51 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
+std::vector<int> findLongestSeq(
+        std::vector<std::vector<int>> &mat, int i, int j) {
+    
+    int n = mat.size();
+    std::vector<int> longestSeq = {};
+    if(i >= n || j >= n || i < 0 || j < 0)return longestSeq;
+
+    if(i > 0 && mat[i - 1][j] == mat[i][j] + 1) {
+        std::vector<int> seq = findLongestSeq(mat, i - 1, j);
+        if(seq.size() > longestSeq.size())longestSeq = seq;
+    }
+
+    if(i + 1 < n && mat[i + 1][j] == mat[i][j] + 1) {
+        std::vector<int> seq = findLongestSeq(mat, i + 1, j);
+        if(seq.size() > longestSeq.size())longestSeq = seq;
+    }
+
+    if(j > 0 && mat[i][j - 1] == mat[i][j] + 1) {
+        std::vector<int> seq = findLongestSeq(mat, i, j - 1);
+        if(seq.size() > longestSeq.size())longestSeq = seq;
+    }
+
+    if(j + 1 < n && mat[i][j + 1] == mat[i][j] + 1) {
+        std::vector<int> seq = findLongestSeq(mat, i, j + 1);
+        if(seq.size() > longestSeq.size())longestSeq = seq;
+    }
+
+    longestSeq.push_back(mat[i][j]);
+    return longestSeq;
+}
 
 std::vector<int> findLongestSeq(
                 std::vector<std::vector<int>> &mat) {
     int n = mat.size();
-    std::vector<int> longestSeq;
+    std::vector<int> longestSeq = {};
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             std::vector<int> seq = findLongestSeq(mat, i, j);
-            if(longestSeq.size() > seq.size()) {
+            if(longestSeq.size() < seq.size()) {
                 longestSeq = seq;
             }
         }
     }
+    std::reverse(longestSeq.begin(), longestSeq.end());
     return longestSeq;
 }
 
@@ -33,7 +66,7 @@ int main() {
         { 15, 24, 7, 6, 20 },
         { 16, 17, 18, 19, 25 }
     };
-    std::vector<int> res = findLongestPath(mat);
+    std::vector<int> res = findLongestSeq(mat);
     printVector(res);
     return 0;
 }
