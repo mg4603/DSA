@@ -49,6 +49,23 @@ std::vector<int> findLongestSeq(
     return longestSeq;
 }
 
+std::vector<int> dynamicFindLongestSeq(
+        std::vector<std::vector<int>> &mat) {
+    
+    int n = mat.size();
+    std::vector<std::vector<std::vector<int>>> memo(n, std::vector<std::vector<int>>(n));
+
+    std::vector<int> longestSeq = {};
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            std::vector<int> seq = dynamicFindLongestSeq(mat, i, j, memo);
+            if(longestSeq.size() < seq.size()) {
+                longestSeq = seq;
+            }
+        }
+    }
+    return longestSeq;
+}
 template <typename T>
 void printVector(std::vector<T> &vec) {
     for(T it: vec) {
