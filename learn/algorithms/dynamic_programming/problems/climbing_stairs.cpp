@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <assert.h>
 
 /*
     Problem:
@@ -18,9 +19,16 @@
         f(1) = 1
 */
 
+int f(int n );
+
+void test(std::string testName, int n, int res) {
+    std::cout << testName << ": ";
+    assert(f(n) == res);
+    std::cout << "Passed" << std::endl;;
+}
 
 
 int main() {
-
+    
     return 0;
 }
