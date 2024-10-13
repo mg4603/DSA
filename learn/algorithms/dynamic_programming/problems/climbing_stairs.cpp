@@ -19,18 +19,21 @@
         f(1) = 1
 */
 
-int f(int n );
+int f(int n, std::vector<int> &memo);
 
 void test(std::string testName, int n, int res) {
     std::cout << testName << ": ";
-    assert(f(n) == res);
+    std::vector<int> memo(n + 1, 0);
+    assert(f(n, memo) == res);
     std::cout << "Passed" << std::endl;;
 }
 
 
-int f(int n ) {
+int f(int n, std::vector<int> &memo) {
     if(n == 0 || n == 1)return 1;
-    return f(n - 1) + f(n - 2);
+    if(memo[n] != 0)return memo[n];
+    memo[n] = f(n - 1, memo) + f(n - 2, memo);
+    return memo[n];
 }
 
 int main() {
@@ -38,6 +41,6 @@ int main() {
     test("Base case #2", 0, 1);
 
     test("Simple Test #1", 2, 2);
-    
+
     return 0;
 }
