@@ -28,7 +28,12 @@ void test(std::string testName, int n, int res) {
 }
 
 
+
 int main() {
+    test("Base case #1", 1, 1);
+    test("Base case #2", 0, 1);
+
+    test("Simple Test #1", 2, 2);
     
     return 0;
 }
