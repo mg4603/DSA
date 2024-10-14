@@ -21,10 +21,22 @@
 
 int f(int n, std::vector<int> &memo);
 
+int f(int n) {
+    if(n == 0 || n == 1)return 1;
+    int a = 1;
+    int b = 1;
+
+    for(int i = 2; i <= n; i++) {
+        int temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
+}
+
 void test(std::string testName, int n, int res) {
     std::cout << testName << ": ";
-    std::vector<int> memo(n + 1, 0);
-    assert(f(n, memo) == res);
+    assert(f(n) == res);
     std::cout << "Passed" << std::endl;;
 }
 
