@@ -25,6 +25,19 @@
         nth element of 0 indexed cache
 */
 
+int f(int n, int k);
+
+void test(std::string testCase, int n, int k, int res) {
+    std::cout << testCase << ": " << std::endl;
+    assert(f(n, k) == res /*Failed*/);
+    std::cout << "Passed" << std::endl;
+}
+
 int main() {
+    test("Base case #1 (n = 0, k = 2)", 0, 2, 1);
+    test("Base case #2 (n = 1, k = 2)", 1, 2, 1);
+    test("Simple Case #1 (n = 3, k = 2)", 3, 2, 3);
+    test("Simple Case #2 (n = 3, k = 3)", 3, 3, 4);
+    test("Simple Case #3 (n = 5, k = 3)", 5, 3, 13);
     return 0;
 }
