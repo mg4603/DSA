@@ -26,6 +26,19 @@
         nth element of 0-indexed cache
 */
 
+int f(int n);
+
+void test(std::string testCase, int n, int res) {
+    std::cout << testCase << ": " << std::endl;;
+    assert(f(n) == res /*Failed*/);
+    std::cout << "Passed" << std::endl;;
+}
+
 int main() {
+    test("Base case #1", 0, 1);
+    test("Base case #2", 1, 1);
+    test("Base case #3", 2, 2);
+
+    test("Simple test case #1", 3, 4);
     return 0;
 }
