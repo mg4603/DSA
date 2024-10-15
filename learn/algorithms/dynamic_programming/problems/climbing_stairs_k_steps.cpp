@@ -43,14 +43,17 @@ int main() {
 }
 
 int f(int n, int k) {
-    std::vector<int> dp(n + 1);
-    dp[0] = 1;
-    dp[1] = 1;
+    std::vector<int> dp(k);
+    dp[k - 2] = 1;
+    dp[k - 1] = 1;
 
     for(int i = 2; i <= n; i++) {
-        for(int j = 1; j <= k && i - j >= 0; j++) {
-            dp[i] += dp[i - j];
+        int temp = dp[0];
+        for(int j = 1; j < k; j++) {
+            temp += dp[j];
+            dp[j - 1] = dp[j];
         }
+        dp[k - 1] = temp;
     }
-    return dp[n];
+    return dp[k - 1];
 }
