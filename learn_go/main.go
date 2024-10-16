@@ -4,7 +4,7 @@ package main
 // messages to console
 import "fmt"
 
-func main() {
+func numbersStringVariables() {
 	fmt.Println("Hello World!")
 
 	// explicit declarattion
@@ -75,4 +75,58 @@ func main() {
 	var decimalThree = 25.45
 	decimalFour := 2556.237984
 	fmt.Println(decimalOne, decimalTwo, decimalThree, decimalFour)
+}
+
+func printingFormattingString() {
+	// Print
+	// prints to console
+	fmt.Print("\n\nPrint ")
+	fmt.Print("function\n")
+
+	// Println
+	// prints to console and adds new line at the end
+	fmt.Println("Println function")
+
+	// Printf
+	// formatted string
+	//  format specifiers: of form %_
+
+	// %v : default for variables
+	stringOne := "asdf"
+	numOne := 12
+	fmt.Printf(
+		"This is a number: %v and this is a string: %v\n",
+		numOne, stringOne)
+
+	//%q :
+	//	1) places double quotes around a string
+	//	2) only works with strings
+	//	3) replaces number with \f ====> '\f'
+
+	fmt.Printf(
+		"This is a number: %q and this is a string: %q\n",
+		numOne, stringOne)
+
+	// %T : gets the type of the variable
+	fmt.Printf(
+		"This is a number: %T and this is a string: %T\n",
+		numOne, stringOne)
+
+	// %f : format specifier for float
+	// 	> %0._f : _ number of places after decimal point (rounded up)
+	fmt.Printf("This is a float %f \n", 256.154)
+	fmt.Printf("This is a float %0.1f \n", 256.154)
+	fmt.Printf("This is a float %0.3f \n", 256.154)
+
+	// Sprintf
+	// 	save formatted strings in variable
+	var formattedString = fmt.Sprintf("This is a number: %v and this is a string: %v\n",
+		numOne, stringOne)
+
+	fmt.Print("Saved formatted string: \n\t", formattedString)
+}
+
+func main() {
+	numbersStringVariables()
+	printingFormattingString()
 }
