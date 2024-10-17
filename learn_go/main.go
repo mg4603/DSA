@@ -126,7 +126,62 @@ func printingFormattingString() {
 	fmt.Print("Saved formatted string: \n\t", formattedString)
 }
 
+func arraySlices() {
+	// arrays
+	// 	> size is pre-defined and cannot change
+	// explicit array declaration
+	var numsArrOne [4]int = [4]int{1, 2, 3, 4}
+	// inferred array declaration
+	var numsArrTwo = [4]int{5, 6, 7, 8}
+
+	// shorthand declaration
+	stringsArrOne := [4]string{
+		"StringOne",
+		"StringTwo",
+		"StringThree",
+		"StringFour"}
+
+	fmt.Println(numsArrOne, len(numsArrOne))
+	fmt.Println(numsArrTwo, len(numsArrTwo))
+	fmt.Println(stringsArrOne, len(stringsArrOne))
+
+	// slices
+	// 	> dynamic arrays
+	// 	> use arrays in the background
+	// 	> if length is not defined go creates a
+	// 		slice rather than an array
+
+	var slices = []int{9, 10, 11, 12}
+	fmt.Println(slices, len(slices))
+
+	// append doesn't change the slice
+	// it returns a new slice with the element
+	// 	being added appended to the end
+	// 	so it needs to be reinitialized
+	slices = append(slices, 13)
+	fmt.Println(slices, len(slices))
+
+	// ranges are slices
+	// 	> you can get a range of a slice or array
+	// 	> all operations that apply to slices
+	// 		also apply to ranges
+
+	// elements from 1 to 3 excluding 3
+	rangeOne := stringsArrOne[1:3]
+	fmt.Println(rangeOne)
+
+	// elements from index 2 to end
+	rangeTwo := stringsArrOne[2:]
+	fmt.Println(rangeTwo)
+
+	// elements from index 0 to 3 excluding 3
+	rangeThree := stringsArrOne[:3]
+	fmt.Println(rangeThree)
+
+}
+
 func main() {
 	numbersStringVariables()
 	printingFormattingString()
+	arraySlices()
 }
