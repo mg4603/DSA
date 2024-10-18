@@ -246,10 +246,53 @@ func sortPackage() {
 	fmt.Println(sort.SearchStrings(stringOne, "StringOne"))
 }
 
+func loops() {
+	// All loops use for keyword
+
+	// while loop
+	i := 0
+	for i < 5 {
+		fmt.Print(i)
+		if i != 4 {
+			fmt.Print(", ")
+		}
+		i++
+	}
+	fmt.Println()
+
+	// for loops
+	for i := 5; i < 10; i++ {
+		fmt.Print(i)
+		if i != 9 {
+			fmt.Print(", ")
+		}
+	}
+	fmt.Println()
+
+	numsOne := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+	// index and value at index
+
+	// value is a local variable,
+	//	changing it doesn't change the slice
+	for index, value := range numsOne {
+		fmt.Printf("the value at index %v is %v\n",
+			index, value)
+	}
+
+	// if value or index aren't required, use _
+
+	for _, value := range numsOne {
+		fmt.Printf("the value at %v\n", value)
+
+	}
+}
+
 func main() {
 	// numbersStringVariables()
 	// printingFormattingString()
 	// arraySlices()
 	// stringPackage()
 	// sortPackage()
+	loops()
 }
