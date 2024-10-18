@@ -2,7 +2,10 @@ package main
 
 // formating string, printing
 // messages to console
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func numbersStringVariables() {
 	fmt.Println("Hello World!")
@@ -180,8 +183,41 @@ func arraySlices() {
 
 }
 
+func stringPackage() {
+
+	stringOne := "Hello World!"
+
+	// strings.Contains(stringToBeChecked, stringToCheck)
+	fmt.Println("\""+stringOne+"\"", "contains", "\"Hello\"?",
+		strings.Contains(stringOne, "Hello"))
+
+	fmt.Println("\""+stringOne+"\"", "contains",
+		"\"Hello!\"?", strings.Contains(stringOne, "Hello!"))
+
+	// ReplaceAll
+	// 	Doesn't alter original string, returns a new one
+	fmt.Println("Replace all occurrences of Hello with Goodbye:\n",
+		strings.ReplaceAll(stringOne, "Hello", "Goodbye,"))
+
+	// convert string to uppercase
+	// 	Doesn't alter original string, returns a new one
+	fmt.Println(strings.ToUpper(stringOne))
+
+	// Index
+	// 	find index of first occurence in string
+	fmt.Println(strings.Index(stringOne, "World"))
+
+	// split
+	// 	returns a slice of strings
+	// 	split at each point where string to
+	// 	split by orrured
+	fmt.Println(strings.Split(stringOne, " W"))
+
+}
+
 func main() {
-	numbersStringVariables()
-	printingFormattingString()
-	arraySlices()
+	// numbersStringVariables()
+	// printingFormattingString()
+	// arraySlices()
+	stringPackage()
 }
