@@ -4,6 +4,7 @@ package main
 // messages to console
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
@@ -215,9 +216,40 @@ func stringPackage() {
 
 }
 
+func sortPackage() {
+	intsOne := []int{45, 63, 721, 81, 9, 13}
+
+	// Ints
+	// 	> sorts the elements of an integer array
+	// 	> the original array is changed
+	fmt.Println((intsOne))
+	sort.Ints(intsOne)
+	fmt.Println((intsOne))
+
+	// SearchInts
+	//	> returns the index of element being searched
+	// 	  for in sorted integer array
+	//  > if element searched for doesn't exists
+	// 	  function returns length of array + 1
+	fmt.Println("Position of 63: ",
+		sort.SearchInts(intsOne, 63))
+
+	stringOne := []string{"StringOne", "StringTwo",
+		"StringThree", "StringFour"}
+	fmt.Println(stringOne)
+	sort.Strings(stringOne)
+	fmt.Println(stringOne)
+
+	// SearchStrings
+	// 	> returns the index of element being searched
+	// 	  form in sorted strings array
+	fmt.Println(sort.SearchStrings(stringOne, "StringOne"))
+}
+
 func main() {
 	// numbersStringVariables()
 	// printingFormattingString()
 	// arraySlices()
-	stringPackage()
+	// stringPackage()
+	// sortPackage()
 }
