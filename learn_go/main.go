@@ -4,6 +4,7 @@ package main
 // messages to console
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 )
@@ -321,12 +322,44 @@ func booleansConditionals() {
 	}
 }
 
+func sayGreeting(name string) {
+	fmt.Printf("Good morning %v!\n", name)
+}
+
+func sayBye(name string) {
+	fmt.Printf("Goodbye %v \n", name)
+}
+
+// pass function to function
+func cycleNames(names []string, f func(string)) {
+	for _, name := range names {
+		f(name)
+	}
+}
+
+func circleArea(r float64) float64 {
+	return math.Pi * r * r
+}
+
 func main() {
 	// numbersStringVariables()
 	// printingFormattingString()
 	// arraySlices()
 	// stringPackage()
 	// sortPackage()
-	loops()
-	booleansConditionals()
+	// loops()
+	// booleansConditionals()
+	// sayGreeting("World")
+
+	// > pass reference to function sayGreeting
+	// 		to function cycleNames
+	// > don't invoke function
+	// names := []string{"name1", "name2", "name3"}
+	// cycleNames(names, sayGreeting)
+	// cycleNames(names, sayBye)
+
+	a1 := circleArea(10.5)
+	a2 := circleArea(15)
+	fmt.Printf("Circle1 is %0.3f\n", a1)
+	fmt.Printf("Circle2 is %0.3f\n", a2)
 }
