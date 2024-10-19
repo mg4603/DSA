@@ -288,6 +288,39 @@ func loops() {
 	}
 }
 
+func booleansConditionals() {
+	num := 123
+
+	fmt.Println(num <= 100)
+	fmt.Println(num >= 100)
+	fmt.Println(num == 123)
+	fmt.Println(num != 124)
+
+	if num < 100 {
+		fmt.Println("Num is less than 100")
+	} else if num < 110 {
+		fmt.Println("Num is less than 110")
+	} else {
+		fmt.Println("Num is not less than than 110")
+	}
+
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8}
+
+	for idx, value := range nums {
+		if idx == 1 {
+			fmt.Println("Continuing at pos", idx)
+			continue
+		}
+
+		if idx > 5 {
+			fmt.Println("Breaking at pos", idx)
+			break
+		}
+		fmt.Printf("The value at pos %v is %v\n", idx, value)
+
+	}
+}
+
 func main() {
 	// numbersStringVariables()
 	// printingFormattingString()
@@ -295,4 +328,5 @@ func main() {
 	// stringPackage()
 	// sortPackage()
 	loops()
+	booleansConditionals()
 }
