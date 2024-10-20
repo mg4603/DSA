@@ -341,6 +341,28 @@ func circleArea(r float64) float64 {
 	return math.Pi * r * r
 }
 
+// multiple return values
+func getInitials(name string) (string, string) {
+	name = strings.ToUpper(name)
+	names := strings.Split(name, " ")
+
+	var initials []string
+	for _, val := range names {
+		initials = append(initials, val[:1])
+	}
+
+	len_initials := len(initials)
+
+	if len_initials > 2 {
+		return initials[0], initials[len_initials-1]
+	} else {
+		if len_initials == 1 {
+			return initials[0], "_"
+		}
+		return initials[0], initials[1]
+	}
+}
+
 func main() {
 	// numbersStringVariables()
 	// printingFormattingString()
@@ -358,8 +380,17 @@ func main() {
 	// cycleNames(names, sayGreeting)
 	// cycleNames(names, sayBye)
 
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
-	fmt.Printf("Circle1 is %0.3f\n", a1)
-	fmt.Printf("Circle2 is %0.3f\n", a2)
+	// a1 := circleArea(10.5)
+	// a2 := circleArea(15)
+	// fmt.Printf("Circle1 is %0.3f\n", a1)
+	// fmt.Printf("Circle2 is %0.3f\n", a2)
+
+	fn, ln := getInitials("name surname")
+	fmt.Println(fn, ln)
+
+	fn2, ln2 := getInitials("name2 middlename2 surname2")
+	fmt.Println(fn2, ln2)
+
+	fn3, ln3 := getInitials("name3")
+	fmt.Println(fn3, ln3)
 }
