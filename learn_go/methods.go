@@ -360,3 +360,31 @@ func getInitials(name string) (string, string) {
 		return initials[0], initials[1]
 	}
 }
+
+func mapsTutorial() {
+	menu := map[string]float64{
+		"soup":           4.99,
+		"pie":            7.99,
+		"salad":          6.99,
+		"toffee pudding": 3.55,
+	}
+	fmt.Println(menu)
+	fmt.Println(menu["pie"])
+
+	for key, value := range menu {
+		fmt.Println(key, "-", value)
+	}
+
+	phonebook := map[int]string{
+		123456789: "name1",
+		234567891: "name2",
+		345789912: "name3",
+	}
+	fmt.Println(phonebook)
+	fmt.Println(phonebook[234567891])
+
+	phonebook[234567891] = "name4"
+	fmt.Println(phonebook)
+	fmt.Println(phonebook[234567891])
+
+}

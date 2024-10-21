@@ -33,5 +33,6 @@ func main() {
 	//
 	// fn3, ln3 := getInitials("name3")
 	// fmt.Println(fn3, ln3)
+	mapsTutorial()
 
 }
