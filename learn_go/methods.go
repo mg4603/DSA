@@ -388,3 +388,10 @@ func mapsTutorial() {
 	fmt.Println(phonebook[234567891])
 
 }
+
+func pointerTutorial(str *string) {
+	// dereference pointer str
+	//  allows to change pointed at by str
+
+	*str = "New String"
+}

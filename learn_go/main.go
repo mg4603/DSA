@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // formating string, printing
 // messages to console
 
@@ -33,6 +35,11 @@ func main() {
 	//
 	// fn3, ln3 := getInitials("name3")
 	// fmt.Println(fn3, ln3)
-	mapsTutorial()
+	// mapsTutorial()
+
+	str := "String"
+	fmt.Println(str)
+	pointerTutorial(&str)
+	fmt.Println(str)
 
 }
