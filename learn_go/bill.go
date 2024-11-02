@@ -10,14 +10,9 @@ type bill struct {
 
 func newBill(name string) bill {
 	b := bill{
-		name: name,
-		items: map[string]float64{
-			"soup":           4.99,
-			"pie":            7.99,
-			"salad":          6.99,
-			"toffee pudding": 3.55,
-		},
-		tip: 0,
+		name:  name,
+		items: map[string]float64{},
+		tip:   0,
 	}
 	return b
 }
@@ -40,4 +35,8 @@ func (b bill) format() string {
 	// 25 to left align variable and pad it 25 spaces
 	fs += fmt.Sprintf("%-25v ...$%0.2f \n", "total:", total)
 	return fs
+}
+
+func (b *bill) updateTip(tip float64) {
+	b.tip = tip
 }
