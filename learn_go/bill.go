@@ -23,7 +23,7 @@ func newBill(name string) bill {
 // an object b of type bill is rececived into
 //	the format function
 
-func (b bill) format() string {
+func (b *bill) format() string {
 	fs := "Bill Breakdown: \n"
 	var total float64 = 0
 
@@ -42,4 +42,8 @@ func (b bill) format() string {
 
 func (b *bill) updateTip(tip float64) {
 	b.tip = tip
+}
+
+func (b *bill) addItem(name string, price float64) {
+	b.items[name] = price
 }
