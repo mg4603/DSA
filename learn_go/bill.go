@@ -31,6 +31,9 @@ func (b bill) format() string {
 		total += v
 		fs += fmt.Sprintf("%-25v ...$%v \n", k+":", v)
 	}
+	// add tip
+	fs += fmt.Sprintf("%-25v ...$%0.2f\n", "tip:", b.tip)
+	total += b.tip
 	// -25 to right align padded and pad it 25 spaces
 	// 25 to left align variable and pad it 25 spaces
 	fs += fmt.Sprintf("%-25v ...$%0.2f \n", "total:", total)
