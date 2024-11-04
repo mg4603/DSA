@@ -34,6 +34,19 @@ func createBill() bill {
 	return bill
 }
 
+func getItem(reader *bufio.Reader) (string, float64) {
+	item_name, _ := getInput(reader, "Item Name: ")
+	price_string, _ := getInput(reader, "Item price: ")
+
+	price, err := strconv.ParseFloat(price_string, 64)
+
+	if err != nil {
+		fmt.Println("The price must be a number")
+		return getItem(reader)
+	}
+	return item_name, price
+}
+
 func promptOptions(b *bill) {
 	reader := bufio.NewReader(os.Stdin)
 
