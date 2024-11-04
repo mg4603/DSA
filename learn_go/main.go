@@ -47,6 +47,18 @@ func getItem(reader *bufio.Reader) (string, float64) {
 	return item_name, price
 }
 
+func getTip(reader *bufio.Reader) float64 {
+	tip_string, _ := getInput(reader, "Enter tip amount ($): ")
+
+	tip, err := strconv.ParseFloat(tip_string, 64)
+
+	if err != nil {
+		fmt.Println("The tip must be a number")
+		return getTip(reader)
+	}
+	return tip
+}
+
 func promptOptions(b *bill) {
 	reader := bufio.NewReader(os.Stdin)
 
