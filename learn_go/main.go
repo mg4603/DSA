@@ -74,15 +74,7 @@ func promptOptions(b *bill) {
 		fmt.Println("item added - ", item_name, price)
 		promptOptions(b)
 	case "t":
-		tip_string, _ := getInput(reader, "Enter tip amount ($): ")
-
-		tip, err := strconv.ParseFloat(tip_string, 64)
-
-		if err != nil {
-			fmt.Println("The tip must be a number")
-			promptOptions(b)
-			return
-		}
+		tip := getTip(reader)
 
 		b.updateTip(tip)
 		fmt.Println("tip added - ", tip)
