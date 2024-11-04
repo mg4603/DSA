@@ -56,17 +56,7 @@ func promptOptions(b *bill) {
 
 	switch option {
 	case "a":
-		item_name, _ := getInput(reader, "Item Name: ")
-		price_string, _ := getInput(reader, "Item price: ")
-
-		price, err := strconv.ParseFloat(price_string, 64)
-
-		if err != nil {
-			fmt.Println("The price must be a number")
-			promptOptions(b)
-			return
-		}
-
+		item_name, price := getItem(reader)
 		b.addItem(item_name, price)
 
 		fmt.Println("item added - ", item_name, price)
