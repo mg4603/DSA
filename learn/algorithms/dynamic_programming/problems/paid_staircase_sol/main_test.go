@@ -30,3 +30,39 @@ func Test_reverseSlice(t *testing.T) {
 		})
 	}
 }
+
+func Test_max(t *testing.T) {
+	type args struct {
+		a int
+		b int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "Simple Test #1",
+			args: args{
+				a: 2,
+				b: 3,
+			},
+			want: 3,
+		},
+		{
+			name: "Simple Test #2",
+			args: args{
+				a: 3,
+				b: 2,
+			},
+			want: 3,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := max(tt.args.a, tt.args.b); got != tt.want {
+				t.Errorf("max() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
