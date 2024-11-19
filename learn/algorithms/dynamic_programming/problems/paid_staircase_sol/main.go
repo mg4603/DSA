@@ -17,3 +17,10 @@ func reverseSlice(s []int) []int {
 	}
 	return s
 }
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
