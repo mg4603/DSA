@@ -66,3 +66,42 @@ func Test_max(t *testing.T) {
 		})
 	}
 }
+
+func Test_paidStaircase(t *testing.T) {
+	type args struct {
+		cost []int
+		n    int
+		k    int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []int
+	}{
+		{
+			name: "base case #1",
+			args: args{
+				cost: []int{1, 2},
+				n:    2,
+				k:    2,
+			},
+			want: []int{1},
+		},
+		{
+			name: "simple case #1",
+			args: args{
+				cost: []int{2, 3, 4, 6, 1, 1, 5, 3},
+				n:    8,
+				k:    2,
+			},
+			want: []int{0, 2, 4, 5, 7},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := paidStaircase(tt.args.cost, tt.args.n, tt.args.k); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("paidStaircase() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
