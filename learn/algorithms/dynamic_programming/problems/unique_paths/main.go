@@ -44,3 +44,7 @@ func uniquePaths(m int, n int) int {
 type Pair struct {
 	i, j int
 }
+
+type HashSet struct {
+	elements map[Pair]struct{}
+}
