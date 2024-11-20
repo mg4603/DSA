@@ -62,3 +62,9 @@ func (h *HashSet) Remove(i, j int) {
 	key := Pair{i: i, j: j}
 	delete(h.elements, key)
 }
+
+func (h *HashSet) Contains(i, j int) bool {
+	key := Pair{i: i, j: j}
+	_, exists := h.elements[key]
+	return exists
+}
