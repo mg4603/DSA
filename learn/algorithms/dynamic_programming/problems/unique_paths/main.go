@@ -40,3 +40,7 @@ func uniquePaths(m int, n int) int {
 	}
 	return dp[m-1][n-1]
 }
+
+type Pair struct {
+	i, j int
+}
