@@ -57,3 +57,8 @@ func (h *HashSet) Add(i, j int) {
 	key := Pair{i: i, j: j}
 	h.elements[key] = struct{}{}
 }
+
+func (h *HashSet) Remove(i, j int) {
+	key := Pair{i: i, j: j}
+	delete(h.elements, key)
+}
