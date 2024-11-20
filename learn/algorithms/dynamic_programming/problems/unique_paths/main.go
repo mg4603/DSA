@@ -48,3 +48,12 @@ type Pair struct {
 type HashSet struct {
 	elements map[Pair]struct{}
 }
+
+func NewHashSet() *HashSet {
+	return &HashSet{elements: make(map[Pair]struct{})}
+}
+
+func (h *HashSet) Add(i, j int) {
+	key := Pair{i: i, j: j}
+	h.elements[key] = struct{}{}
+}
