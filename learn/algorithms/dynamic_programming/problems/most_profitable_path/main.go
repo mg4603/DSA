@@ -73,3 +73,16 @@ func reverseSlice[T any](s []T) []T {
 	}
 	return s
 }
+
+func slicesEqual(a, b []Pair) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	for i := range a {
+		if a[i].i != b[i].i || a[i].j != b[i].j {
+			return false
+		}
+	}
+	return true
+}
