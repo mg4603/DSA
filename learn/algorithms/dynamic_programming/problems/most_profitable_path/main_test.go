@@ -132,3 +132,79 @@ func Test_reverseSlice(t *testing.T) {
 		})
 	}
 }
+
+func Test_slicesEqual(t *testing.T) {
+	type args struct {
+		a []Pair
+		b []Pair
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "Empty Slices",
+			args: args{
+				a: []Pair{},
+				b: []Pair{},
+			},
+			want: true,
+		},
+		{
+			name: "One Empty Slice",
+			args: args{
+				a: []Pair{},
+				b: []Pair{{i: 1, j: 2}},
+			},
+			want: false,
+		},
+		{
+			name: "Equal Single Element",
+			args: args{
+				a: []Pair{{i: 1, j: 2}},
+				b: []Pair{{i: 1, j: 2}},
+			},
+			want: true,
+		},
+		{
+			name: "Different Single Element",
+			args: args{
+				a: []Pair{{i: 1, j: 2}},
+				b: []Pair{{i: 2, j: 2}},
+			},
+			want: false,
+		},
+		{
+			name: "Mutliple Equal Elements",
+			args: args{
+				a: []Pair{{i: 1, j: 2},
+					{i: 2, j: 3},
+					{i: 3, j: 4}},
+				b: []Pair{{i: 1, j: 2},
+					{i: 2, j: 3},
+					{i: 3, j: 4}},
+			},
+			want: true,
+		},
+		{
+			name: "Mutliple Elements Not Equal",
+			args: args{
+				a: []Pair{{i: 1, j: 2},
+					{i: 2, j: 3},
+					{i: 5, j: 4}},
+				b: []Pair{{i: 1, j: 2},
+					{i: 2, j: 3},
+					{i: 3, j: 4}},
+			},
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := slicesEqual(tt.args.a, tt.args.b); got != tt.want {
+				t.Errorf("slicesEqual() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
