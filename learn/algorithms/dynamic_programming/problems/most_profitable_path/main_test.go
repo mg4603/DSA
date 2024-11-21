@@ -31,3 +31,54 @@ func Test_max(t *testing.T) {
 		})
 	}
 }
+
+func Test_MostProfit(t *testing.T) {
+	tests := []struct {
+		name string
+		grid [][]int
+		want int
+	}{
+		{
+			name: "Base case #1: grid of size 1x1",
+			grid: [][]int{{5}},
+			want: 5,
+		},
+		{
+			name: "Base case #2: grid of size 0x0",
+			grid: [][]int{},
+			want: 0,
+		},
+		{
+			name: "Base case #3: grid of size 1x0",
+			grid: [][]int{{}},
+			want: 0,
+		},
+		{
+			name: "Simple Case #1: grid of size 3x4",
+			grid: [][]int{
+				{0, 2, 2, 1},
+				{3, 1, 1, 1},
+				{4, 4, 2, 0},
+			},
+			want: 13,
+		},
+		{
+			name: "Simple Case #2: grid of size 3x4",
+			grid: [][]int{
+				{0, 2, 2, 50},
+				{3, 1, 1, 100},
+				{4, 4, 2, 0},
+			},
+			want: 154,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := MostProfit(tt.grid); got != tt.want {
+				t.Errorf("MostProfit(%v) = %v; want %v", tt.grid, got, tt.want)
+			}
+		})
+
+	}
+}
