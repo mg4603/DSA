@@ -1,6 +1,9 @@
 package mostprofitablepath
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func Test_max(t *testing.T) {
 	type args struct {
@@ -83,15 +86,49 @@ func Test_MostProfit(t *testing.T) {
 	}
 }
 
-func slicesEqual(a, b []Pair) bool {
-	if len(a) != len(b) {
-		return false
+func Test_reverseSlice(t *testing.T) {
+	tests := []struct {
+		name  string
+		input interface{}
+		want  interface{}
+	}{
+		{
+			name:  "Reverse Integers",
+			input: []int{1, 2, 3, 4, 5},
+			want:  []int{5, 4, 3, 2, 1},
+		},
+		{
+			name:  "Reverse Strings",
+			input: []string{"a", "b", "c", "d"},
+			want:  []string{"d", "c", "b", "a"},
+		},
+		{
+			name:  "Empty Slice",
+			input: []int{},
+			want:  []int{},
+		},
+		{
+			name:  "Single Element",
+			input: []string{"X"},
+			want:  []string{"X"},
+		},
 	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			inputValue := reflect.ValueOf(tt.input)
+			copyValue := reflect.MakeSlice(inputValue.Type(), inputValue.Len(), inputValue.Cap())
+			reflect.Copy(copyValue, inputValue)
 
-	for i, _ := range a {
-		if a[i] != b[i] {
-			return false
-		}
+			switch v := tt.input.(type) {
+			case []int:
+				reverseSlice(v)
+			case []string:
+				reverseSlice(v)
+			}
+
+			if !reflect.DeepEqual(inputValue.Interface(), tt.want) {
+				t.Errorf("ReverseSlice(%v) = %v; want %v", copyValue.Interface(), inputValue.Interface(), tt.want)
+			}
+		})
 	}
-	return true
 }
