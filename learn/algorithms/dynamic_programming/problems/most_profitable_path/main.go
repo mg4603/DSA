@@ -86,3 +86,63 @@ func slicesEqual(a, b []Pair) bool {
 	}
 	return true
 }
+
+/*
+   record cell with higher profit betweet the
+   cell above and cell right in prev
+   and follow path from (m,n) back to origin
+*/
+
+func MostProfitablePath(cost [][]int) []Pair {
+	m := len(cost)
+	if m <= 0 {
+		return []Pair{}
+	}
+	n := len(cost[0])
+	if n <= 0 {
+		return []Pair{}
+	}
+
+	dp := make([][]int, m)
+	prev := make([][]Pair, m)
+	for i := 0; i < m; i++ {
+		dp[i] = make([]int, n)
+		prev[i] = make([]Pair, n)
+	}
+	dp[0][0] = cost[0][0]
+	prev[0][0] = Pair{i: -1, j: -1}
+
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+
+			dp[i][j] = cost[i][j]
+			if i-1 >= 0 && j-1 >= 0 {
+				if dp[i-1][j] < dp[i][j-1] {
+					dp[i][j] += dp[i][j-1]
+					prev[i][j] = Pair{i: i, j: j - 1}
+				} else {
+					dp[i][j] += dp[i-1][j]
+					prev[i][j] = Pair{i: i - 1, j: j - 1}
+				}
+			} else if i-1 >= 0 {
+				dp[i][j] += dp[i-1][j]
+				prev[i][j] = Pair{i: i - 1, j: j}
+			} else if j-1 >= 0 {
+				dp[i][j] += dp[i][j-1]
+				prev[i][j] = Pair{i: i, j: j - 1}
+			}
+		}
+	}
+
+	var res []Pair
+	i := m - 1
+	j := n - 1
+	for i >= 0 && j >= 0 {
+		res = append(res, Pair{i: i, j: j})
+		temp_i := i
+		i = prev[i][j].i
+		j = prev[temp_i][j].j
+	}
+	reverseSlice(res)
+	return res
+}
