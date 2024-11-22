@@ -208,3 +208,48 @@ func Test_slicesEqual(t *testing.T) {
 		})
 	}
 }
+
+func TestMostProfitablePath(t *testing.T) {
+	tests := []struct {
+		name     string
+		costGrid [][]int
+		want     []Pair
+	}{
+		{
+			name:     "Base Case #1: 0x0",
+			costGrid: [][]int{},
+			want:     []Pair{},
+		},
+		{
+			name:     "Base Case #2: 1x0",
+			costGrid: [][]int{{}},
+			want:     []Pair{},
+		},
+		{
+			name:     "Base Case #1: 1x1",
+			costGrid: [][]int{{5}},
+			want:     []Pair{{i: 0, j: 0}},
+		},
+		{
+			name: "Simple case #1: 3x4",
+			costGrid: [][]int{
+				{0, 2, 2, 1},
+				{3, 1, 1, 1},
+				{4, 4, 2, 0},
+			},
+			want: []Pair{
+				{i: 0, j: 0}, {i: 1, j: 0}, {i: 2, j: 0},
+				{i: 2, j: 1}, {i: 2, j: 2}, {i: 2, j: 3},
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := MostProfitablePath(tt.costGrid); !slicesEqual(got, tt.want) {
+				t.Errorf("MostProfitablePath(%v) : %v; want %v",
+					tt.costGrid, got, tt.want)
+			}
+		})
+	}
+}
