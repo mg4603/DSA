@@ -1,6 +1,8 @@
 package coinchange
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_coinChange(t *testing.T) {
 	tests := []struct {
@@ -51,6 +53,67 @@ func Test_coinChange(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := coinChange(tt.denominations, tt.n); got != tt.want {
 				t.Errorf("coinChange(%v) = %v, want %v", tt.n, got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_exactlyCCoins(t *testing.T) {
+	tests := []struct {
+		name          string
+		n             int
+		c             int
+		denominations []int
+		expected      int
+	}{
+
+		{
+			name:          "Basic case, exact solution exists",
+			n:             5,
+			c:             2,
+			denominations: []int{1, 2, 3, 4},
+			expected:      2,
+		},
+		{
+			name:          "Impossible case with insufficient coins",
+			n:             5,
+			c:             1,
+			denominations: []int{1, 2, 3},
+			expected:      0,
+		},
+		{
+			name:          "Case with larger denominations",
+			n:             10,
+			c:             3,
+			denominations: []int{2, 5, 3, 6},
+			expected:      2,
+		},
+		{
+			name:          "Edge case: No denominations",
+			n:             7,
+			c:             2,
+			denominations: []int{},
+			expected:      0,
+		},
+		{
+			name:          "Edge case: Zero target amount",
+			n:             0,
+			c:             0,
+			denominations: []int{1, 2, 3},
+			expected:      1,
+		},
+		{
+			name:          "Exact coins equal target",
+			n:             6,
+			c:             2,
+			denominations: []int{3, 6},
+			expected:      1,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := exactlyCCoins(tt.n, tt.c, tt.denominations); got != tt.expected {
+				t.Errorf("exactlyCCoins(%v, %v, %v) = %v, want %v", tt.n, tt.c, tt.denominations, got, tt.expected)
 			}
 		})
 	}
