@@ -89,3 +89,32 @@ func exactlyCCoins(n int, c int, denominations []int) int {
 	}
 	return dp[n][c]
 }
+
+/*
+
+No More than c coins:
+F(0, j) = 1
+*/
+
+func noMoreThanCCoins(n int, c int, denominations []int) int {
+	dp := make([][]int, n+1)
+
+	for i := range dp {
+		dp[i] = make([]int, c+1)
+	}
+
+	for j := 0; j <= c; j++ {
+		dp[0][j] = 1
+	}
+
+	for _, denomination := range denominations {
+		for i := 0; i <= n; i++ {
+			for j := 1; j <= c; j++ {
+				if i >= denomination {
+					dp[i][j] += dp[i-denomination][j-1]
+				}
+			}
+		}
+	}
+	return dp[n][c]
+}
