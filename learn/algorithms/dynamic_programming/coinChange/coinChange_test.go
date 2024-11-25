@@ -118,3 +118,63 @@ func Test_exactlyCCoins(t *testing.T) {
 		})
 	}
 }
+
+func Test_noMoreThanCCoins(t *testing.T) {
+
+	tests := []struct {
+		name          string
+		n             int
+		c             int
+		denominations []int
+		want          int
+	}{
+		{
+			name:          "Base Case #1: n = 0, any c",
+			n:             0,
+			c:             5,
+			denominations: []int{1, 3, 5, 7},
+			want:          1,
+		},
+		{
+			name:          "Base Case #2: n = 0, c = 0",
+			n:             0,
+			c:             0,
+			denominations: []int{1, 3, 5, 7},
+			want:          1,
+		},
+		{
+			name:          "Simple Case #1: n = 5, c = 2",
+			n:             5,
+			c:             2,
+			denominations: []int{1, 2, 3},
+			want:          1, //{2, 3},
+		}, {
+			name:          "Simple Case #2: n = 5, c = 3",
+			n:             5,
+			c:             3,
+			denominations: []int{1, 2, 3},
+			want:          3, //{1, 2, 2}, {2, 3}, {1,1,3}
+		},
+		{
+			name:          "Simple Case #3: n = 3, c = 1",
+			n:             3,
+			c:             1,
+			denominations: []int{1, 2, 3},
+			want:          1,
+		},
+		{
+			name:          "Simple Case #4: n = 6, c = 2",
+			n:             6,
+			c:             1,
+			denominations: []int{1, 2, 3},
+			want:          0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := noMoreThanCCoins(tt.n, tt.c, tt.denominations); got != tt.want {
+				t.Errorf("noMoreThanCCoins(%v, %v, %v) = %v, want %v", tt.n, tt.c, tt.denominations, got, tt.want)
+			}
+		})
+	}
+}
