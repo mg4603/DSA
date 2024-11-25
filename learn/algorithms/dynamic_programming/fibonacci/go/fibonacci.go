@@ -50,3 +50,25 @@ func BottomUpForward(n int) int {
 	}
 	return dp[n]
 }
+
+// Bottom-up (backward dynamic programming)
+// 	dp[i] is used to solve the next sub-problem
+// 	dp[i + 1] += dp[i]
+// 	dp[i + 2] += dp[i]
+
+func fibBottomUpBackward(n int) int {
+	if n == 0 {
+		return 0
+	}
+	if n <= 2 {
+		return 1
+	}
+	dp := make([]int, n+2)
+	dp[0] = 0
+	dp[1] = 1
+	for i := 1; i < n; i++ {
+		dp[i+1] += dp[i]
+		dp[i+2] += dp[i]
+	}
+	return dp[n]
+}
