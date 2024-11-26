@@ -178,3 +178,44 @@ func Test_noMoreThanCCoins(t *testing.T) {
 		})
 	}
 }
+
+func Test_evenNumberCoins(t *testing.T) {
+	tests := []struct {
+		name          string
+		n             int
+		denominations []int
+		want          int
+	}{
+		{
+			name:          "Base Case#1: n = 0",
+			n:             0,
+			denominations: []int{1, 2, 3, 5},
+			want:          1,
+		},
+		{
+			name:          "Simple Case#1: n = 5",
+			n:             5,
+			denominations: []int{1, 2, 3},
+			want:          2, // Valid combinations: {2+3} and {1+1+1+3}.
+		},
+		{
+			name:          "Simple Case#2: n = 6",
+			n:             6,
+			denominations: []int{1, 2, 3},
+			want:          4,
+		},
+		{
+			name:          "Simple Case#3: n = 6",
+			n:             6,
+			denominations: []int{1, 3, 5, 10},
+			want:          4,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := evenNumberCoins(tt.n, tt.denominations); got != tt.want {
+				t.Errorf("evenNumberCoins(%v, %v) = %v, want %v", tt.n, tt.denominations, got, tt.want)
+			}
+		})
+	}
+}
