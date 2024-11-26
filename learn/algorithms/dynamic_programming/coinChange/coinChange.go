@@ -118,3 +118,49 @@ func noMoreThanCCoins(n int, c int, denominations []int) int {
 	}
 	return dp[n][c]
 }
+
+/*
+Problem:
+	Given an ulimited supply of coins of given denominations,
+	find the total number of ways to make change n by using
+	an even number of coins
+
+1. Objective function:
+		F(i, x) is the total number of ways to make change i
+		with x = 0 if an odd # coins are used
+		and x = 1 if an even # coins are used
+
+2. Base Case:
+		F(0, 0) = 0 // no way to make 0 from an odd number of coins
+		F(0, 1) = 1 // 0 coins is an even number of coins and
+					// you can make change of 0 using 0 coins
+		F(1, 0) = 1
+		F(1, 1) = 0
+
+3.	Transition Function:
+
+		F(i, x) = sum(F[i - denomination], 1 - x)) for each denomination
+
+4. Solution at F(n, 1)
+*/
+
+func evenNumberCoins(n int, denominations []int) int {
+
+	dp := make([][]int, n+1)
+	for i := range dp {
+		dp[i] = make([]int, 2)
+	}
+	dp[0][0] = 0
+	dp[0][1] = 1
+
+	for _, denomination := range denominations {
+		for i := 1; i <= n; i++ {
+			if i >= denomination {
+				for j := 0; j < 2; j++ {
+					dp[i][j] += dp[i-denomination][1-j]
+				}
+			}
+		}
+	}
+	return dp[n][1]
+}
